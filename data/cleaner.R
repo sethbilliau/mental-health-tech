@@ -22,14 +22,25 @@ length(colnames(dat18))
 length(commoncols)
 rbind(dat19[,commoncols], dat18[,commoncols])
 
+commoncols.idx = which(colnames(dat19) %in% colnames(dat18))
+
 df = data.frame(matrix(ncol = 60, nrow = length(newcol)))
-for (col in commoncols) { 
-  newcol = c(unlist(dat18[,col]), unlist(dat19[,col]))
-  df[,col] = numeric(length(newcol))
-  df[,col] = newcol
+for (i in 1:length(commoncols.idx)) { 
+  idx.19 = commoncols.idx[i]
+  name = colnames(dat19)[idx.19]
+  idx.18 = which(colnames(dat18) == name)
+  newcol = c(unlist(dat18[,idx.18]), unlist(dat19[,idx.19]))
+  df[,i] = numeric(length(newcol))
+  df[,i] = newcol
 }
+names(df) = commoncols
 View(df)
 
+
+
+write.csv(colnames(dat19)[commoncols.idx], file="included.csv")
+write.csv(colnames(dat19)[-commoncols.idx], file="notincluded.csv")
+write.csv(df, 'fullincluded.csv')
 
 
 
