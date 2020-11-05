@@ -65,6 +65,6 @@ write.csv(df1719, 'df17_19.csv')
 
 
 
-table(as.factor(df1719$`What US state or territory do you live in?`))
+
 
      
