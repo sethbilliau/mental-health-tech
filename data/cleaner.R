@@ -24,6 +24,96 @@ colnames(dat17) = gsub("<strong>", "", colnames(dat17))
 colnames(dat17) = gsub("</strong>", "", colnames(dat17))
 colnames(dat16) = gsub("<strong>", "", colnames(dat16))
 colnames(dat16) = gsub("</strong>", "", colnames(dat16))
+
+
+# Clean 19
+
+colnames(dat19)
+tocheck = c("If so, what disorder(s) were you diagnosed with?")
+unique(dat19[,name])
+
+options = c("Anxiety Disorder (Generalized, Social, Phobia, etc)", 
+            "Mood Disorder (Depression, Bipolar Disorder, etc)",
+            "Psychotic Disorder (Schizophrenia, Schizoaffective, etc)", 
+            "Eating Disorder (Anorexia, Bulimia, etc)",
+            "Attention Deficit Hyperactivity Disorder",
+            "Personality Disorder (Borderline, Antisocial, Paranoid, etc)",
+            "Obsessive-Compulsive Disorder", 
+            "Post-traumatic Stress Disorder", 
+            "Stress Response Syndromes", 
+            "Dissociative Disorder", 
+            "Substance Use Disorder", 
+            "Addictive Disorder", 
+            "Other")
+
+dat.edited = dat19
+
+library(pracma)
+n = dim(dat19)[1]
+for (option in options){ 
+  print(option)
+  temp = numeric(n)
+  for (idx in 1:nrow(dat19)){ 
+    row = dat19[idx, name]
+    
+    temp[idx] = strcmp(option, unlist(row[1]))
+    
+    
+  }
+  
+  dat.edited = cbind(dat.edited, temp)
+}
+colnames(dat.edited) = c(colnames(dat19), options)
+
+dat19 = dat.edited
+
+# Clean 16 
+dat.edited = dat16
+n = dim(dat16)[1]
+for (option in options){ 
+  print(option)
+  temp = numeric(n)
+  for (idx in 1:nrow(dat16)){ 
+    row = dat19[idx, name]
+    
+    temp[idx] = strcmp(option, unlist(row[1]))
+    
+    
+  }
+  
+  dat.edited = cbind(dat.edited, temp)
+}
+colnames(dat.edited) = c(colnames(dat16), options)
+
+dat16 = dat.edited
+
+
+# Clean 18 and 17 
+
+
+for (option in options) {
+  fun = function(x ) grepl(option, x, fixed= T)
+  indices = which(unlist(lapply(colnames(dat18),fun )))
+  if (strcmp(option, "other")) { 
+    indices = which(grepl(option, colnames(dat18) ))[1:3]
+  }
+
+  dat18[,option] = apply(!apply(dat18[,indices], 2, is.na), 1, sum)
+}
+
+
+for (option in options) {
+  fun = function(x ) grepl(option, x, fixed= T)
+  indices = which(unlist(lapply(colnames(dat17),fun )))
+  if (strcmp(option, "other")) { 
+    indices = which(grepl(option, colnames(dat17) ))[1:3]
+  }
+  
+  dat17[,option] = apply(!apply(dat17[,indices], 2, is.na), 1, sum)
+}
+
+
+
   
 # Get common columns 
 commoncols.1819 = colnames(dat19)[which(colnames(dat19) %in% colnames(dat18))]
@@ -59,7 +149,7 @@ for (i in 1:length(commoncols.idx.full)) {
   df1719[,i] = newcol
 }
 names(df1719) = commoncols.full
-View(df1719)
+
 
 # Df 17-19 write 
 write.csv(df1719, 'df17_19.csv')
@@ -114,7 +204,7 @@ for (i in 1:length(commoncols.add16)) {
 colnames(df1619)[1:length(commoncols.add16)] = commoncols.add16
 
 
-df1619[1805,]
+
 uncommoncols.add16 = colnames(df1719)[which(!(colnames(df1719) %in% colnames(dat16)))]
 uncommoncols.idx.add16 = which(!(colnames(df1719) %in% colnames(dat16)))
 
@@ -129,3 +219,15 @@ colnames(df1619)[(length(commoncols.add16) + 1):(length(commoncols.add16) + leng
 
 
 df1619$`What is your race?`[1809:2000]
+
+View(df1619)
+write.csv(df1619, 'df16_19.csv')
+
+df =df1619[which(!is.na( df1619[,options[1] ])), ]
+df$year
+
+
+
+
+
+     
