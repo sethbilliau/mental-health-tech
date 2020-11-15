@@ -1,6 +1,47 @@
+/* Line chart */
+/* AXES */
+/* ticks */
+.axis line{
+    stroke: #706f6f;
+    stroke-width: 0.5;
+    shape-rendering: crispEdges;
+    }
+    
+    /* axis contour */
+    .axis path {
+    stroke: #706f6f;
+    stroke-width: 0.7;
+    shape-rendering: crispEdges;
+    }
+    
+    /* axis text */
+    .axis text {
+    fill: #2b2929;
+    font-family: Georgia;
+    font-size: 120%;
+    }
+    
+    /* LINE CHART */
+    .line {
+    fill: none !important;
+    stroke: #d2d2d2;
+    }
+    
+    .ghost-line {
+    fill: none !important;
+    stroke: #d2d2d2;
+    opacity: 0;
+    stroke-width: 10;
+    }
+    
+    .serie_label {
+    fill: #d2d2d2;
+    font-family: Georgia;
+    font-size: 80%;
+    }
 /* General */
 body{
-    background-color: #161c26 !important;
+    /* background-color: #161c26 !important; */
     font-family: 'Roboto', sans-serif;
 }
 
@@ -8,7 +49,7 @@ body{
 
 h1 {
     font-family: 'Roboto', sans-serif !important;
-    color: white;
+    color: black;
     font-size: 48px !important;
     font-weight: 700 !important;
     letter-spacing: 0.3em !important;
@@ -18,7 +59,7 @@ h1 {
 
 h3 {
     font-family: 'Roboto', sans-serif !important;
-    color: white;
+    color: black;
     font-size: 36px !important;
     font-weight: 700 !important;
     letter-spacing: 0.2em !important;
@@ -56,14 +97,10 @@ h3 {
     background: white;
 }
 
-h3.cursive {
-    font-family: 'Sacramento', cursive !important;
-    font-weight: 300 !important;
-}
 
 h5 {
     font-family: 'Roboto', sans-serif !important;
-    color: white;
+    color: black;
     font-size: 26px !important;
     line-height: 32px !important;
     font-weight: 700 !important;
@@ -132,12 +169,12 @@ div.section {
     padding-right: 100px;
 }
 
-.line {
+/* .line {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 1px;
     background: #8293b6;
-}
+} */
 
 /* CONTAINER */
 
