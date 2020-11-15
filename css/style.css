@@ -86,15 +86,15 @@ b {
     z-index:99;
 }
 
-p,
-form,
-.tooltip{
-    font-family: 'Roboto', sans-serif; 
-    color: #8293b6 !important;
-    font-size: 16px !important;
-    font-weight: 300 !important;
-    text-align: left;
-}
+/*p,*/
+/*form,*/
+/*.tooltip{*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    color: #8293b6 !important;*/
+/*    font-size: 16px !important;*/
+/*    font-weight: 300 !important;*/
+/*    text-align: left;*/
+/*}*/
 
 .nodetitle{
     font-size: 20px !important;
@@ -360,4 +360,21 @@ ul {
     -o-transform-origin: 100% 50%;
     transform-origin: 100% 50%;
     z-index:0;
+}
+
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border-radius: 8px;
+    /*pointer-events: none;	This line needs to be removed */
+}
+
+.tooltip p {
+    font: 6px;
 }
