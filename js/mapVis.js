@@ -196,7 +196,7 @@ class MapVis {
                     .style("left", event.pageX + 20 + "px")
                     .style("top", event.pageY + "px")
                     .html(`
-                         <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
+                         <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 10px">
                              <h3> ${d.properties.name}<h3>
                              <p style="font-size: 12px"> Number of Responses (absolute): ${vis.stateInfo[index]["numResponses"]}</p>
                              <p style="font-size: 12px"> Perc. of Responses: ${f(vis.stateInfo[index]["percResponses"])}</p>
