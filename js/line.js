@@ -18,7 +18,7 @@ class LineGraph {
         };
 
         vis.width = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * 0.9 - vis.margin.left - vis.margin.right;
-        vis.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * 0.3 - vis.margin.top - vis.margin.bottom;
+        vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -43,11 +43,11 @@ class LineGraph {
             .tickFormat(d => d + "%")
             .ticks(5);
 
-        // vis.svg.append("clipPath")
-        //     .attr("id", "clip")
-        //   .append("rect")
-        //     .attr("width", vis.width)
-        //     .attr("height", vis.height);
+        vis.svg.append("clipPath")
+            .attr("id", "clip")
+          .append("rect")
+            .attr("width", vis.width)
+            .attr("height", vis.height);
 
 
         let technologyData = vis.displayData.filter(d => d.industry === "Technology");
@@ -65,7 +65,6 @@ class LineGraph {
             .y(d => vis.y(parseFloat(d.percent)))
             .curve(d3.curveMonotoneX);
 
-        let colors = d3.scaleOrdinal(d3.schemeCategory10);
 
 
         let lines = vis.svg.selectAll("line")
@@ -83,6 +82,7 @@ class LineGraph {
                     return "#d2d2d2";
                 }
             })
+            .style("stroke-width", "2")
             .attr("d", d => line(d));
 
         lines.append("text")
@@ -116,7 +116,7 @@ class LineGraph {
                 selection
                     .transition()
                     .delay("100").duration("10")
-                    .style("stroke", "#ed3700")
+                    .style("stroke", "blue")
                     .style("opacity", "1")
                     .style("stroke-width", "3");
 
@@ -150,7 +150,13 @@ class LineGraph {
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("fill", d => "#d2d2d2" ? d.industry !== 'Technology' : "black");
+                    .style("fill", function(d) {
+                        if (d.industry === "Technology") {
+                            return "black";
+                        } else {
+                            return "#d2d2d2";
+                        }
+                    });
             });
 
         let majorEvents = {
@@ -164,9 +170,14 @@ class LineGraph {
             "2020": "Apple becomes first company to hit $2 trillion market cap"
         };
 
-        lines.selectAll("points")
+        let techLines = vis.svg.selectAll("line")
+            .data([technologyData])
+            .enter()
+            .append("g");
+
+        techLines.selectAll("points")
             .data(function (d) {
-                return d
+                return d;
             })
             .enter()
             .append("circle")
@@ -187,7 +198,7 @@ class LineGraph {
             .style("opacity", 1);
 
 
-        lines.selectAll("circles")
+        techLines.selectAll("circles")
             .data(function (d) {
                 return (d);
             })
@@ -212,7 +223,7 @@ class LineGraph {
                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                     <h6> Year: ${d.date}</h6>
                     <h6> Weight: ${d.percent}%</h6>
-                    <h6>${majorEvents[d.date] ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
+                    <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
                 </div>`
                     )
                     .style("left", (event.pageX + 25) + "px")
