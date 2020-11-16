@@ -1,46 +1,59 @@
 /* Line chart */
 /* AXES */
 /* ticks */
-.axis line{
+.axis line {
     stroke: #706f6f;
     stroke-width: 0.5;
     shape-rendering: crispEdges;
-    }
-    
-    /* axis contour */
-    .axis path {
+}
+
+/* axis contour */
+.axis path {
     stroke: #706f6f;
     stroke-width: 0.7;
     shape-rendering: crispEdges;
-    }
-    
-    /* axis text */
-    .axis text {
+}
+
+/* axis text */
+.axis text {
     fill: #2b2929;
     font-family: Georgia;
     font-size: 120%;
-    }
-    
-    /* LINE CHART */
-    .line {
+}
+
+/* LINE CHART */
+.line {
     fill: none !important;
     stroke: #d2d2d2;
-    }
-    
-    .ghost-line {
+}
+
+.ghost-line {
     fill: none !important;
     stroke: #d2d2d2;
     opacity: 0;
     stroke-width: 10;
-    }
-    
-    .serie_label {
+}
+
+.serie_label {
     fill: #d2d2d2;
     font-family: Georgia;
     font-size: 80%;
-    }
+}
+
+/* TOOLTIP */
+.tooltip-line {
+    fill: #2b2929;
+    font-family: Georgia;
+}
+
+/* POINTS */
+.point {
+    stroke: none;
+    fill: #9c9c9c;
+}
+
 /* General */
-body{
+body {
     /* background-color: #161c26 !important; */
     font-family: 'Roboto', sans-serif;
 }
@@ -69,7 +82,7 @@ h3 {
 }
 
 .btn {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
     color: white;
     font-size: 14px;
     font-weight: 300;
@@ -82,7 +95,7 @@ h3 {
 }
 
 .btn-light {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
     color: white;
     font-size: 12px;
     font-weight: 400;
@@ -92,7 +105,7 @@ h3 {
 }
 
 .btn-light:hover {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
     color: #384661 !important;
     background: white;
 }
@@ -119,21 +132,21 @@ b {
     text-align: right;
 }
 
-#q1{
-    z-index:99;
+#q1 {
+    z-index: 99;
 }
 
-p,
-form,
-.tooltip{
-    font-family: 'Roboto', sans-serif; 
-    color: #8293b6 !important;
-    font-size: 16px !important;
-    font-weight: 300 !important;
-    text-align: left;
-}
+/*p,*/
+/*form,*/
+/*.tooltip{*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*    color: #8293b6 !important;*/
+/*    font-size: 16px !important;*/
+/*    font-weight: 300 !important;*/
+/*    text-align: left;*/
+/*}*/
 
-.nodetitle{
+.nodetitle {
     font-size: 20px !important;
     letter-spacing: 0.2em !important;
     font-weight: 400 !important;
@@ -211,42 +224,45 @@ div.section {
     justify-content: center;
 }
 
-.BeforeScroll
-{
-    height: 100px; /*Whatever you want*/
-    width: 100%; /*Whatever you want*/
+.BeforeScroll {
+    height: 100px;
+    /*Whatever you want*/
+    width: 100%;
+    /*Whatever you want*/
     display: none;
 }
 
 
 /*Use this class when you want your content to be shown after some scroll*/
-.AfterScroll
-{
-    height: 100px; /*Whatever you want*/
-    width: 100%; /*Whatever you want*/
+.AfterScroll {
+    height: 100px;
+    /*Whatever you want*/
+    width: 100%;
+    /*Whatever you want*/
     display: block;
 }
 
-.axis.scatter path{
+.axis.scatter path {
     stroke: #8293b6;
 }
 
-.axis.scatter text{
+.axis.scatter text {
     fill: #8293b6;
 }
 
 
-.axis.scatter line{
+.axis.scatter line {
     stroke: #8293b6;
 }
 
 /*Matrix Section*/
-#matrixvis{
+#matrixvis {
     position: -webkit-sticky;
     position: sticky;
-    top:20vh;
-    left:20vh;
+    top: 20vh;
+    left: 20vh;
 }
+
 .step {
     width: 25vw;
     margin-left: 10vh;
@@ -258,7 +274,7 @@ div.section {
     pointer-events: none;
 }
 
-.fill-circle{
+.fill-circle {
     /*transition: opacity 0.5s ;*/
 }
 
@@ -274,7 +290,7 @@ div.section {
 
 
 /* particle vis */
-#dots-visualization{
+#dots-visualization {
     width: 100%;
     height: 100%;
     display: block;
@@ -302,7 +318,7 @@ ul {
 
 #cd-vertical-nav {
     position: fixed;
-    left:20px;
+    left: 20px;
     top: 50%;
     bottom: auto;
     -webkit-transform: translateY(-50%);
@@ -312,10 +328,12 @@ ul {
     transform: translateY(-50%);
     z-index: 1;
 }
+
 #cd-vertical-nav li {
     text-align: left;
 
 }
+
 #cd-vertical-nav a {
     display: inline-block;
     /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
@@ -323,6 +341,7 @@ ul {
     backface-visibility: hidden;
 
 }
+
 #cd-vertical-nav a {
     display: inline-block;
     /* prevent weird movements on hover when you use a CSS3 transformation - webkit browsers */
@@ -330,11 +349,13 @@ ul {
     backface-visibility: hidden;
 
 }
+
 #cd-vertical-nav a:after {
     content: "";
     display: table;
     clear: both;
 }
+
 #cd-vertical-nav a span {
     float: left;
     display: inline-block;
@@ -344,22 +365,26 @@ ul {
     -o-transform: scale(0.6);
     transform: scale(0.6);
 }
+
 #cd-vertical-nav a:hover span {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
-    opacity :0.8;
+    opacity: 0.8;
 }
+
 #cd-vertical-nav a:hover .cd-label {
     opacity: 1;
     z-index: 0;
 }
+
 #cd-vertical-nav a.is-selected .cd-dot {
     background-color: white;
     opacity: 1;
 }
+
 .cd-dot {
     position: relative;
     /* we set a top value in order to align the dot with the label. If you change label's font, you may need to change this top value*/
@@ -385,7 +410,7 @@ ul {
     font-size: 12px;
     padding-top: 10px;
     padding-left: 12px;
-    line-height: 6px ;
+    line-height: 6px;
     font-size: 0.875rem;
     -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
     -moz-transition: -moz-transform 0.2s, opacity 0.2s;
@@ -396,5 +421,22 @@ ul {
     -ms-transform-origin: 100% 50%;
     -o-transform-origin: 100% 50%;
     transform-origin: 100% 50%;
-    z-index:0;
+    z-index: 0;
+}
+
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border-radius: 8px;
+    /*pointer-events: none;	This line needs to be removed */
+}
+
+.tooltip p {
+    font: 6px;
 }

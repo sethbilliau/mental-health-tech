@@ -2,6 +2,7 @@ class LineGraph {
     constructor(parentElement, displayData) {
         this.parentElement = parentElement;
         this.displayData = displayData;
+        console.log(displayData)
         this.initVis();
     }
 
@@ -9,11 +10,16 @@ class LineGraph {
         let vis = this;
         let parseYear = d3.timeParse("%Y");
 
-        vis.margin = { top: 50, right: 50, bottom: 50, left: 50 };
+        vis.margin = {
+            top: 50,
+            right: 80,
+            bottom: 50,
+            left: 50
+        };
 
-        vis.width = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)*0.9  - vis.margin.left - vis.margin.right;
+        vis.width = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * 0.9 - vis.margin.left - vis.margin.right;
         vis.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * 0.3 - vis.margin.top - vis.margin.bottom;
-     
+
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -26,7 +32,7 @@ class LineGraph {
             .range([0, vis.width]);
 
         vis.y = d3.scaleLinear()
-            .domain([0, 40])
+            .domain([0, 35])
             .range([vis.height, 0]);
 
         vis.xAxis = d3.axisBottom()
@@ -42,10 +48,17 @@ class LineGraph {
         //   .append("rect")
         //     .attr("width", vis.width)
         //     .attr("height", vis.height);
-      
+
 
         let technologyData = vis.displayData.filter(d => d.industry === "Technology");
         let financialData = vis.displayData.filter(d => d.industry === "Financial");
+        let energyData = vis.displayData.filter(d => d.industry === "Energy")
+
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip-line")
+            .style("opacity", 0)
+            .style("position", "absolute");
+
 
         let line = d3.line()
             .x(d => vis.x(parseYear(d.date)))
@@ -53,83 +66,186 @@ class LineGraph {
             .curve(d3.curveMonotoneX);
 
         let colors = d3.scaleOrdinal(d3.schemeCategory10);
- 
+
 
         let lines = vis.svg.selectAll("line")
-            .data([technologyData, financialData])
+            .data([technologyData, financialData, energyData])
             .enter()
             .append("g");
-        
+
         lines.append("path")
             .attr('clip-path', 'url(#clip)')
             .attr("fill", "none")
+            .style("stroke", function (d, i) {
+                if (i === 0) {
+                    return "#ed3700";
+                } else {
+                    return "#d2d2d2";
+                }
+            })
             .attr("d", d => line(d));
 
-        // lines.append("text")
-        //     .attr("class", "serie_label")
-        //     .datum(d => d)
-        //     .attr("transform", `translate(${vis.x(parseYear(d.date)) + 10}, ${vis.y(parseFloat(d.percent)) + 5})`)
-        //     .attr("x", 5)
-        //     .text(d => d.industry);
+        lines.append("text")
+            .attr("class", "serie_label")
+            .datum(function (d) {
+                return d[d.length - 1];
+            })
+            .attr("transform", function (d) {
+                return `translate(${vis.x(parseYear(d.date)) + 10}, ${vis.y(parseFloat(d.percent)) + 5})`;
+            })
+            .attr("x", 5)
+            .style("fill", function (d, i) {
+                if (i === 0) {
+                    return "#2b2929";
+                } else {
+                    return "#d2d2d2";
+                }
+            })
+            .text(d => d.industry);
 
-        // const ghost_lines = lines.append("path")
-        //     .attr("class", "ghost-line")
-        //     .attr("d", function(d) { return line(d); });    
+        const ghost_lines = lines.append("path")
+            .attr("class", "ghost-line")
+            .attr("d", function (d) {
+                return line(d);
+            });
 
-            vis.svg.selectAll(".ghost-line")
-            .on('mouseover', function() {
+        vis.svg.selectAll(".ghost-line")
+            .on('mouseover', function () {
                 const selection = d3.select(this).raise();
-        
+
                 selection
                     .transition()
                     .delay("100").duration("10")
-                    .style("stroke","#ed3700")
-                    .style("opacity","1")
-                    .style("stroke-width","3");
-        
+                    .style("stroke", "#ed3700")
+                    .style("opacity", "1")
+                    .style("stroke-width", "3");
+
                 // add the legend action
                 const legend = d3.select(this.parentNode)
                     .select(".serie_label");
-        
+
                 legend
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("fill","#2b2929");
-                })
-        
-            .on('mouseout', function() {
+                    .style("fill", "#2b2929");
+            })
+
+            .on('mouseout', function () {
                 const selection = d3.select(this)
-        
+
                 selection
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("stroke","#d2d2d2")
-                    .style("opacity","0")
-                    .style("stroke-width","10");
-        
+                    .style("stroke", "#d2d2d2")
+                    .style("opacity", "0")
+                    .style("stroke-width", "10");
+
                 // add the legend action
                 const legend = d3.select(this.parentNode)
                     .select(".serie_label");
-        
+
                 legend
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("fill","#d2d2d2");
+                    .style("fill", d => "#d2d2d2" ? d.industry !== 'Technology' : "black");
             });
-        // vis.svg.call(this.hover, path)
 
-        // let path = vis.svg.append('path')
-        //     .attr('class', 'line');
+        let majorEvents = {
+            "1997": "Amazon IPO",
+            "1999": "Peak of dot-com bubble",
+            "2002": "Netflix IPO",
+            "2004": "Googe IPO",
+            "2007": "First iPhone released",
+            "2012": "Facebook IPO",
+            "2018": "Amazon and Apple become first companies to hit $1 trillion market cap",
+            "2020": "Apple becomes first company to hit $2 trillion market cap"
+        };
 
-        // vis.svg.selectAll('.line')
-        //     .attr("d", line(vis.displayData));
+        lines.selectAll("points")
+            .data(function (d) {
+                return d
+            })
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                return vis.x(parseYear(d.date));
+            })
+            .attr("cy", function (d) {
+                return vis.y(parseFloat(d.percent));
+            })
+            .attr("r", function (d) {
+                if (d.industry === "Technology" && Object.keys(majorEvents).indexOf(d.date) !== -1) {
+                    return 5;
+                } else {
+                    return 1;
+                }
+            })
+            .attr("class", "point")
+            .style("opacity", 1);
+
+
+        lines.selectAll("circles")
+            .data(function (d) {
+                return (d);
+            })
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                return vis.x(parseYear(d.date));
+            })
+            .attr("cy", function (d) {
+                return vis.y(parseFloat(d.percent));
+            })
+            .attr('r', 10)
+            .style("opacity", 0)
+            .on('mouseover', function (event, d) {
+                tooltip.transition()
+                    .delay(30)
+                    .duration(200)
+                    .style("opacity", 1);
+
+                tooltip.html(
+                        `
+                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
+                    <h6> Year: ${d.date}</h6>
+                    <h6> Weight: ${d.percent}%</h6>
+                    <h6>${majorEvents[d.date] ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
+                </div>`
+                    )
+                    .style("left", (event.pageX + 25) + "px")
+                    .style("top", (event.pageY) + "px");
+
+                const selection = d3.select(this).raise();
+
+                selection
+                    .transition()
+                    .delay("20")
+                    .duration("200")
+                    .attr("r", 6)
+                    .style("opacity", 1)
+                    .style("fill", "black");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+
+                const selection = d3.select(this);
+
+                selection
+                    .transition()
+                    .delay("20")
+                    .duration("200")
+                    .attr("r", 10)
+                    .style("opacity", 0);
+            });
 
         vis.svg.append("clipPath")
             .attr("id", "clip")
-          .append("rect")
+            .append("rect")
             .attr("width", vis.width)
             .attr("height", vis.height);
 
@@ -139,13 +255,19 @@ class LineGraph {
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis);
 
-            // Add the y-axis.
+        // Add the y-axis.
         vis.svg.append("g")
             .attr("class", "y axis")
-            .call(vis.yAxis);
+            .call(vis.yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", ".75em")
+            .attr("y", 6)
+            .style("text-anchor", "end")
+            .text("S&P Sector Weight");
 
         let curtain = vis.svg.append('rect')
-            .attr('x', -1 * vis.width)
+            .attr('x', -1 * vis.width - 5)
             .attr('y', -1 * vis.height)
             .attr('height', vis.height)
             .attr('width', vis.width)
@@ -175,50 +297,4 @@ class LineGraph {
         let vis = this;
     }
 
-    hover(svg, path) {
-  
-        if ("ontouchstart" in document) svg
-            .style("-webkit-tap-highlight-color", "transparent")
-            .on("touchmove", moved)
-            .on("touchstart", entered)
-            .on("touchend", left)
-        else svg
-            .on("mousemove", moved)
-            .on("mouseenter", entered)
-            .on("mouseleave", left);
-      
-        const dot = svg.append("g")
-            .attr("display", "none");
-      
-        dot.append("circle")
-            .attr("r", 2.5);
-      
-        dot.append("text")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 10)
-            .attr("text-anchor", "middle")
-            .attr("y", -8);
-      
-     function moved(event) {
-          event.preventDefault();
-          const pointer = d3.pointer(event, this);
-          const xm = x.invert(pointer[0]);
-          const ym = y.invert(pointer[1]);
-          const i = d3.bisectCenter(data.dates, xm);
-          const s = d3.least(data.series, d => Math.abs(d.values[i] - ym));
-          path.attr("stroke", d => d === s ? null : "#ddd").filter(d => d === s).raise();
-          dot.attr("transform", `translate(${x(data.dates[i])},${y(s.values[i])})`);
-          dot.select("text").text(s.name);
-        }
-      
-    function entered() {
-          path.style("mix-blend-mode", null).attr("stroke", "#ddd");
-          dot.attr("display", null);
-        }
-      
-    function left() {
-          path.style("mix-blend-mode", "multiply").attr("stroke", null);
-          dot.attr("display", "none");
-        }
-      }
 }
