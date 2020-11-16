@@ -9,6 +9,8 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/aos.css">
@@ -35,7 +37,7 @@
 			<li>
 				<a href="#section3" data-number="3">
 					<span class="cd-dot"></span>
-					<span class="cd-label">Dots</span>
+					<span class="cd-label">Barchart</span>
 				</a>
 			</li>
 			<li>
@@ -60,20 +62,19 @@
 	</div>
 
 	<div class="section nav-section" id="section1"
-		style="background-image: url('img/background.jpg'); background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+		style="background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
 		<div data-aos="fade-in">
 			<h1>Mental Health in the Tech Industry</h1>
 		</div>
 	</div>
 
 	<div class="section nav-section" data-aos="fade-in" id="section2">
-		<div class="line" style="margin: 150px 30vw 150px 30vw;"></div>
+		<div class="line-divider" data-aos="fade-in"></div>
 		<div style="height:80px"></div>
 		<div class="row align-items-center">
-			<div class="col-md-9" id="scatter" style="padding-left: 0px !important"></div>
+			<div class="col-md-9" id="lineGraphDiv" style="padding-left: 0px !important"></div>
 			<div class="col-md-3">
 				<h5>Timeline Section</h5>
-
 			</div>
 		</div>
 		<div style="height:150px"></div>
@@ -81,24 +82,23 @@
 
 
 	<div class="section" data-aos="fade-in">
-		<div class="line"></div>
+		<div class="line-divider"></div>
 	</div>
 	<div class="section nav-section" id="section3">
 		<div style="height:50px"></div>
 		<div data-aos="fade-in">
-			<h5 style="text-align: center;">Dots Visualization</h5>
+			<h5 style="text-align: center;">Double Barchart</h5>
 			<div style="height:20px"></div>
-			<div>
-				<canvas id="dots-visualization"></canvas>
+			<div class="col-md-9">
+				<div id="double-barchart"></div>
 			</div>
 		</div>
-		<div class="line" data-aos="fade-in"></div>
-		<div style="height:150px"></div>
+		<div class="line-divider" data-aos="fade-in"></div>
 	</div>
 
 
 	<div class="section nav-section" id="section4"
-		style="background-image: url('img/back2.png'); background-position: center top; background-repeat: no-repeat; background-size: contain;">
+		style="background-position: center top; background-repeat: no-repeat; background-size: contain;">
 		<div class="row align-items-center" data-aos="fade-in">
 			<div class="col-md-3" style="padding-right: 3vw; padding-bottom: 100px;">
 				<h5>Word Cloud</h5>
@@ -107,17 +107,18 @@
 				<div id="cloudDiv" class="word-cloud"></div>
 			</div>
 		</div>
+		<div class="line-divider" data-aos="fade-in"></div>
 	</div>
 
 
-	<div style="padding-top: 150px; background: linear-gradient(0deg, #161c26 20%, #000000 70%, #161c26 100%);">
+	<div style="padding-top: 150px;">
 		<div class="nav-section" id="section5" style="padding: 0px 0px 100px 100px !important;">
 			<div class="row align-items-center" style="margin: 0px !important;" data-aos="fade-in">
 				<div class="col-md-4" style="padding: 0px !important;">
 					<h5 style="text-align: left;">Map Section</h5>
 				</div>
 				<div class="col-md-8" style="padding: 0px !important;">
-					<div id="map" style="height: 80vh; width:100%; border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4);"></div>
+					<div id="map" style="height: 60vh; width:100%;"></div>
 					<select id='categorySelector' class="custom-select align-self-center" style="width: 50%" onchange="categoryChange()">
 						<option value="percResponses" selected>Response Rate</option>
 						<option value="percDisorder" selected>Disorder Rate</option>
@@ -132,7 +133,7 @@
 
 
 
-	<div class="section nav-section" id="section6" style="margin-top: -3px; background: #000000;">
+	<!-- <div class="section nav-section" id="section6" style="margin-top: -3px; background: #000000;">
 		<div class="line" style="margin-top: 0px;"></div>
 		<div class="row">
 			<div class="col-md-3">
@@ -160,7 +161,7 @@
 			</div>
 		</div>
 		<div style="height:100px"></div>
-	</div>
+	</div> -->
 
 
 	<!-- Load JS libraries -->
@@ -193,10 +194,12 @@
 	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
 
 	<!-- Include visulization js here -->
+	<script src="js/line.js"></script>
 	<script src="js/d3.layout.cloud.js"></script>
 	<script src="js/wordcloudVis.js"></script>
 	<script src="js/helpers.js"></script>
 	<script src="js/mapVis.js"></script>
+	<script src="js/doubleBarchart.js"></script>
 	<script src="js/main.js"></script>
 
 	<!-- AOS must be included last -->
