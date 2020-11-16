@@ -76,7 +76,6 @@ h3 {
     font-weight: 700 !important;
     margin-bottom: 30px;
     margin-right: -0.2em !important;
-    text-align: right;
 }
 
 .btn {
@@ -431,7 +430,7 @@ ul {
 .tooltip {
     position: absolute;
     text-align: center;
-    width: 200px;
+    width: 300px;
     height: 28px;
     padding: 2px;
     font: 12px sans-serif;
