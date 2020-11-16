@@ -37,27 +37,51 @@
 			<li>
 				<a href="#section3" data-number="3">
 					<span class="cd-dot"></span>
-					<span class="cd-label">Barchart</span>
+					<span class="cd-label">Survey</span>
 				</a>
 			</li>
 			<li>
 				<a href="#section4" data-number="4">
 					<span class="cd-dot"></span>
-					<span class="cd-label">Word Cloud</span>
+					<span class="cd-label">Bar Charts</span>
 				</a>
 			</li>
 			<li>
 				<a href="#section5" data-number="5">
 					<span class="cd-dot"></span>
-					<span class="cd-label">Map</span>
+					<span class="cd-label">Bubles</span>
 				</a>
 			</li>
 			<li>
 				<a href="#section6" data-number="6">
 					<span class="cd-dot"></span>
-					<span class="cd-label">Acknowledgement</span>
+					<span class="cd-label">Map</span>
 				</a>
 			</li>
+			<li>
+				<a href="#section7" data-number="7">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Brush</span>
+				</a>
+			</li>
+			<li>
+				<a href="#section8" data-number="8">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Word Cloud</span>
+				</a>
+			</li>
+			<li>
+				<a href="#section9" data-number="9">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Conclusion</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="#section10" data-number="10">
+					<span class="cd-dot"></span>
+					<span class="cd-label">Acknowledgements</span>
+				</a>
+			</li> -->
 		</ul>
 	</div>
 
@@ -74,7 +98,7 @@
 		<div class="row align-items-center">
 			<div class="col-md-9" id="lineGraphDiv" style="padding-left: 0px !important"></div>
 			<div class="col-md-3">
-				<h5>Here's how the tech industry rose to prominence over the past 20 years based on S&P sector weightings.</h5>
+				<h5>The tech industry rose to prominence over the past 20 years based on S&P sector weightings.</h5>
 			</div>
 		</div>
 		<div style="height:150px"></div>
@@ -84,8 +108,20 @@
 		<div class="line-divider"></div>
 	</div>
 
-	
 	<div class="section nav-section" id="section3">
+		<div style="height:50px"></div>
+		<div data-aos="fade-in">
+			<h5 style="text-align: center;">Survey on how you think mental health disorder is distributed by demographic </h5>
+			<div style="height:20px"></div>
+			<div class="col-md-9">
+				
+			</div>
+			<div style="height:500px"></div>
+		</div>
+		<div class="line-divider" data-aos="fade-in"></div>
+	</div>
+
+	<div class="section nav-section" id="section4">
 		<div style="height:50px"></div>
 		<div data-aos="fade-in">
 			<h5 style="text-align: center;">How do your responses compare to actual survey respones of workers in the tech industry?</h5>
@@ -98,28 +134,51 @@
 	</div>
 
 
-	<div style="padding-top: 150px;">
-		<div class="nav-section" id="section5" style="padding: 0px 0px 100px 100px !important;">
-			<div class="row align-items-center" style="margin: 0px !important;" data-aos="fade-in">
-				<div class="col-md-4" style="padding: 0px !important;">
-					<h5 style="text-align: left;">Here's how mental health disorders are distributed across the United States</h5>
-				</div>
-				<div class="col-md-8" style="padding: 0px !important;">
-					<div id="map" style="height: 60vh; width:100%;"></div>
-					<select id='categorySelector' class="custom-select align-self-center" style="width: 50%" onchange="categoryChange()">
-						<option value="percResponses" selected>Response Rate</option>
-						<option value="percDisorder" selected>Disorder Rate</option>
-					</select>
-				</div>
+	<div class="section nav-section" id="section5">
+		<div style="height:50px"></div>
+		<div data-aos="fade-in">
+			<h5 style="text-align: center;">Here's the reality on the % of tech professionals suffering from a mental health disorder</h5>
+			<div style="height:20px"></div>
+			<div class="col-md-9">
+				
+			</div>
+			<div style="height:500px"></div>
+		</div>
+		<div class="line-divider" data-aos="fade-in"></div>
+	</div>
+
+
+	<div class="nav-section" id="section6" style="padding: 0px 0px 100px 100px !important;">
+		<div class="row align-items-center" style="margin: 0px !important;" data-aos="fade-in">
+			<div class="col-md-4" style="padding: 0px !important;">
+				<h5 style="text-align: left;">Here's how mental health disorders are distributed across the United States</h5>
+			</div>
+			<div class="col-md-8" style="padding: 0px !important;">
+				<div id="map" style="height: 60vh; width:100%;"></div>
+				<select id='categorySelector' class="custom-select align-self-center" style="width: 50%" onchange="categoryChange()">
+					<option value="percResponses" selected>Response Rate</option>
+					<option value="percDisorder" selected>Disorder Rate</option>
+				</select>
 			</div>
 		</div>
-		<div style="height:75px"></div>
+	</div>
+
+	<div class="section nav-section" data-aos="fade-in" id="section7">
+		<div class="line-divider" data-aos="fade-in"></div>
+		<div style="height:80px"></div>
+		<div class="row align-items-center">
+			<div class="col-md-9" id="lineGraphDiv" style="padding-left: 0px !important"></div>
+			<div class="col-md-3">
+				<h5>What's the correlation between mental health disorders and company work culture?</h5>
+			</div>
+			<div style="height:500px"></div>
+		</div>
 	</div>
 
 	<div class="section" data-aos="fade-in">
 		<div class="line-divider"></div>
 	</div>
-	<div class="section nav-section" id="section4"
+	<div class="section nav-section" id="section8"
 		style="background-position: center top; background-repeat: no-repeat; background-size: contain;">
 		<div style="height:50px"></div>
 		<div class="row align-items-center" data-aos="fade-in">
@@ -131,6 +190,23 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="section" data-aos="fade-in">
+		<div class="line-divider"></div>
+	</div>
+
+	<div class="section nav-section" id="section9">
+		<div style="height:50px"></div>
+		<div data-aos="fade-in">
+			<h5 style="text-align: center;">Is mental health in the tech industry getting better over time?</h5>
+			<div style="height:20px"></div>
+			<div class="col-md-9">
+				
+			</div>
+			<div style="height:500px"></div>
+		</div>
+	</div>
+
 
 
 
