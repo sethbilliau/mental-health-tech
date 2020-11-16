@@ -6,6 +6,8 @@ console.log("let's get started!")
 
 // init global variables & switches
 let myMapVis;
+let myCloudVis;
+let myDoubleBar;
 
 
 // load data using promises
@@ -13,13 +15,15 @@ let promises = [
 
     d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"),  // not projected -> you need to do it
     // d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json"), // already projected -> you can just scale it to ft your browser window
-    d3.csv("data/df_1619_colnames.csv")
+    d3.csv("data/df_1619_vF.csv")
 ];
 
 Promise.all(promises)
     .then( function(data){ initMainPage(data) })
     .catch( function (err){console.log(err)} );
 
+let surveyDemographics = ['F', '18_25', 'Black or African American', 'Back-end Developer'];
+let surveyGuesses = [25, 30, 35, 40];
 // initMainPage
 function initMainPage(dataArray) {
 
@@ -31,6 +35,7 @@ function initMainPage(dataArray) {
 
     myCloudVis = new WordCloudVis('cloudDiv', dataArray[1]);
 
+    myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
 
 }
 
