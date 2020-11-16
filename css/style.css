@@ -1,6 +1,7 @@
 /* General */
 body{
     background-color: #161c26 !important;
+    /*background-color: white;*/
     font-family: 'Roboto', sans-serif;
 }
 
@@ -233,6 +234,12 @@ div.section {
     width: 80px;
     word-wrap: break-word;
 
+}
+
+/*barchart vis */
+#double-barchart{
+    width: 100%;
+    height: 60vh;
 }
 
 
