@@ -24,7 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hw_lab/Week 5/submission_SarahHong/hw/implementation/js/main.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,6 +61,8 @@
       <workItem from="1605478943133" duration="8145000" />
       <workItem from="1605487164152" duration="29000" />
       <workItem from="1605487505875" duration="179000" />
+      <workItem from="1605496003272" duration="14000" />
+      <workItem from="1605496019913" duration="170000" />
     </task>
     <servers />
   </component>
@@ -68,10 +70,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1605485211011">
+    <state x="2660" y="275" key="FileChooserDialogImpl" timestamp="1605496015057">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605485211011" />
+    <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605496015057" />
     <state x="2983" y="0" width="627" height="1027" key="dock-window-1" timestamp="1605469885196">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
