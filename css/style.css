@@ -302,7 +302,7 @@ div.section {
 /* Vertical Navigation Bar*/
 
 #cd-vertical-nav a {
-    color: #ffffff;
+    color: black;
     text-decoration: none;
 
 }
@@ -383,7 +383,7 @@ ul {
 }
 
 #cd-vertical-nav a.is-selected .cd-dot {
-    background-color: white;
+    background-color: black;
     opacity: 1;
 }
 
@@ -394,7 +394,7 @@ ul {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: black;
     -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
     -moz-transition: -moz-transform 0.2s, background-color 0.5s;
     transition: transform 0.2s, background-color 0.5s;
@@ -408,7 +408,7 @@ ul {
 
 #cd-vertical-nav .cd-label {
     position: relative;
-    color: white;
+    color: black;
     font-size: 12px;
     padding-top: 10px;
     padding-left: 12px;
