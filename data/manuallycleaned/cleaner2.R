@@ -1,12 +1,9 @@
 # CLEANER Manually augmented
 
 # Libraries
-library(tidyverse)
-
-df1619 = read_csv("manual_1619.csv")
-
-
-gender = df1619$`What is your gender?`
+df1619 = read.csv("manual_1619.csv")
+df1619$What.is.your.gender.
+gender = df1619$What.is.your.gender.
 gender[which(grepl("female", gender))] = 'F'
 gender[which(grepl("Female", gender))] = 'F'
 gender[which(grepl("woman", gender))] = 'F'
@@ -21,6 +18,6 @@ gender[which(grepl("MALE", gender))] = 'M'
 gender[which(grepl("SWM", gender))] = 'M'
 gender[which( gender != "M" & gender != "F")] = 'Other'
 table(gender)
-df1619$`What is your gender?` = as.factor(gender)
+df1619$What.is.your.gender. = as.factor(gender)
 
 write.csv(df1619, 'df1619CleanFromSheets.csv')
