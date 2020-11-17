@@ -34,8 +34,12 @@ class BubbleChart {
         d3.select("#button-step").on("click", function (d) {
             vis.step = !vis.step;
             if (!vis.step) {
-                d3.selectAll(`circle`).style('fill', d => {
-                    return 'orange';
+                d3.selectAll(`circle`).style('fill', function(d) {
+                    if (d.disorder) {
+                        return 'red';
+                    } else {
+                        return 'orange';
+                    }
                 })
             } else {
                 d3.selectAll('circle')
@@ -150,14 +154,14 @@ class BubbleChart {
                 .merge(circles)
                 .attr('class', d => `circle-${d.category}`)
                 .attr('fill', function(d) {
-                    if (vis.step) {
-                        if (d.disorder) {
-                            return 'red';
-                        } else {
-                            return vis.colorScale[d.category];
-                        } 
+                    if (d.disorder) {
+                        return 'red';
                     } else {
-                        return 'orange'
+                        if (vis.step) {
+                            return vis.colorScale[d.category];
+                        } else {
+                            return 'orange';
+                        }
                     }
                 })
                 .attr('cx', function (d) {
@@ -171,10 +175,6 @@ class BubbleChart {
                 .on('mouseout', dehighlight);
 
             function highlight(e, d) {
-                d3.selectAll(`.circle-${d.category}`).style('fill', d => {
-                    return d.disorder ? 'red' : vis.colorScale[d.category];
-                })
-
                 let categories = [0, 1, 2].filter(el => el != d.category);
 
                 for (const category of categories) {
@@ -185,16 +185,16 @@ class BubbleChart {
             }
 
             function dehighlight(e, d) {
-                d3.selectAll(`.circle-${d.category}`).style('fill', d => {
-                    return vis.colorScale[d.category];
-                })
-
                 let categories = [0, 1, 2].filter(el => el != d.category);
 
                 for (const category of categories) {
-                    d3.selectAll(`.circle-${category}`).style('fill', d => {
-                            return vis.colorScale[d.category];
-                        })
+                    d3.selectAll(`.circle-${category}`).style('fill', function(d) {
+                        if (d.disorder) {
+                            return 'red';
+                        } else {
+                            return vis.colorScale[d.category]
+                        }
+                    })
                         .style('opacity', 1);
                 }
             }
