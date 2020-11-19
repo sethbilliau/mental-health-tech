@@ -53,21 +53,6 @@ class BubbleChart {
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
         vis.step = 0;
 
-        d3.select("#next-step").on("click", function (d) {
-            vis.step += 1;
-            d3.selectAll(`.circle-bubble`)
-                .style('fill', d => vis.updateColors(d))
-
-            vis.updateVis();
-        })
-
-        d3.select("#prev-step").on("click", function (d) {
-            vis.step -= 1;
-            d3.selectAll(`.circle-bubble`)
-                .style('fill', d => vis.updateColors(d))
-            vis.updateVis();
-        })
-
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
         scroll.on('active', function(index) {
@@ -540,6 +525,7 @@ class BubbleChart {
                         })
                         .style('opacity', 1);
                 }
+                $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
             }
             circles.exit().remove();
 
