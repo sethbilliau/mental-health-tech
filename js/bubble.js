@@ -1,7 +1,8 @@
 class BubbleChart {
-    constructor(parentElement, surveyData) {
+    constructor(parentElement, surveyData, phaseData) {
         this.parentElement = parentElement;
         this.surveyData = surveyData;
+        this.phaseData = phaseData;
         console.log(surveyData)
         this.initVis();
     }
@@ -69,11 +70,20 @@ class BubbleChart {
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
         scroll.on('active', function(index) {
+            // console.log(index, vis.nodes);
+            let jsonNodes = JSON.stringify(vis.nodes);
+            // console.log(jsonNodes)
+            // fs.writeFile(`./data/nodes${index}.json`, jsonNodes, err => {
+            //     if (err) {
+            //         console.log('Error writing file', err);
+            //     } else {
+            //         console.log('Succesffuly wrote file');
+            //     }
+            // })
             d3.selectAll('.step')
                 .style('opacity', function (d, i) {
                 return i === index ? 1 : 0.1;
             });
-            console.log("index", index);
             vis.step = index;
             d3.selectAll(`.circle-bubble`)
             .style('fill', d => vis.updateColors(d));
@@ -216,7 +226,7 @@ class BubbleChart {
                 {
                     label: "Other",
                     xPos: 2 * vis.width / 10,
-                    yPos: 8 * vis.width / 10 + 50
+                    yPos: 8 * vis.height / 10 + 50
                 },
                 {
                     label: "Support",
@@ -227,6 +237,11 @@ class BubbleChart {
                     label: "Designer",
                     xPos: vis.width / 2,
                     yPos: vis.height / 2 + 50
+                },
+                {
+                    label: "By Occupation",
+                    xPos: vis.width / 2,
+                    yPos: vis.height / 6
                 }
             ]
         }
@@ -448,6 +463,8 @@ class BubbleChart {
             .append("text")
             .attr("class", "bubble-label")
             .merge(vis.texts)
+            .transition()
+            .duration(1000)
             .attr("x", d => d.xPos)
             .attr("y", d => d.yPos)
             .text(d => d.label)
@@ -456,41 +473,15 @@ class BubbleChart {
 
         vis.texts.exit().remove();
 
-        var simulation = d3.forceSimulation(vis.nodes)
-            .force('charge', d3.forceManyBody().strength(2))
-            .force('x', d3.forceX().x(function (d) {
-                if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
-                    if (!d[vis.stepNames[vis.step]]) {
-                        return 0;
-                    } else {
-                        return vis.xCenter[d[vis.stepNames[vis.step]][0]];
-                    }
-                } else {
-                    return vis.stepNames[vis.step] !== "start" ? vis.xCenter[d[vis.stepNames[vis.step]][0]] : vis.width / 2;
-                }
-            }))
-            .force('y', d3.forceY().y(function (d) {
-                if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
-                    if (!d[vis.stepNames[vis.step]]) {
-                        return 0;
-                    } else {
-                        return vis.yCenter[d[vis.stepNames[vis.step]][0]];
-                    }
-                } else {
-                    return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : vis.height / 2;
-                }
-            }))
-            .force('collision', d3.forceCollide().radius(9).iterations(7))
-            .on('tick', ticked);
-
-        function ticked() {
-            let circles = vis.svg.selectAll('.circle-bubble')
-                .data(vis.nodes);
+        let circles = vis.svg.selectAll('.circle-bubble')
+                .data(vis.phaseData[vis.step]);
 
             circles.enter()
                 .append('path')
                 // .attr('r', 6)
                 .merge(circles)
+                .transition()
+                .duration(1000)
                 .attr('class', function (d) {
                     let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
                     if (d["race"]) {
@@ -504,6 +495,7 @@ class BubbleChart {
                 .attr("d", vis.paths.e)
                 .attr('fill', d => vis.updateColors(d))
                 .attr("transform", function (d) {
+                    console.log(d.index, d.x, d.y)
                     return `translate(${d.x},${d.y}) scale(0.15)`
                 })
             // .attr('cx', function (d) {
@@ -548,7 +540,101 @@ class BubbleChart {
                 }
             }
             circles.exit().remove();
-        }
+
+        // var simulation = d3.forceSimulation(vis.nodes)
+        //     .force('charge', d3.forceManyBody().strength(2))
+        //     .force('x', d3.forceX().x(function (d) {
+        //         if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
+        //             if (!d[vis.stepNames[vis.step]]) {
+        //                 return 0;
+        //             } else {
+        //                 return vis.xCenter[d[vis.stepNames[vis.step]][0]];
+        //             }
+        //         } else {
+        //             return vis.stepNames[vis.step] !== "start" ? vis.xCenter[d[vis.stepNames[vis.step]][0]] : vis.width / 2;
+        //         }
+        //     }))
+        //     .force('y', d3.forceY().y(function (d) {
+        //         if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
+        //             if (!d[vis.stepNames[vis.step]]) {
+        //                 return 0;
+        //             } else {
+        //                 return vis.yCenter[d[vis.stepNames[vis.step]][0]];
+        //             }
+        //         } else {
+        //             return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : vis.height / 2;
+        //         }
+        //     }))
+        //     .force('collision', d3.forceCollide().radius(9).iterations(7))
+        //     .on('tick', ticked);
+
+        // function ticked() {
+        //     let circles = vis.svg.selectAll('.circle-bubble')
+        //         .data(vis.nodes);
+
+        //     circles.enter()
+        //         .append('path')
+        //         // .attr('r', 6)
+        //         .merge(circles)
+        //         .attr('class', function (d) {
+        //             let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
+        //             if (d["race"]) {
+        //                 className += ` circle-${d["race"][0]}`;
+        //             } 
+        //             if (d["occupation"]) {
+        //                 className += ` circle-${d["occupation"][0]}`
+        //             }
+        //             return className;
+        //         })
+        //         .attr("d", vis.paths.e)
+        //         .attr('fill', d => vis.updateColors(d))
+        //         .attr("transform", function (d) {
+        //             return `translate(${d.x},${d.y}) scale(0.15)`
+        //         })
+        //     // .attr('cx', function (d) {
+        //     //     return d.x;
+        //     // })
+        //     // .attr('cy', function (d) {
+        //     //     return d.y;
+        //     // });
+
+        //     circles.on('mouseover', highlight)
+        //         .on('mouseout', dehighlight);
+
+        //     let groups = {
+        //         "gender": ["M", "F", "Other-Gender"],
+        //         "age": ["18-25", "26-35", "36-50", "51-75"],
+        //         "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
+        //         "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
+        //     }
+
+        //     function highlight(e, d) {
+        //         let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
+        //         console.log(categories)
+        //         for (const category of categories) {
+        //             d3.selectAll(`.circle-${category}`)
+        //                 .style('fill', 'grey')
+        //                 .style('opacity', .3)
+        //         }
+        //     }
+
+        //     function dehighlight(e, d) {
+        //         let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
+
+        //         for (const category of categories) {
+        //             d3.selectAll(`.circle-${category}`).style('fill', function (d) {
+        //                     if (d[vis.stepNames[vis.step]][1]) {
+        //                         return 'red';
+        //                     } else {
+        //                         return vis.colorScale[d[vis.stepNames[vis.step]][0]]
+        //                     }
+        //                 })
+        //                 .style('opacity', 1);
+        //         }
+        //     }
+        //     circles.exit().remove();
+        // }
+        // console.log("nodes: ", JSON.stringify(vis.nodes))
 
     }
 }

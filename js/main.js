@@ -18,6 +18,11 @@ let promises = [
     // d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json"), // already projected -> you can just scale it to ft your browser window
     d3.csv("data/df_1619_vF.csv"),
     d3.csv("data/sp.csv"),
+    d3.json("data/phase1.json"),
+    d3.json("data/phase2.json"),
+    d3.json("data/phase3.json"),
+    d3.json("data/phase4.json"),
+    d3.json("data/phase5.json")
 ];
 
 Promise.all(promises)
@@ -30,7 +35,6 @@ let surveyGuesses = [25, 30, 35, 40];
 function initMainPage(dataArray) {
 
     // log data
-    console.log('check out the data', dataArray);
 
     // Map Vis
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
@@ -40,7 +44,14 @@ function initMainPage(dataArray) {
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
 
-    bubbleChart = new BubbleChart("bubble-chart", dataArray[1]);
+    let phases = {
+        0: dataArray[3],
+        1: dataArray[4],
+        2: dataArray[5],
+        3: dataArray[6],
+        4: dataArray[7]
+    };
+    bubbleChart = new BubbleChart("bubble-chart", dataArray[1], phases);
     bubbleBar = new BubbleBar("bubble-bar", dataArray[1]);
 }
 
