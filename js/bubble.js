@@ -41,7 +41,12 @@ class BubbleChart {
             "White": 'orange',
             "Asian": 'lightblue',
             "Hispanic-Black": '#B19CD9',
-            "Other-Race": 'green'
+            "Other-Race": 'green',
+            "dev": 'orange',
+            "mgmt": 'lightblue',
+            "other_job": '#B19CD9',
+            "support": 'green',
+            "designer": "yellow"
         };
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
         vis.step = 0;
@@ -86,7 +91,12 @@ class BubbleChart {
             "White": 2 * vis.width / 10,
             "Asian": 8 * vis.width / 10,
             "Hispanic-Black": 2 * vis.width / 10,
-            "Other-Race": 8 * vis.width / 10
+            "Other-Race": 8 * vis.width / 10,
+            "dev": 2 * vis.width / 10,
+            "mgmt": 8 * vis.width / 10,
+            "other_job": 2 * vis.width / 10,
+            "support": 8 * vis.width / 10,
+            "designer": vis.width / 2
 
         };
         vis.yCenter = {
@@ -100,7 +110,12 @@ class BubbleChart {
             "White": 2 * vis.height / 5,
             "Asian": 2 * vis.height / 5,
             "Hispanic-Black": 4 * vis.height / 5,
-            "Other-Race": 4 * vis.height / 5
+            "Other-Race": 4 * vis.height / 5,
+            "dev": 2 * vis.height / 10,
+            "mgmt": 2 * vis.height / 10,
+            "other_job": 8 * vis.height / 10,
+            "support": 8 * vis.height / 10,
+            "designer": vis.height / 2
         }
 
         vis.bubbleLabels = {
@@ -185,6 +200,33 @@ class BubbleChart {
                     label: "By Race",
                     xPos: vis.width / 2,
                     yPos: vis.height / 6
+                }
+            ],
+            "occupation": [
+                {
+                    label: "Developers",
+                    xPos: 2 * vis.width / 10,
+                    yPos: 2 * vis.height / 10 + 100
+                },
+                {
+                    label: "Management",
+                    xPos: 8 * vis.width / 10,
+                    yPos: 2 * vis.height / 10 + 100
+                },
+                {
+                    label: "Other",
+                    xPos: 2 * vis.width / 10,
+                    yPos: 8 * vis.width / 10 + 50
+                },
+                {
+                    label: "Support",
+                    xPos: 8 * vis.width / 10,
+                    yPos: 8 * vis.height / 10 + 50
+                },
+                {
+                    label: "Designer",
+                    xPos: vis.width / 2,
+                    yPos: vis.height / 2 + 50
                 }
             ]
         }
@@ -273,7 +315,28 @@ class BubbleChart {
                     numDisorder: 0
                 }
             },
-
+            "occupation": {
+                "dev": {
+                    total: 0,
+                    numDisorder: 0,
+                },
+                "mgmt": {
+                    total: 0,
+                    numDisorder: 0,
+                },
+                "other_job": {
+                    total: 0,
+                    numDisorder: 0,
+                },
+                "support": {
+                    total: 0,
+                    numDisorder: 0
+                },
+                "designer": {
+                    total: 0,
+                    numDisorder: 0
+                }
+            }
         }
 
         vis.surveyData.forEach((el, i) => {
@@ -310,6 +373,21 @@ class BubbleChart {
                 counts["age"]["51-75"].total += 1;
                 counts["age"]["51-75"].numDisorder += disorder;
             }
+
+            counts["occupation"]["dev"].total += parseInt(el["dev"]);
+            counts["occupation"]["dev"].numDisorder += disorder * parseInt(el["dev"]);
+
+            counts["occupation"]["mgmt"].total += parseInt(el["mgmt"]);
+            counts["occupation"]["mgmt"].numDisorder += disorder * parseInt(el["mgmt"]);
+
+            counts["occupation"]["other_job"].total += parseInt(el["other_job"]);
+            counts["occupation"]["other_job"].numDisorder += disorder * parseInt(el["other_job"]);
+
+            counts["occupation"]["support"].total += parseInt(el["support"]);
+            counts["occupation"]["support"].numDisorder += disorder * parseInt(el["support"]);
+
+            counts["occupation"]["designer"].total += parseInt(el["designer"]);
+            counts["occupation"]["designer"].numDisorder += disorder * parseInt(el["designer"]);
         })
 
         let categoryKeys = Object.keys(counts);
@@ -325,6 +403,7 @@ class BubbleChart {
                 }
             }
         }
+        
         console.log(counts)
 
         vis.nodes = d3.range(296).map(function (d, i) {
@@ -416,6 +495,9 @@ class BubbleChart {
                     let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
                     if (d["race"]) {
                         className += ` circle-${d["race"][0]}`;
+                    } 
+                    if (d["occupation"]) {
+                        className += ` circle-${d["occupation"][0]}`
                     }
                     return className;
                 })
@@ -437,7 +519,8 @@ class BubbleChart {
             let groups = {
                 "gender": ["M", "F", "Other-Gender"],
                 "age": ["18-25", "26-35", "36-50", "51-75"],
-                "race": ["White", "Asian", "Hispanic-Black", "Other-Race"]
+                "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
+                "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
             }
 
             function highlight(e, d) {
