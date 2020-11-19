@@ -1,8 +1,9 @@
 class BubbleChart {
-    constructor(parentElement, surveyData, phaseData) {
+    constructor(parentElement, surveyData, phaseData, myEventHandler) {
         this.parentElement = parentElement;
         this.surveyData = surveyData;
         this.phaseData = phaseData;
+        this.myEventHandler = myEventHandler;
         console.log(surveyData)
         this.initVis();
     }
@@ -495,7 +496,6 @@ class BubbleChart {
                 .attr("d", vis.paths.e)
                 .attr('fill', d => vis.updateColors(d))
                 .attr("transform", function (d) {
-                    console.log(d.index, d.x, d.y)
                     return `translate(${d.x},${d.y}) scale(0.15)`
                 })
             // .attr('cx', function (d) {
@@ -523,6 +523,8 @@ class BubbleChart {
                         .style('fill', 'grey')
                         .style('opacity', .3)
                 }
+
+                $(vis.myEventHandler).trigger("bubbleHovered", d[vis.stepNames[vis.step]]);
             }
 
             function dehighlight(e, d) {
