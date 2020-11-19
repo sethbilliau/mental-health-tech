@@ -8,6 +8,7 @@ let lineGraphVis;
 let myCloudVis;
 let myDoubleBar;
 let bubbleChart;
+let bubbleBar;
 
 
 // load data using promises
@@ -39,7 +40,8 @@ function initMainPage(dataArray) {
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
 
-    bubbleChart = new BubbleChart("bubble-chart", dataArray[1])
+    bubbleChart = new BubbleChart("bubble-chart", dataArray[1]);
+    bubbleBar = new BubbleBar("bubble-bar", dataArray[1]);
 }
 
 function categoryChange() {
