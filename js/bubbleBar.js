@@ -9,10 +9,15 @@ class BubbleBar {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 40};
+        vis.margin = {
+            top: 20,
+            right: 20,
+            bottom: 60,
+            left: 40
+        };
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
-        vis.height = $("#" + vis.parentElement).height()  - vis.margin.top - vis.margin.bottom;
+            vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -21,8 +26,8 @@ class BubbleBar {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        vis.filter = "gender";
-        vis.subfilter = "M";
+        // vis.filter = "gender";
+        // vis.subfilter = "M";
 
 
         vis.x = d3.scaleBand()
@@ -41,9 +46,47 @@ class BubbleBar {
         let xAxisGroup = vis.svg.append("g")
             .attr("class", "x-axis axis")
             .attr("transform", `translate(0,${vis.height})`);
-        
+
         let yAxisGroup = vis.svg.append("g")
-          .attr("class", "y-axis axis");
+            .attr("class", "y-axis axis");
+
+        vis.colorScale = {
+            "M": 'orange',
+            "F": 'lightblue',
+            "Other-Gender": '#B19CD9',
+            "18-25": 'orange',
+            "26-35": 'lightblue',
+            "36-50": '#B19CD9',
+            "51-75": 'green',
+            "White": 'orange',
+            "Asian": 'lightblue',
+            "Hispanic-Black": '#B19CD9',
+            "Other-Race": 'green',
+            "dev": 'orange',
+            "mgmt": 'lightblue',
+            "other_job": '#B19CD9',
+            "support": 'green',
+            "designer": "yellow"
+        };
+
+        vis.step = {
+            "M": 1,
+            "F": 1,
+            "Other-Gender": 1,
+            "18-25": 2,
+            "26-35": 2,
+            "36-50": 2,
+            "51-75": 2,
+            "White": 3,
+            "Asian": 3,
+            "Hispanic-Black": 4,
+            "Other-Race": 4,
+            "dev": 5,
+            "mgmt": 5,
+            "other_job": 5,
+            "support": 5,
+            "designer": 5
+        }
 
         this.wrangleData();
     }
@@ -77,7 +120,7 @@ class BubbleBar {
         }
 
 
-        vis.surveyData.forEach(el => {   
+        vis.surveyData.forEach(el => {
             if (vis.subfilter === "M" || vis.subfilter === "F" || vis.subfilter === "White" || vis.subfilter === "Asian") {
                 if (el[vis.filter] === vis.subfilter) {
                     for (const key of keys) {
@@ -107,8 +150,8 @@ class BubbleBar {
                     for (const key of keys) {
                         vis.filteredData[key] += parseInt(el[key]);
                     }
-                }   
-            }  else if (vis.subfilter === "18-26" || vis.subfilter === "26-35" || vis.subfilter === "36-50" || vis.subfilter === "51-75") {
+                }
+            } else if (vis.subfilter === "18-26" || vis.subfilter === "26-35" || vis.subfilter === "36-50" || vis.subfilter === "51-75") {
                 if (parseInt(el[vis.filter]) >= parseInt(vis.subfilter.substring(0, 2)) && parseInt(el[vis.filter]) <= parseInt(vis.subfilter.substring(3))) {
                     for (const key of keys) {
                         vis.filteredData[key] += parseInt(el[key]);
@@ -116,7 +159,7 @@ class BubbleBar {
                 }
             }
         })
-        
+
         vis.displayData = []
         for (const key of keys) {
             if (Number.isNaN(vis.filteredData[key])) {
@@ -157,14 +200,28 @@ class BubbleBar {
 
         bars.exit().remove();
 
-        vis.svg.select(".x-axis").call(vis.xAxis);
-        vis.svg.select(".y-axis").call(vis.yAxis);
+        vis.svg.select(".x-axis")
+            .transition()
+            .duration(1000)
+            .call(vis.xAxis)
+            .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 9)
+            .attr("dy", ".35em")
+            .attr("transform", "rotate(90)")
+            .style("text-anchor", "start");
+
+        vis.svg.select(".y-axis")
+            .transition()
+            .duration(1000)
+            .call(vis.yAxis);
     }
 
     onBubbleHovered(key) {
         let vis = this;
         console.log(key);
         vis.subfilter = key;
-        vis.wrangleData();
+        $(`#step${vis.step[key]+1}`).html('<div id="bubble-bar"></div>');
+        vis.initVis();
     }
 }
