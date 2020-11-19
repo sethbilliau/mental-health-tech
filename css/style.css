@@ -17,7 +17,7 @@
 /* axis text */
 .axis text {
     fill: #2b2929;
-    font-family: Georgia;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 120%;
 }
 
@@ -36,7 +36,7 @@
 
 .serie_label {
     fill: #d2d2d2;
-    font-family: Georgia;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 80%;
 }
 
@@ -64,16 +64,16 @@ h1 {
     font-family: 'Source Sans Pro', sans-serif !important;
     color: black;
     font-size: 48px !important;
-    font-weight: 700 !important;
+    font-weight: 300 !important;
     margin-right: -0.3em !important;
-    text-align: right;
+    text-align: left;
 }
 
 h3 {
     font-family: 'Source Sans Pro', sans-serif !important;
     color: black;
     font-size: 36px !important;
-    font-weight: 700 !important;
+    font-weight: 300 !important;
     margin-bottom: 30px;
     margin-right: -0.2em !important;
 }
@@ -112,8 +112,8 @@ h5 {
     font-family: 'Source Sans Pro', sans-serif !important;
     color: black;
     font-size: 26px !important;
+    font-weight: 300 !important;
     line-height: 32px !important;
-    font-weight: 700 !important;
 }
 
 
