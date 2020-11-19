@@ -9,7 +9,7 @@ let myCloudVis;
 let myDoubleBar;
 let bubbleChart;
 let bubbleBar;
-
+let mySankey;
 
 // load data using promises
 let promises = [
@@ -22,7 +22,8 @@ let promises = [
     d3.json("data/phase2.json"),
     d3.json("data/phase3.json"),
     d3.json("data/phase4.json"),
-    d3.json("data/phase5.json")
+    d3.json("data/phase5.json"),
+    d3.csv("data/sankey_data.csv")
 ];
 
 Promise.all(promises)
@@ -55,6 +56,7 @@ function initMainPage(dataArray) {
     };
     bubbleChart = new BubbleChart("bubble-chart", dataArray[1], phases, MyEventHandler);
     bubbleBar = new BubbleBar("bubble-bar", dataArray[1]);
+    mySankey = new SankeyVis('sankeyDiv', dataArray[8]);
 }
 
 function categoryChange() {
