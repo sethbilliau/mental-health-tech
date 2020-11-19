@@ -50,4 +50,8 @@ function categoryChange() {
 }
 
 
-
+new TypeIt("#title", {
+    strings: "Mental Health in the Tech Industry",
+    speed: 50,
+    waitUntilVisible: true
+  }).go();
