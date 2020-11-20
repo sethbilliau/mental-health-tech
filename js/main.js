@@ -23,7 +23,7 @@ let promises = [
     d3.json("data/phase3.json"),
     d3.json("data/phase4.json"),
     d3.json("data/phase5.json"),
-    d3.csv("data/sankey_data.csv")
+    d3.csv("data/sankey_data.csv"),
 ];
 
 Promise.all(promises)
