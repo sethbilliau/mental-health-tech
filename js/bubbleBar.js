@@ -79,13 +79,13 @@ class BubbleBar {
             "51-75": 2,
             "White": 3,
             "Asian": 3,
-            "Hispanic-Black": 4,
-            "Other-Race": 4,
-            "dev": 5,
-            "mgmt": 5,
-            "other_job": 5,
-            "support": 5,
-            "designer": 5
+            "Hispanic-Black": 3,
+            "Other-Race": 3,
+            "dev": 4,
+            "mgmt": 4,
+            "other_job": 4,
+            "support": 4,
+            "designer": 4
         }
 
         this.wrangleData();
@@ -151,7 +151,7 @@ class BubbleBar {
                         vis.filteredData[key] += parseInt(el[key]);
                     }
                 }
-            } else if (vis.subfilter === "18-26" || vis.subfilter === "26-35" || vis.subfilter === "36-50" || vis.subfilter === "51-75") {
+            } else if (vis.subfilter === "18-25" || vis.subfilter === "26-35" || vis.subfilter === "36-50" || vis.subfilter === "51-75") {
                 if (parseInt(el[vis.filter]) >= parseInt(vis.subfilter.substring(0, 2)) && parseInt(el[vis.filter]) <= parseInt(vis.subfilter.substring(3))) {
                     for (const key of keys) {
                         vis.filteredData[key] += parseInt(el[key]);
@@ -196,7 +196,7 @@ class BubbleBar {
             .attr("y", d => vis.y(d.count))
             .attr("width", vis.x.bandwidth())
             .attr("height", d => vis.height - vis.y(d.count))
-            .attr("fill", "blue");
+            .attr("fill", vis.colorScale[vis.subfilter]);
 
         bars.exit().remove();
 

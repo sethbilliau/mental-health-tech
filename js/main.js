@@ -71,6 +71,12 @@ new TypeIt("#title", {
     waitUntilVisible: true
   }).go();
 
+new TypeIt("#text1", {
+    strings: "Here's the <em><strong>reality</strong></em> on the % of tech professionals suffering from a mental health disorder.",
+    speed: 50,
+    waitUntilVisible: true
+  }).go();
+
 $(MyEventHandler).bind("bubbleHovered", function(event, key) {
     console.log(key)
     bubbleBar.onBubbleHovered(key);
