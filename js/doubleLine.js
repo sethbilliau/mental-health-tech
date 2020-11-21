@@ -37,6 +37,17 @@ class DoubleLine {
 
     wrangleData() {
         let vis = this;
+
+        vis.displayData = {
+            "has_disorder": {
+                "2016": 0,
+                "2017": 0,
+                "2018": 0,
+                "2019": 0
+            }
+            
+        }
+
         console.log(vis.surveyData)
         this.updateVis();
     }
