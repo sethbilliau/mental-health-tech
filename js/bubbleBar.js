@@ -93,7 +93,7 @@ class BubbleBar {
 
     wrangleData() {
         let vis = this;
-        console.log(vis.surveyData)
+        // console.log(vis.surveyData)
         vis.filteredData = {
             "anxiety": 0,
             "mood": 0,
@@ -175,7 +175,7 @@ class BubbleBar {
 
         vis.displayData.sort((a, b) => b.count - a.count);
 
-        console.log(vis.displayData)
+        // console.log(vis.displayData)
         this.updateVis();
     }
 
@@ -219,7 +219,7 @@ class BubbleBar {
 
     onBubbleHovered(key) {
         let vis = this;
-        console.log(key);
+        // console.log(key);
         vis.subfilter = key;
         $(`#step${vis.step[key]+1}`).html('<div id="bubble-bar"></div>');
         vis.initVis();

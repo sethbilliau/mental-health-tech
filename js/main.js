@@ -9,6 +9,7 @@ let myCloudVis;
 let myWordBar;
 let myDoubleBar;
 let bubbleChart;
+let myStories;
 let bubbleBar;
 let mySankey;
 let doubleLine;
@@ -26,7 +27,8 @@ let promises = [
     d3.json("data/phase4.json"),
     d3.json("data/phase5.json"),
     d3.csv("data/sankey_data.csv"),
-    d3.csv("data/textanalysis.csv")
+    d3.csv("data/textanalysis.csv"),
+    d3.csv("data/randomsubset.csv")
 ];
 
 Promise.all(promises)
@@ -48,6 +50,7 @@ function initMainPage(dataArray) {
 
     myCloudVis = new WordCloudVis('cloudDiv', dataArray[9], 50);
     myWordBar = new WordBar("wordbubbleDiv", dataArray[9]);
+    myStories = new Story("stories", dataArray[10]);
     lineGraphVis = new LineGraph("lineGraphDiv", dataArray[2]);
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
@@ -71,9 +74,17 @@ function categoryChange() {
 
 function wordChange() {
     myWordBar.wrangleData();
+    myStories.wrangleData();
     d3.select('#cloudDiv').selectAll('svg').remove();
     myCloudVis.initVis();
+
 }
+
+function generateText() {
+    myStories.wrangleData();
+}
+
+
 
 
 new TypeIt("#title", {
@@ -89,6 +100,5 @@ new TypeIt("#text1", {
   }).go();
 
 $(MyEventHandler).bind("bubbleHovered", function(event, key) {
-    console.log(key)
     bubbleBar.onBubbleHovered(key);
 });
