@@ -235,6 +235,121 @@ class BubbleChart {
             ]
         }
 
+        vis.hoverData = {
+            0: [
+                {
+                    label: "Total",
+                    xPos: labelWidth / 2 + 5,
+                    yPos: labelHeight / 3 + 5,
+                    radius: 160,
+                }
+            ],
+            1: [
+                {
+                    label: "M",
+                    xPos: 2 * labelWidth / 10 + 13,
+                    yPos: labelHeight / 3 + 13,
+                    radius: 135
+                },
+                {
+                    label: "F",
+                    xPos: 6 * labelWidth / 10 - 5,
+                    yPos: 6 * labelHeight / 10,
+                    radius: 90
+                },
+                {
+                    label: "Other-Gender",
+                    xPos: 9 * labelWidth / 10 - 5, 
+                    yPos: 4 * labelHeight / 5 - 5,
+                    radius: 40
+                },
+            ],
+            2: [
+                {
+                    label: "18-25",
+                    xPos: 3 * labelWidth / 10 + 15,
+                    yPos: 2 * labelHeight / 5 + 15,
+                    radius: 60
+                },
+                {
+                    label: "26-35",
+                    xPos: 8 * labelWidth / 10,
+                    yPos: 2 * labelHeight / 5 + 10,
+                    radius: 110 
+                },
+                {
+                    label: "36-50",
+                    xPos: 2 * labelWidth / 10 + 15,
+                    yPos: 4 * labelHeight / 5,
+                    radius: 100 
+                },
+                {
+                    label: "51-75",
+                    xPos: 7 * labelWidth / 10,
+                    yPos: 4 * labelHeight / 5 - 8,
+                    radius: 40
+                },
+            ],
+            3: [
+                {
+                    label: "White",
+                    xPos: 4 * labelWidth / 10,
+                    yPos: labelHeight / 2,
+                    radius: 95 
+                },
+                {
+                    label: "Asian",
+                    xPos: 7 * labelWidth / 10 - 8,
+                    yPos: 3 * labelHeight / 10 + 10,
+                    radius: 25
+                },
+                {
+                    label: "Hispanic-Black",
+                    xPos: 7 * labelWidth / 10 - 2,
+                    yPos: 7 * labelHeight / 10 - 5,
+                    radius: 25
+                },
+                {
+                    label: "Other-Race",
+                    xPos: 8 * labelWidth / 10 - 8,
+                    yPos: labelHeight / 2,
+                    radius: 25
+                },
+            ],
+            4: [
+                {
+                    label: "dev",
+                    xPos: labelWidth / 2 + 5,
+                    yPos: labelHeight / 2 + 5,
+                    radius: 95
+                },
+                {
+                    label: "mgmt",
+                    xPos: 8 * labelWidth / 10 - 10,
+                    yPos: 3 * labelHeight / 10 + 10,
+                    radius: 65
+                },
+                {
+                    label: "other_job",
+                    xPos: 2 * labelWidth / 10 + 17,
+                    yPos: 7 * labelHeight / 10,
+                    radius: 70
+                },
+                {
+                    label: "support",
+                    xPos: 8 * labelWidth / 10 - 5,
+                    yPos: 7 * labelHeight / 10 - 5,
+                    radius: 70
+                },
+                {
+                    label: "designer",
+                    xPos: 2 * labelWidth / 10 + 18,
+                    yPos: 3 * labelHeight / 10 + 13,
+                    radius: 50
+                },
+            ]
+        }
+
         this.wrangleData();
     }
 
@@ -444,6 +559,28 @@ class BubbleChart {
     updateVis() {
         let vis = this;
 
+       
+        vis.hoverCircles = vis.svg.selectAll(".hover-circle")
+            .data(vis.hoverData[vis.step])
+
+        vis.hoverCircles.enter()
+            .append("circle")
+            .merge(vis.hoverCircles)
+            .transition()
+            .duration(1000)
+            .attr("r", d => d.radius)
+            .attr("class", "hover-circle")
+            .attr("fill", "grey")
+            .attr("cx", d => d.xPos)
+            .attr("cy", d => d.yPos)
+            .attr("opacity", 0.1)
+
+
+        vis.hoverCircles.exit().remove();
+
+        vis.hoverCircles.on('mouseover', highlight)
+                .on('mouseout', dehighlight);
+
         vis.texts = vis.svg.selectAll(".bubble-label")
         .data(vis.bubbleLabels[vis.stepNames[vis.step]]);
 
@@ -492,8 +629,8 @@ class BubbleChart {
             //     return d.y;
             // });
 
-            circles.on('mouseover', highlight)
-                .on('mouseout', dehighlight);
+            // circles.on('mouseover', highlight)
+            //     .on('mouseout', dehighlight);
 
             let groups = {
                 "gender": ["M", "F", "Other-Gender"],
@@ -503,7 +640,7 @@ class BubbleChart {
             }
 
             function highlight(e, d) {
-                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
                 console.log(categories)
                 for (const category of categories) {
                     d3.selectAll(`.circle-${category}`)
@@ -511,11 +648,11 @@ class BubbleChart {
                         .style('opacity', .3)
                 }
 
-                $(vis.myEventHandler).trigger("bubbleHovered", d[vis.stepNames[vis.step]]);
+                $(vis.myEventHandler).trigger("bubbleHovered", d.label);
             }
 
             function dehighlight(e, d) {
-                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
 
                 for (const category of categories) {
                     d3.selectAll(`.circle-${category}`).style('fill', function (d) {
