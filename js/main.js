@@ -24,6 +24,7 @@ let promises = [
     d3.json("data/phase4.json"),
     d3.json("data/phase5.json"),
     d3.csv("data/sankey_data.csv"),
+    d3.csv("data/describe_badly_handled_MH.csv")
 ];
 
 Promise.all(promises)
@@ -42,7 +43,8 @@ function initMainPage(dataArray) {
     // Map Vis
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
 
-    myCloudVis = new WordCloudVis('cloudDiv', dataArray[1]);
+    myCloudVis = new WordCloudVis('cloudDiv', dataArray[9],
+        "A Badly Handled Mental Health Situation", 50);
     lineGraphVis = new LineGraph("lineGraphDiv", dataArray[2]);
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
