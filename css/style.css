@@ -276,7 +276,7 @@ div.section {
   .link:hover {
     stroke-opacity: .5;
   }
-  
+
 /*Matrix Section*/
 #matrixvis {
     position: -webkit-sticky;
@@ -287,8 +287,7 @@ div.section {
 
 .step {
     width: 25vw;
-    margin-left: 10vh;
-    height: 80vh;
+    height: 50vh;
     text-align: left;
 }
 

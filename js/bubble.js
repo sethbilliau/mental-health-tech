@@ -68,7 +68,7 @@ class BubbleChart {
             // })
             d3.selectAll('.step')
                 .style('opacity', function (d, i) {
-                return i === index ? 1 : 0.1;
+                return i === index ? 1 : 0;
             });
             vis.step = index;
             d3.selectAll(`.circle-bubble`)
@@ -80,158 +80,160 @@ class BubbleChart {
             "M": 2 * vis.width / 10,
             "F": 6 * vis.width / 10,
             "Other-Gender": 9 * vis.width / 10,
-            "18-25": 2 * vis.width / 10,
+            "18-25": 3 * vis.width / 10,
             "26-35": 8 * vis.width / 10,
             "36-50": 2 * vis.width / 10,
-            "51-75": 8 * vis.width / 10,
-            "White": 2 * vis.width / 10,
-            "Asian": 8 * vis.width / 10,
-            "Hispanic-Black": 2 * vis.width / 10,
+            "51-75": 7 * vis.width / 10,
+            "White": 4 * vis.width / 10,
+            "Asian": 7 * vis.width / 10,
+            "Hispanic-Black": 7 * vis.width / 10,
             "Other-Race": 8 * vis.width / 10,
-            "dev": 2 * vis.width / 10,
+            "dev": vis.width / 2,
             "mgmt": 8 * vis.width / 10,
             "other_job": 2 * vis.width / 10,
             "support": 8 * vis.width / 10,
-            "designer": vis.width / 2
+            "designer": 2 * vis.width / 10
 
         };
         vis.yCenter = {
             "M": vis.height / 3,
-            "F": 2 * vis.height / 3,
-            "Other-Gender": vis.height,
+            "F": 6 * vis.height / 10,
+            "Other-Gender": 4 * vis.height / 5,
             "18-25": 2 * vis.height / 5,
             "26-35": 2 * vis.height / 5,
             "36-50": 4 * vis.height / 5,
             "51-75": 4 * vis.height / 5,
-            "White": 2 * vis.height / 5,
-            "Asian": 2 * vis.height / 5,
-            "Hispanic-Black": 4 * vis.height / 5,
-            "Other-Race": 4 * vis.height / 5,
-            "dev": 2 * vis.height / 10,
-            "mgmt": 2 * vis.height / 10,
-            "other_job": 8 * vis.height / 10,
-            "support": 8 * vis.height / 10,
-            "designer": vis.height / 2
+            "White": vis.height / 2,
+            "Asian": 3 * vis.height / 10,
+            "Hispanic-Black": 7 * vis.height / 10,
+            "Other-Race": vis.height / 2,
+            "dev": vis.height / 2,
+            "mgmt": 3 * vis.height / 10,
+            "other_job": 7 * vis.height / 10,
+            "support": 7 * vis.height / 10,
+            "designer": 3 * vis.height / 10
         }
+
+        let labelWidth = 538.078;
+        let labelHeight = 616.797;
 
         vis.bubbleLabels = {
             "start": [
                 {
                     label: "Total (each icon represents 10 people)",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 2 + 200
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 2 + 100
                 }
             ],
             "gender": [
                 {
                     label: "Male",
-                    xPos: 2 * vis.width / 10,
-                    yPos: vis.height / 3 + 200,
+                    xPos: 2 * labelWidth / 10,
+                    yPos: labelHeight / 3 + 170,
                 },
                 {
                     label: "Female",
-                    xPos: 6 * vis.width / 10,
-                    yPos: 2 * vis.height / 3 + 120,
+                    xPos: 6 * labelWidth / 10 - 10,
+                    yPos: 6 * labelHeight / 10 + 120,
                 },
                 {
                     label: "Other",
-                    xPos: 9 * vis.width / 10, 
-                    yPos: vis.height + 40
+                    xPos: 9 * labelWidth / 10 - 5, 
+                    yPos: 4 * labelHeight / 5 + 60
                 },
                 {
                     label: "By Gender",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 6
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 6
                 }
             ],
             "age": [
                 {
                     label: "18-25",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 2 * vis.height / 5 + 100
+                    xPos: 3 * labelWidth / 10 + 10,
+                    yPos: 2 * labelHeight / 5 + 100
                 },
                 {
                     label: "26-35",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 2 * vis.height / 5 + 130
+                    xPos: 8 * labelWidth / 10,
+                    yPos: 2 * labelHeight / 5 + 150
                 },
                 {
                     label: "36-50",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 4 * vis.height / 5 + 120
+                    xPos: 2 * labelWidth / 10,
+                    yPos: 4 * labelHeight / 5 + 120
                 },
                 {
                     label: "51-75",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 4 * vis.height / 5 + 100
+                    xPos: 7 * labelWidth / 10,
+                    yPos: 4 * labelHeight / 5 + 75
                 },
                 {
                     label: "By Age Group (yrs)",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 6
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 6
                 }
             ],
             "race": [
                 {
                     label: "White",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 2 * vis.height / 5 + 110
+                    xPos: 4 * labelWidth / 10,
+                    yPos: labelHeight / 2 + 105
                 },
                 {
                     label: "Asian",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 2 * vis.height / 5 + 35
+                    xPos: 7 * labelWidth / 10,
+                    yPos: 3 * labelHeight / 10 + 50
                 },
                 {
                     label: "Hispanic/Black",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 4 * vis.height / 5 + 25
+                    xPos: 7 * labelWidth / 10,
+                    yPos: 7 * labelHeight / 10 + 45
                 },
                 {
                     label: "Other",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 4 * vis.height / 5 + 35
+                    xPos: 8 * labelWidth / 10,
+                    yPos: labelHeight / 2 + 55
                 },
                 {
                     label: "By Race",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 6
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 6
                 }
             ],
             "occupation": [
                 {
                     label: "Developers",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 2 * vis.height / 10 + 100
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 2 + 110
                 },
                 {
                     label: "Management",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 2 * vis.height / 10 + 100
+                    xPos: 8 * labelWidth / 10,
+                    yPos: 2 * labelHeight / 10 + 150
                 },
                 {
                     label: "Other",
-                    xPos: 2 * vis.width / 10,
-                    yPos: 8 * vis.height / 10 + 50
+                    xPos: 2 * labelWidth / 10 + 10,
+                    yPos: 8 * labelHeight / 10 + 30
                 },
                 {
                     label: "Support",
-                    xPos: 8 * vis.width / 10,
-                    yPos: 8 * vis.height / 10 + 50
+                    xPos: 8 * labelWidth / 10,
+                    yPos: 8 * labelHeight / 10 + 30
                 },
                 {
                     label: "Designer",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 2 + 50
+                    xPos: 2 * labelWidth / 10 + 10,
+                    yPos: 3 * labelHeight / 10 + 80
                 },
                 {
                     label: "By Occupation",
-                    xPos: vis.width / 2,
-                    yPos: vis.height / 6
+                    xPos: labelWidth / 2,
+                    yPos: labelHeight / 6
                 }
             ]
         }
-
 
         this.wrangleData();
     }
@@ -550,10 +552,10 @@ class BubbleChart {
         //                 return vis.yCenter[d[vis.stepNames[vis.step]][0]];
         //             }
         //         } else {
-        //             return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : vis.height / 2;
+        //             return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : 1 * vis.height / 3;
         //         }
         //     }))
-        //     .force('collision', d3.forceCollide().radius(9).iterations(7))
+        //     .force('collision', d3.forceCollide().radius(8).iterations(7))
         //     .on('tick', ticked);
 
         // function ticked() {
