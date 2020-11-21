@@ -5,15 +5,10 @@
 class WordCloudVis {
 
     // constructor method to initialize Timeline object
-    constructor(parentElement, surveyData, _title, _n) {
+    constructor(parentElement, surveyData, _n) {
         this.parentElement = parentElement;
         this.surveyData = surveyData;
-        this.wordCloudTitle = _title;
         this.n = _n;
-
-        this.parseDate = d3.timeParse("%m/%d/%Y");
-
-
 
         this.initVis();
     }
@@ -21,26 +16,28 @@ class WordCloudVis {
     initVis() {
         let vis = this;
 
+
+
         vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
-        vis.svgtitle = d3.select("#cloudDiv").append("svg")
-            .attr("width", vis.width)
-            .attr("height", vis.height/ 10);
+        // vis.svgtitle = d3.select("#cloudDiv").append("svg")
+        //     .attr("width", vis.width)
+        //     .attr("height", vis.height/ 10);
         vis.svg =  d3.select("#cloudDiv").append("svg")
             .attr("width", vis.width)
-            .attr("height", (vis.height * 9) /10);
+            .attr("height", vis.height );
 
-        vis.svgtitle
-            .append('g')
-            .attr('class', 'title cloud-title')
-            .append('text')
-            .text(vis.wordCloudTitle)
-            .style("word-break", "break-all;")
-            .style("white-space", "normal")
-            .attr('text-anchor', 'middle')
-            .attr('transform', `translate(${vis.width / 2}, 20)`);
+        // vis.svgtitle
+        //     .append('g')
+        //     .attr('class', 'title cloud-title')
+        //     .append('text')
+        //     .text(vis.wordCloudTitle)
+        //     .style("word-break", "break-all;")
+        //     .style("white-space", "normal")
+        //     .attr('text-anchor', 'middle')
+        //     .attr('transform', `translate(${vis.width / 2}, 20)`);
 
         vis.wrangleData()
 
@@ -49,15 +46,20 @@ class WordCloudVis {
     wrangleData(){
         let vis = this;
 
+        vis.selectedCategory = $('#wordSelector').val();
         // check out the data
-        vis.wordslist = vis.surveyData.map(function(d, i) {
-            return {index: i, text: d.word, size: d.freq};
+        vis.filteredData = vis.surveyData.filter(function(d) {
+            return d.type == vis.selectedCategory;
+        });
+
+        vis.wordslist = vis.filteredData.map(function(d, i) {
+            return {index: i, text: d.word, size: +d.freq};
         })
 
-        vis.wordslist = vis.wordslist.filter(function(d) {
+        vis.displayData = vis.wordslist.filter(function(d) {
             return d.index < vis.n;
         });
-        // console.log('final data structure: ', vis.surveyData);
+        console.log('final data structure: ', vis.displayData );
 
 
         vis.updateVis();
@@ -69,12 +71,12 @@ class WordCloudVis {
 
         vis.scaler = d3.scaleLinear()
             .domain([
-                d3.min(vis.wordslist, d=>d.size),
-                d3.max(vis.wordslist, d=>d.size)])
+                d3.min(vis.displayData, d=>d.size),
+                d3.max(vis.displayData, d=>d.size)])
             .range([12, 40]);
 
         vis.layout = d3.layout.cloud()
-            .size([vis.width, vis.height*9/10])
+            .size([vis.width, vis.height])
             .padding(3)
             .rotate(function() { return 0; })
             .font("Impact")
@@ -83,12 +85,14 @@ class WordCloudVis {
 
 
         function draw(words) {
-           vis.svg
+           vis.groups = vis.svg
                 .append("g")
-                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] / 2 + ")")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
+                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] / 2 + ")");
+           vis.words = vis.groups.selectAll("text")
+                .data(words);
+
+           vis.words.enter().append("text")
+               .merge(vis.words)
                 .style("font-size", function(d) { return d.size + "px"; })
                 // .style("fill", "white")
                 .style("font-family", "Impact")
@@ -98,11 +102,12 @@ class WordCloudVis {
                 })
                 .text(function(d) { return d.text; });
 
+            vis.words.exit().remove();
 
         }
 
 
-        vis.layout.words(vis.wordslist);
+        vis.layout.words(vis.displayData);
 
         vis.layout.start();
 
