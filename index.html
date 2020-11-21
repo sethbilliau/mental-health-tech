@@ -199,28 +199,37 @@
 		style="background-position: center top; background-repeat: no-repeat; background-size: contain;">
 		<div style="height:50px"></div>
 		<div class="row align-items-center" data-aos="fade-in">
-			<div class="col-md-3" style="padding-right: 3vw; padding-bottom: 100px;">
+			<div class="col-md-12" style="padding-right: 3vw;  padding-bottom: 50px">
 				<h5>Here's how tech professionals described how mental health is handled in the workplace. Explore how survey respondents described... </h5>
-				<select id='wordSelector' default="describe_badly_handled_MH" class="custom-select align-self-center" style="width: 100%" onchange="wordChange()">
+				<select id='wordSelector' default="describe_badly_handled_MH" class="custom-select align-self-center" style="width: 50%;" onchange="wordChange()">
 					<option value="describe_badly_handled_MH" selected>A Badly Handled Mental Health Situation</option>
 					<option value="describe_tech_industry_suggestion" >A Suggestion for the Tech Industry</option>
 					<option value="describe_discussed_prev_employer" >A Mental Health Discussion with a Previous Employer</option>
 					<option value="why_MH_interview" >How They'd React to Mental Health Questions during an Interview</option>
-					<option value="Why.or.why.not._1" >TODO WHY OR WHY NOT MEANS ???</option>
 				</select>
 			</div>
-			<div class="col-md-9">
-				<span width='100%' ><h5 style="text-align:center">Word Frequencies</h5></span>
+			<div class="col-md-12" style="padding-bottom: 50px">
+				<span width='100%'><h5 style="text-align:center">Word Frequencies</h5></span>
 				<div class="row justify-content-center">
-					<div class="col-sm word-cloud" id="wordbubbleDiv" style="height: 50vh; word-wrap: break-word; width:100%;"></div>
-					<div class="col-sm word-cloud" id="cloudDiv" style="height: 50vh; word-wrap: break-word; width:100%;"></div>
+					<div class="col-sm-6 word-cloud" id="wordbubbleDiv" style="height: 50vh; word-wrap: break-word; width:100%;"></div>
+					<div class="col-sm-6 word-cloud" id="cloudDiv" style="height: 50vh; word-wrap: break-word; width:100%;"></div>
 				</div>
-				<span width='100%' ><h5 style="text-align:center">Individual Stories</h5></span>
-				<div class="row justify-content-center" style="height: 100%">
-					<button class="btn btn-light align-self-center" type="button" onclick="generateText()" style="border: thin solid grey">New Response</button>
-				</div>
-				<div class="row justify-content-center" style="height: 100%">
-					<div class="col-sm word-cloud" id="stories" style="height: 10vh; word-wrap: break-word; width:100%;"></div>
+			</div>
+			<div class="col-md-12">
+				<div class="row justify-content-center">
+					<div class="col-md-3">
+						<span width='100%' ><h5 style="text-align:center">Individual Stories</h5></span>
+						<div class="row justify-content-center">
+							<button class="btn btn-light align-self-center" type="button" onclick="generateText()" style="border: thin solid grey">New Response</button>
+						</div>
+					</div>
+					<div class="col-sm-9">
+						<div class="row justify-content-center" style="overflow:scroll; height: 100%">
+							<div data-aos="fade-in" class="word-cloud" id="stories" style="height: 20vh; word-wrap: break-word; width:100%;">
+								<p id="stories-p"></p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

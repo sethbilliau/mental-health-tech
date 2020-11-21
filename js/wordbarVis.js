@@ -11,8 +11,8 @@ class WordBar {
         vis.margin = {
             top: 20,
             right: 20,
-            bottom: 70,
-            left: 40
+            bottom: 20,
+            left: 70
         };
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
@@ -25,12 +25,12 @@ class WordBar {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        vis.x = d3.scaleBand()
-            .rangeRound([0, vis.width])
+        vis.y = d3.scaleBand()
+            .rangeRound([ vis.height, 0])
             .paddingInner(0.1);
 
-        vis.y = d3.scaleLinear()
-            .range([vis.height, 0]);
+        vis.x = d3.scaleLinear()
+            .range([0, vis.width]);
 
         vis.xAxis = d3.axisBottom()
             .scale(vis.x);
@@ -69,13 +69,19 @@ class WordBar {
             return d.index < 10;
         });
 
+        vis.displayData = vis.displayData.sort(function(x, y){
+            return d3.ascending(x.size, y.size);
+        })
+
+
+
         this.updateVis();
     }
 
     updateVis() {
         let vis = this;
-        vis.x.domain(vis.displayData.map(d => d.text));
-        vis.y.domain([0, d3.max(vis.displayData, d => d.size)]);
+        vis.x.domain([0, d3.max(vis.displayData, d => d.size)]);
+        vis.y.domain(vis.displayData.map(d => d.text));
 
         let bars = vis.svg.selectAll(".rect-disorders")
             .data(vis.displayData);
@@ -85,10 +91,10 @@ class WordBar {
             .transition()
             .duration(1000)
             .attr("class", "rect-disorders")
-            .attr("x", d => vis.x(d.text))
-            .attr("y", d => vis.y(d.size))
-            .attr("width", vis.x.bandwidth())
-            .attr("height", d => vis.height - vis.y(d.size))
+            .attr("x", 0)
+            .attr("y", d => vis.y(d.text))
+            .attr("width", d => vis.x(d.size))
+            .attr("height", vis.y.bandwidth())
             .attr("fill", "cornflowerblue");
 
         bars.exit().remove();
@@ -97,13 +103,13 @@ class WordBar {
             .transition()
             .duration(1000)
             .call(vis.xAxis)
-            .selectAll("text")
-            .attr("y", 0)
-            .attr("x", 2)
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-90)");
+            // .selectAll("text")
+            // .attr("y", 0)
+            // .attr("x", 2)
+            // .style("text-anchor", "end")
+            // .attr("dx", "-.8em")
+            // .attr("dy", ".15em")
+            // .attr("transform", "rotate(-90)");
 
         vis.svg.select(".y-axis")
             .transition()
