@@ -5,13 +5,10 @@
 class WordCloudVis {
 
     // constructor method to initialize Timeline object
-    constructor(parentElement, surveyData) {
+    constructor(parentElement, surveyData, _n) {
         this.parentElement = parentElement;
         this.surveyData = surveyData;
-
-        this.parseDate = d3.timeParse("%m/%d/%Y");
-
-
+        this.n = _n;
 
         this.initVis();
     }
@@ -19,39 +16,28 @@ class WordCloudVis {
     initVis() {
         let vis = this;
 
+
+
         vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
+        // vis.svgtitle = d3.select("#cloudDiv").append("svg")
+        //     .attr("width", vis.width)
+        //     .attr("height", vis.height/ 10);
+        vis.svg =  d3.select("#cloudDiv").append("svg")
+            .attr("width", vis.width)
+            .attr("height", vis.height );
 
-        vis.layout = d3.layout.cloud()
-            .size([500, 500])
-            .padding(5)
-            .rotate(function() { return ~~(Math.random() * 2) * 90; })
-            .font("Impact")
-            .fontSize(function(d) { return d.size; })
-            .on("end", draw);
-
-
-        function draw(words) {
-            d3.select("#cloudDiv").append("svg")
-                .attr("width", vis.layout.size()[0])
-                .attr("height", vis.layout.size()[1])
-                .append("g")
-                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] / 2 + ")")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.size + "px"; })
-                // .style("fill", "white")
-                .style("font-family", "Impact")
-                .attr("text-anchor", "middle")
-                .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.text; });
-        }
-
+        // vis.svgtitle
+        //     .append('g')
+        //     .attr('class', 'title cloud-title')
+        //     .append('text')
+        //     .text(vis.wordCloudTitle)
+        //     .style("word-break", "break-all;")
+        //     .style("white-space", "normal")
+        //     .attr('text-anchor', 'middle')
+        //     .attr('transform', `translate(${vis.width / 2}, 20)`);
 
         vis.wrangleData()
 
@@ -60,19 +46,20 @@ class WordCloudVis {
     wrangleData(){
         let vis = this;
 
+        vis.selectedCategory = $('#wordSelector').val();
         // check out the data
-        // console.log(vis.surveyData)
-        vis.words = ""
+        vis.filteredData = vis.surveyData.filter(function(d) {
+            return d.type == vis.selectedCategory;
+        });
 
-        vis.surveyData.forEach( d => {
-
-
-
+        vis.wordslist = vis.filteredData.map(function(d, i) {
+            return {index: i, text: d.word, size: +d.freq};
         })
 
-
-
-        console.log('final data structure: ', vis.surveyData);
+        vis.displayData = vis.wordslist.filter(function(d) {
+            return d.index < vis.n;
+        });
+        console.log('final data structure: ', vis.displayData );
 
 
         vis.updateVis();
@@ -82,11 +69,45 @@ class WordCloudVis {
     updateVis() {
         let vis = this;
 
-        vis.layout.words([
-            "anxiety", "fired", "co-worker", "job", "depression", "disorder", "support",
-            "negative", "leave"].map(function(d) {
-            return {text: d, size: 10 + Math.random() * 90, test: "haha"};
-        }));
+        vis.scaler = d3.scaleLinear()
+            .domain([
+                d3.min(vis.displayData, d=>d.size),
+                d3.max(vis.displayData, d=>d.size)])
+            .range([12, 40]);
+
+        vis.layout = d3.layout.cloud()
+            .size([vis.width, vis.height])
+            .padding(3)
+            .rotate(function() { return 0; })
+            .font("Impact")
+            .fontSize(function(d) { return vis.scaler(d.size); })
+            .on("end", draw);
+
+
+        function draw(words) {
+           vis.groups = vis.svg
+                .append("g")
+                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] / 2 + ")");
+           vis.words = vis.groups.selectAll("text")
+                .data(words);
+
+           vis.words.enter().append("text")
+               .merge(vis.words)
+                .style("font-size", function(d) { return d.size + "px"; })
+                // .style("fill", "white")
+                .style("font-family", "Impact")
+                .attr("text-anchor", "middle")
+                .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .text(function(d) { return d.text; });
+
+            vis.words.exit().remove();
+
+        }
+
+
+        vis.layout.words(vis.displayData);
 
         vis.layout.start();
 

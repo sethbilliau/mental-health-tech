@@ -164,7 +164,7 @@ class MapVis {
             }
         )
 
-        console.log('final data structure for myDataTable', vis.stateInfo);
+        // console.log('final data structure for myDataTable', vis.stateInfo);
 
 
         vis.updateVis();
