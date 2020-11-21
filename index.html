@@ -137,7 +137,7 @@
 	<div class="section nav-section" id="section5">
 		<div style="height:50px"></div>
 		<div data-aos="fade-in">
-			<h5 style="text-align: center;">Here's the reality on the % of tech professionals suffering from a mental health disorder</h5>
+			<!-- <h5 style="text-align: center;">Here's the reality on the % of tech professionals suffering from a mental health disorder</h5> -->
 	
 
 			<div class="row align-items-start" id="floatingarea" data-aos="fade-in">
@@ -145,7 +145,7 @@
 			</div>
 			<div class="col-md-5">
 				<section class="step" id="step1">
-					<h5>Text 1</h5>
+					<h5 id="text1"></h5>
 				</section>
 				<section class="step" id="step2">
 					<h5>Text 2</h5>
@@ -159,10 +159,8 @@
 				<section class="step" id="step5">
 					<h5>Text 5</h5>
 				</section>
-				<!-- <div id="bubble-bar"></div> -->
 			</div>
 			</div>
-			<div style="height:500px"></div>
 		</div>
 		<div class="line-divider" data-aos="fade-in"></div>
 	</div>
@@ -177,7 +175,7 @@
 				<div id="map" style="height: 60vh; width:100%;"></div>
 				<select id='categorySelector' class="custom-select align-self-center" style="width: 50%" onchange="categoryChange()">
 					<option value="percResponses" selected>Response Rate</option>
-					<option value="percDisorder" selected>Disorder Rate</option>
+					<option value="percDisorder" >Disorder Rate</option>
 				</select>
 			</div>
 		</div>
@@ -202,10 +200,20 @@
 		<div style="height:50px"></div>
 		<div class="row align-items-center" data-aos="fade-in">
 			<div class="col-md-3" style="padding-right: 3vw; padding-bottom: 100px;">
-				<h5>Here's how tech professionals described how mental health is handled in the workplace  </h5>
+				<h5>Here's how tech professionals described how mental health is handled in the workplace. Describe... </h5>
+				<select id='wordSelector' default="describe_badly_handled_MH" class="custom-select align-self-center" style="width: 50%" onchange="wordChange()">
+					<option value="describe_badly_handled_MH" selected>A Badly Handled Mental Health Situation</option>
+					<option value="describe_tech_industry_suggestion" >A Suggestion for the Tech Industry</option>
+					<option value="describe_discussed_prev_employer" >A Mental Health Discussion with a Previous Employer</option>
+					<option value="why_MH_interview" >How You'd Answer if an Employer Asked About Your Mental Health in an Interview</option>
+					<option value="Why.or.why.not._1" >TODO WHY OR WHY NOT MEANS ???</option>
+				</select>
 			</div>
 			<div class="col-md-9">
-				<div id="cloudDiv" class="word-cloud"></div>
+				<div class="row">
+					<div class="col-sm word-cloud" id="wordbubbleDiv" style="height: 50vh; overflow: scroll; word-wrap: break-word; width:100%;"></div>
+					<div class="col-sm word-cloud" id="cloudDiv" style="height: 50vh; overflow: scroll; word-wrap: break-word; width:100%;"></div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -297,6 +305,7 @@
 	<script src="js/bubbleBar.js"></script>
 	<script src="js/d3.layout.cloud.js"></script>
 	<script src="js/wordcloudVis.js"></script>
+	<script src="js/wordbarVis.js"></script>
 	<script src="js/helpers.js"></script>
 	<script src="js/mapVis.js"></script>
 	<script src="js/doubleBarchart.js"></script>
