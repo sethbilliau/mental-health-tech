@@ -16,7 +16,7 @@ class SankeyVis {
         let vis = this;
 
         vis.margin = {
-            top: 20,
+            top: 30,
             right: 20,
             bottom: 20,
             left: 100
@@ -32,6 +32,36 @@ class SankeyVis {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
+        vis.svg.append('text')
+            .attr('id', 'sankey_tech_q')
+            .attr('x', 0)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Out of 5 (best), how well does the tech industry support MH?')
+
+        vis.svg.append('text')
+            .attr('id', 'sankey_formal_q')
+            .attr('x', vis.width/3)
+            .attr('y', 0)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Has your employer ever formally discussed MH?')
+
+        vis.svg.append('text')
+            .attr('id', 'sankey_resources_q1')
+            .attr('x', vis.width/2)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Does your employer offer resources to learn')
+        vis.svg.append('text')
+            .attr('id', 'sankey_resources_q2')
+            .attr('x', vis.width/2)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('more about MH and options for seeking help?')
 
         vis.wrangleData();
     }
