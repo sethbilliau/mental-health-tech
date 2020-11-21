@@ -54,11 +54,9 @@ class WordCloudVis {
             return {index: i, text: d.word, size: d.freq};
         })
 
-        vis.wordslist = vis.wordslist.filter(function(d, i) {
-            console.log(d);
+        vis.wordslist = vis.wordslist.filter(function(d) {
             return d.index < vis.n;
         });
-        console.log(vis.wordslist);
         // console.log('final data structure: ', vis.surveyData);
 
 
