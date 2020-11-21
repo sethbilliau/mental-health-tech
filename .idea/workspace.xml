@@ -71,7 +71,7 @@
       <workItem from="1605496003272" duration="14000" />
       <workItem from="1605496019913" duration="170000" />
       <workItem from="1605573389985" duration="5281000" />
-      <workItem from="1605819544017" duration="302000" />
+      <workItem from="1605819544017" duration="16966000" />
     </task>
     <servers />
   </component>
@@ -83,6 +83,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605819694059" />
+    <state x="492" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605938725868">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="492" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1605938725868" />
     <state x="2983" y="0" width="627" height="1027" key="dock-window-1" timestamp="1605469885196">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
