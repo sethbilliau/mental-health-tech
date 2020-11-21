@@ -22,22 +22,9 @@ class WordCloudVis {
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
-        // vis.svgtitle = d3.select("#cloudDiv").append("svg")
-        //     .attr("width", vis.width)
-        //     .attr("height", vis.height/ 10);
-        vis.svg =  d3.select("#cloudDiv").append("svg")
+        vis.svg =  d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width)
             .attr("height", vis.height );
-
-        // vis.svgtitle
-        //     .append('g')
-        //     .attr('class', 'title cloud-title')
-        //     .append('text')
-        //     .text(vis.wordCloudTitle)
-        //     .style("word-break", "break-all;")
-        //     .style("white-space", "normal")
-        //     .attr('text-anchor', 'middle')
-        //     .attr('transform', `translate(${vis.width / 2}, 20)`);
 
         vis.wrangleData()
 
@@ -59,8 +46,7 @@ class WordCloudVis {
         vis.displayData = vis.wordslist.filter(function(d) {
             return d.index < vis.n;
         });
-        console.log('final data structure: ', vis.displayData );
-
+        // console.log('final data structure: ', vis.displayData );
 
         vis.updateVis();
 

@@ -15,8 +15,6 @@ class WordBar {
             left: 40
         };
 
-
-
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
             vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
@@ -26,13 +24,6 @@ class WordBar {
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
-
-        // vis.svg.append('g')
-        //     .attr('class', 'title bar-title')
-        //     .append('text')
-        //     .text(vis.title)
-        //     .attr('transform', `translate(${vis.width / 2}, 10)`)
-        //     .attr('text-anchor', 'middle');
 
         vis.x = d3.scaleBand()
             .rangeRound([0, vis.width])
@@ -77,7 +68,6 @@ class WordBar {
         vis.displayData = vis.wordslist.filter(function(d) {
             return d.index < 10;
         });
-        console.log("seth", vis.displayData);
 
         this.updateVis();
     }
