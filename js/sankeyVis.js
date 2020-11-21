@@ -16,7 +16,7 @@ class SankeyVis {
         let vis = this;
 
         vis.margin = {
-            top: 20,
+            top: 30,
             right: 20,
             bottom: 20,
             left: 100
@@ -32,6 +32,36 @@ class SankeyVis {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
+        vis.svg.append('text')
+            .attr('id', 'sankey_tech_q')
+            .attr('x', 0)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Out of 5 (best), how well does the tech industry support MH?')
+
+        vis.svg.append('text')
+            .attr('id', 'sankey_formal_q')
+            .attr('x', vis.width/3)
+            .attr('y', 0)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Has your employer ever formally discussed MH?')
+
+        vis.svg.append('text')
+            .attr('id', 'sankey_resources_q1')
+            .attr('x', vis.width/2)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('Does your employer offer resources to learn')
+        vis.svg.append('text')
+            .attr('id', 'sankey_resources_q2')
+            .attr('x', vis.width/2)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .text('more about MH and options for seeking help?')
 
         vis.wrangleData();
     }
@@ -41,294 +71,154 @@ class SankeyVis {
         let nodes;
         console.log(vis.data)
         nodes = [{
-                'name': 'Has MH disorder',
+                'name': '1',
                 'node': 0
             },
             {
-                'name': 'No MH disorder',
+                'name': '2',
                 'node': 1
             },
             {
-                'name': '0',
+                'name': '3',
                 'node': 2
             },
             {
-                'name': '1',
+                'name': '4',
                 'node': 3
             },
             {
-                'name': '2',
+                'name': '5',
                 'node': 4
             },
             {
-                'name': '3',
+                'name': 'Yes',
                 'node': 5
             },
             {
-                'name': '4',
+                'name': 'No',
                 'node': 6
             },
             {
-                'name': '5',
+                'name': 'Yes',
                 'node': 7
             },
             {
-                'name': '6',
+                'name': 'No',
                 'node': 8
             },
             {
-                'name': '7',
+                'name': "I don't know",
                 'node': 9
             },
             {
-                'name': '8',
+                'name': 'Yes, I experienced',
                 'node': 10
             },
             {
-                'name': '9',
+                'name': 'Yes, I observed',
                 'node': 11
             },
             {
-                'name': '10',
+                'name': 'No',
                 'node': 12
             },
             {
-                'name': 'Very difficult',
+                'name': "Maybe/Not sure",
                 'node': 13
             },
             {
-                'name': 'Somewhat difficult',
+                'name': 'Yes',
                 'node': 14
             },
             {
-                'name': 'Neither easy or difficult',
+                'name': 'No',
                 'node': 15
             },
             {
-                'name': 'Somewhat easy',
+                'name': 'Maybe',
                 'node': 16
-            },
-            {
-                'name': 'Very easy',
-                'node': 17
-            },
-            {
-                'name': 'Yes',
-                'node': 18
-            },
-            {
-                'name': 'Maybe',
-                'node': 19
-            },
-            {
-                'name': 'No',
-                'node': 20
-            },
-            {
-                'name': 'Yes',
-                'node': 21
-            },
-            {
-                'name': 'Maybe',
-                'node': 22
-            },
-            {
-                'name': 'No',
-                'node': 23
             }
         ]
 
         console.log(nodes);
-        // let disorder_list = ['has_disorder', 'no_disorder']
-        // let scale_list = ['scale_0', 'scale_1', 'scale_2', 'scale_3', 'scale_4', 'scale_5', 'scale_6', 'scale_7', 'scale_8', 'scale_9', 'scale_10'];
-        // let leave_list = ['v_difficult', 'somewhat_diff', 'neither', 'somewhat_easy', 'v_easy'];
-        // let comfort_list = ['comfortable_yes', 'comfortable_maybe', 'comfortable_no'];
-        // let observe_list = ['observe_yes', 'observe_maybe', 'observe_no'];
 
-        // let translate = {
-        //     'has_disorder': 0,
-        //     'no_disorder': 1,
-        //     'scale_0': 2,
-        //     'scale_1': 3,
-        //     'scale_2': 4,
-        //     'scale_3': 5,
-        //     'scale_4': 6,
-        //     'scale_5': 7,
-        //     'scale_6': 8,
-        //     'scale_7': 9,
-        //     'scale_8': 10,
-        //     'scale_9': 11,
-        //     'scale_10': 12,
-        //     'v_difficult': 13,
-        //     'somewhat_diff': 14,
-        //     'neither': 15,
-        //     'somewhat_easy': 16,
-        //     'v_easy': 17,
-        //     'comfortable_yes': 18,
-        //     'comfortable_maybe': 19,
-        //     'comfortable_no': 20,
-        //     'observe_yes': 21,
-        //     'observe_maybe': 22,
-        //     'observe_no': 23
-        // };
+        let tech_list = [1, 2, 3, 4, 5]
+        let formal_list = ['Yes', 'No'];
+        let resources_list = ['Yes', 'No', "I don't know"];
+        let handled_list = ["Yes, I experienced", "Yes, I observed", "No", "Maybe/Not sure"];
+        let comfortable_list = ["Yes", "Maybe", "No"];
 
-        let disorder_list = [0, 1]
-        let scale_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        let leave_list = ["Very difficult", "Somewhat difficult", "Neither easy nor difficult", "Somewhat easy", "Very easy"];
-        let comfort_list = ["Yes", "Maybe", "No"];
-        let observe_list = ["Yes", "Maybe", "No"];
-
-        let disorder_index = [0, 1]
-        let scale_index = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        let leave_index = [13, 14, 15, 16, 17];
-        let comfort_index = [18, 19, 20];
-        let observe_index = [21, 22, 23];
+        let tech_index = [0,1,2,3,4]
+        let formal_index = [5,6];
+        let resources_index = [7,8,9];
+        let handled_index = [10,11,12,13];
+        let comfortable_index = [14,15,16];
 
         let links = []
 
-        disorder_list.forEach((el, ind) => {
-            scale_list.forEach((el2, ind2) => {
+        tech_list.forEach((el, ind) => {
+            formal_list.forEach((el2, ind2) => {
                 let count = 0;
                 vis.data.forEach(el3 => {
-                    if (parseInt(el3["has_disorder"]) === el && parseInt(el3["scale_employer_MH"]) == el2) {
+                    if (parseInt(el3["scale_tech_industry_supports"]) === el && el3["employer_formally_discussed"] == el2) {
                         count += 1;
                     }
                 })
                 links.push({
-                    'source': disorder_index[ind],
-                    'target': scale_index[ind2],
+                    'source': tech_index[ind],
+                    'target': formal_index[ind2],
                     'value': count
                 })
             })
         })
 
-        scale_list.forEach((el, ind) => {
-            leave_list.forEach((el2, ind2) => {
+        formal_list.forEach((el, ind) => {
+            resources_list.forEach((el2, ind2) => {
                 let count = 0;
                 vis.data.forEach(el3 => {
-                    if (parseInt(el3["scale_employer_MH"]) === el && el3["easy_medical_leave"] == el2) {
+                    if (el3["employer_formally_discussed"] === el && el3["employer_offers_resources"] == el2) {
                         count += 1;
                     }
                 })
                 links.push({
-                    'source': scale_index[ind],
-                    'target': leave_index[ind2],
+                    'source': formal_index[ind],
+                    'target': resources_index[ind2],
                     'value': count
                 })
             })
         })
 
-        leave_list.forEach((el, ind) => {
-            comfort_list.forEach((el2, ind2) => {
+        resources_list.forEach((el, ind) => {
+            handled_list.forEach((el2, ind2) => {
                 let count = 0;
                 vis.data.forEach(el3 => {
-                    if (el3["easy_medical_leave"] === el && el3["comfortable_discussing_coworkers"] == el2) {
+                    if (el3["employer_offers_resources"] === el && el3["badly_handled_MH"] == el2) {
                         count += 1;
                     }
                 })
                 links.push({
-                    'source': leave_index[ind],
-                    'target': comfort_index[ind2],
+                    'source': resources_index[ind],
+                    'target': handled_index[ind2],
                     'value': count
                 })
             })
         })
 
-        comfort_list.forEach((el, ind) => {
-            observe_list.forEach((el2, ind2) => {
+        handled_list.forEach((el, ind) => {
+            comfortable_list.forEach((el2, ind2) => {
                 let count = 0;
                 vis.data.forEach(el3 => {
-                    if (el3["comfortable_discussing_coworkers"] === el && el3["observe_coworker_likelihood"] == el2) {
+                    if (el3["badly_handled_MH"] === el && el3["comfortable_discussing_coworkers"] == el2) {
                         count += 1;
                     }
                 })
                 links.push({
-                    'source': comfort_index[ind],
-                    'target': observe_index[ind2],
+                    'source': handled_index[ind],
+                    'target': comfortable_index[ind2],
                     'value': count
                 })
             })
         })
-        // disorder_list.forEach(v1 => {
-        //     let v1_condition = 0
-        //     if (v1 == 'has_disorder') {
-        //         v1_condition = 1;
-        //     }
-        //     scale_list.forEach(v2 => {
-        //         let count = 0
-        //         let v2_condition = v2.substring(6)
-        //         v2_condition = parseInt(v2_condition);
-        //         vis.data.forEach(d => {
-        //             if (d.has_disorder == v1_condition && d.scale_employer_MH == v2_condition) {
-        //                 count = count + 1;
-        //             }
-        //         })
-        //         links.push({
-        //             'source': translate[v1],
-        //             'target': translate[v2],
-        //             'value': count
-        //         })
-        //         leave_list.forEach(v3 => {
-        //             let count = 0
-        //             let v3_condition;
-        //             // console.log(nodes);
-        //             nodes.forEach(d => {
-        //                 // console.log(d);
-        //                 if (v3 == d.node) {
-        //                     v3_condition = d.name;
-        //                 }
-        //             })
-        //             vis.data.forEach(d => {
-        //                 if (d.scale_employer_MH == v2_condition && d.easy_medical_leave == v3_condition) {
-        //                     count = count + 1;
-        //                 }
-        //             })
-        //             links.push({
-        //                 'source': translate[v2],
-        //                 'target': translate[v3],
-        //                 'value': count
-        //             })
-        //             comfort_list.forEach(v4 => {
-        //                 let count = 0
-        //                 let v4_condition;
-        //                 nodes.forEach(d => {
-        //                     if (v4 == d.node) {
-        //                         v4_condition = d.name;
-        //                     }
-        //                 })
-        //                 vis.data.forEach(d => {
-        //                     if (d.easy_medical_leave == v3_condition && d.comfortable_discussing_coworkers == v4_condition) {
-        //                         count = count + 1;
-        //                     }
-        //                 })
-        //                 links.push({
-        //                     'source': translate[v3],
-        //                     'target': translate[v4],
-        //                     'value': count
-        //                 });
-        //                 observe_list.forEach(v5 => {
-        //                     let count = 0
-        //                     let v5_condition;
-        //                     nodes.forEach(d => {
-        //                         if (v5 == d.node) {
-        //                             v5_condition = d.name;
-        //                         }
-        //                     })
-        //                     vis.data.forEach(d => {
-        //                         if (d.comfortable_discussing_coworkers == v4_condition && d.observe_coworker_likelihood == v5_condition) {
-        //                             count = count + 1;
-        //                         }
-        //                     })
-        //                     links.push({
-        //                         'source': translate[v4],
-        //                         'target': translate[v5],
-        //                         'value': count
-        //                     });
-        //                 })
-        //             })
-        //         })
-        //     })
-        // })
 
         vis.displayData['nodes'] = nodes
         vis.displayData['links'] = links
@@ -343,7 +233,7 @@ class SankeyVis {
             format = function (d) {
                 return formatNumber(d) + " " + units;
             },
-            color = d3.scaleOrdinal(d3.schemeCategory10);
+            color = d3.scaleOrdinal(d3.schemeCategory10)
 
         var sankey = d3.sankey()
             .nodeWidth(36)
@@ -358,7 +248,7 @@ class SankeyVis {
             .nodes(myData.nodes)
             .links(myData.links)
             .layout(32);
-
+        console.log(myData.links);
 
         var link = vis.svg.append("g").selectAll(".link")
             .data(myData.links)
@@ -368,9 +258,9 @@ class SankeyVis {
             .style("stroke-width", function (d) {
                 return Math.max(1, d.dy);
             })
-            .sort(function (a, b) {
-                return b.dy - a.dy;
-            });
+            // .sort(function (a, b) {
+            //     return b.dy - a.dy;
+            // });
 
         // add the link titles
         link.append("title")
