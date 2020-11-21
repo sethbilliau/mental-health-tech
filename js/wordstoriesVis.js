@@ -1,7 +1,6 @@
 /* * * * * * * * * * * * * *
 *          Word Cloud Vis          *
 * * * * * * * * * * * * * */
-
 class Story {
 
     // constructor method to initialize Timeline object
@@ -9,6 +8,7 @@ class Story {
         this.parentElement = parentElement;
         this.surveyData = surveyData;
 
+        this.firstRun = true;
         this.initVis();
     }
 
@@ -30,6 +30,10 @@ class Story {
 
         vis.storyString = vis.surveyData[randomRow][vis.selectedCategory]
 
+        if (vis.firstRun == false){
+            vis.instance.destroy()
+        }
+
         vis.updateVis();
 
     }
@@ -37,7 +41,21 @@ class Story {
     updateVis() {
         let vis = this;
 
-        document.getElementById(vis.parentElement).innerHTML = '<p>Respondent ' + vis.respondent['X1'] + ': ' +vis.storyString +  '</p>';
+        let str_final = 'Respondent ' + vis.respondent['X1'] + ': ' +vis.storyString
+
+
+        $("#stories-p").html("")
+
+
+        vis.instance = new TypeIt("#stories-p", {
+            strings: str_final,
+            speed: 10,
+            waitUntilVisible: false
+        }).go();
+        vis.firstRun = false
+
+
+        // document.getElementById(vis.parentElement).innerHTML = '<p>Respondent ' + vis.respondent['X1'] + ': ' +vis.storyString +  '</p>';
 
     }
 

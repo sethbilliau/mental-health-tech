@@ -73,6 +73,7 @@ function categoryChange() {
 }
 
 function wordChange() {
+    $("#stories-p").html("")
     myWordBar.wrangleData();
     myStories.wrangleData();
     d3.select('#cloudDiv').selectAll('svg').remove();
@@ -98,6 +99,8 @@ new TypeIt("#text1", {
     speed: 50,
     waitUntilVisible: true
   }).go();
+
+
 
 $(MyEventHandler).bind("bubbleHovered", function(event, key) {
     bubbleBar.onBubbleHovered(key);
