@@ -6,6 +6,7 @@
 let myMapVis;
 let lineGraphVis;
 let myCloudVis;
+let myWordBar;
 let myDoubleBar;
 let bubbleChart;
 let bubbleBar;
@@ -25,6 +26,7 @@ let promises = [
     d3.json("data/phase4.json"),
     d3.json("data/phase5.json"),
     d3.csv("data/sankey_data.csv"),
+    d3.csv("data/textanalysis.csv")
 ];
 
 Promise.all(promises)
@@ -42,8 +44,10 @@ function initMainPage(dataArray) {
 
     // Map Vis
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
+    bubbleBar = new BubbleBar("bubble-bar", dataArray[1]);
 
-    myCloudVis = new WordCloudVis('cloudDiv', dataArray[1]);
+    myCloudVis = new WordCloudVis('cloudDiv', dataArray[9], 50);
+    myWordBar = new WordBar("wordbubbleDiv", dataArray[9]);
     lineGraphVis = new LineGraph("lineGraphDiv", dataArray[2]);
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
@@ -62,8 +66,13 @@ function initMainPage(dataArray) {
 }
 
 function categoryChange() {
-    selectedCategory = $('#categorySelector').val();
-    myMapVis.wrangleData(); // maybe you need to change this slightly depending on the name of your MapVis instance
+    myMapVis.wrangleData();
+}
+
+function wordChange() {
+    myWordBar.wrangleData();
+    d3.select('#cloudDiv').selectAll('svg').remove();
+    myCloudVis.initVis();
 }
 
 
