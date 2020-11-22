@@ -14,6 +14,11 @@ let bubbleBar;
 let mySankey;
 let doubleLine;
 
+let selectedGender;
+let selectedAge;
+let selectedRace;
+let selectedJob;
+
 // load data using promises
 let promises = [
 
@@ -39,6 +44,7 @@ let surveyDemographics = ['F', '18_25', 'Black or African American', 'Developer'
 let surveyGuesses = [25, 30, 35, 40];
 
 let MyEventHandler = {};
+let MyEventHandler2 = {};
 // initMainPage
 function initMainPage(dataArray) {
 
@@ -105,3 +111,7 @@ new TypeIt("#title", {
 $(MyEventHandler).bind("bubbleHovered", function(event, key) {
     bubbleBar.onBubbleHovered(key);
 });
+
+$(MyEventHandler2).bind("sliderChanged", function (event, value) {
+    myDoubleBar.onSliderChanged(value);
+})

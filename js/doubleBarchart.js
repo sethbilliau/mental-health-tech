@@ -253,4 +253,8 @@ class DoubleBarchart {
             .attr("class", "y-axis axis")
             .call(vis.yAxis);
     }
+
+    onSliderChanged(val) {
+        console.log(val);
+    }
 }
