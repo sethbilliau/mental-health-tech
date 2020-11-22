@@ -17,16 +17,21 @@ class DoubleBarchart {
     }
 
     /*
- * Initialize visualization (static content, e.g. SVG area or axes)
- */
+     * Initialize visualization (static content, e.g. SVG area or axes)
+     */
 
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 100};
+        vis.margin = {
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 100
+        };
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
-        vis.height = $("#" + vis.parentElement).height()  - vis.margin.top - vis.margin.bottom;
+            vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -38,7 +43,11 @@ class DoubleBarchart {
 
         // Scales and axes
 
-        let axisTicks = {qty: 5, outerSize: 0, tickFormat: d3.format('.0%')};
+        let axisTicks = {
+            qty: 5,
+            outerSize: 0,
+            tickFormat: d3.format('.0%')
+        };
 
         vis.xScale0 = d3.scaleBand().range([0, vis.width - vis.margin.left - vis.margin.right]).padding(0.2)
         vis.xScale1 = d3.scaleBand()
@@ -52,14 +61,14 @@ class DoubleBarchart {
             .attr('id', 'guess-legend')
             .attr('x', vis.width - vis.margin.right - vis.margin.left)
             .attr('width', 10)
-            .attr('y', vis.margin.top + vis.height/5)
+            .attr('y', vis.margin.top + vis.height / 5)
             .attr('height', 10)
             .style('fill', 'blue');
         vis.svg.append('text')
             .attr('id', 'guess-leg-label')
             .attr('x', vis.width - vis.margin.right - vis.margin.left + 15)
             .attr('width', 10)
-            .attr('y', vis.margin.top + vis.height/5 +10)
+            .attr('y', vis.margin.top + vis.height / 5 + 10)
             .attr('height', 10)
             .style('font-size', '11px')
             .style('fill', 'black')
@@ -70,14 +79,14 @@ class DoubleBarchart {
             .attr('id', 'actual-legend')
             .attr('x', vis.width - vis.margin.right - vis.margin.left)
             .attr('width', 10)
-            .attr('y', vis.margin.top + vis.height/3.5)
+            .attr('y', vis.margin.top + vis.height / 3.5)
             .attr('height', 10)
             .style('fill', 'red');
         vis.svg.append('text')
             .attr('id', 'actual-leg-label')
-            .attr('x', vis.width - vis.margin.right - vis.margin.left+15)
+            .attr('x', vis.width - vis.margin.right - vis.margin.left + 15)
             .attr('width', 10)
-            .attr('y', vis.margin.top + vis.height/3.5+10)
+            .attr('y', vis.margin.top + vis.height / 3.5 + 10)
             .attr('height', 10)
             .style('fill', 'black')
             .style('font-size', '11px')
@@ -87,9 +96,9 @@ class DoubleBarchart {
         vis.svg.append('text')
             .attr('class', 'yaxis_label')
             .attr('x', 5)
-            .attr('y', vis.margin.top-20)
+            .attr('y', vis.margin.top - 20)
             .attr('text-anchor', 'start')
-            .attr('transform', 'rotate(90, 5,'+ (vis.margin.top-20) +')')
+            .attr('transform', 'rotate(90, 5,' + (vis.margin.top - 20) + ')')
             .attr('font-size', 11)
             .style('fill', 'darkgray')
             .text('% struggling with Mental Health disorder');
@@ -98,58 +107,48 @@ class DoubleBarchart {
         vis.wrangleData();
     }
 
-    wrangleData(){
+    wrangleData() {
         let vis = this
         let age_min;
         let age_max;
         let category_label;
 
-        vis.surveyDemographics.forEach((d,i) => {
+        vis.surveyDemographics.forEach((d, i) => {
             let demoFilter;
 
-            if (i == 0){
-                if (d == 'F'){
+            if (i == 0) {
+                if (d == 'F') {
                     category_label = 'Female';
-                }
-                else if (d == 'M'){
+                } else if (d == 'M') {
                     category_label = 'Male';
-                }
-                else{
+                } else {
                     category_label = 'Other';
                 }
                 demoFilter = vis.data.filter(j => j.gender == d)
-            }
-            else if (i == 1){
+            } else if (i == 1) {
                 let age = d;
                 if (age == '18_25') {
                     age_min = 18
                     age_max = 25
                     category_label = '18-25'
-                }
-                else if (age == '26_35')
-                {
+                } else if (age == '26_35') {
                     age_min = 26
                     age_max = 35
                     category_label = '26-35'
-                }
-                else if (age == '36_50')
-                {
+                } else if (age == '36_50') {
                     age_min = 36
                     age_max = 50
                     category_label = '36-50'
-                }
-                else{
+                } else {
                     age_min = 51
                     age_max = 75
                     category_label = '51-75'
                 }
-                demoFilter = vis.data.filter(j=> j.age >= age_min && j.age <=age_max)
-            }
-            else if (i == 2){
+                demoFilter = vis.data.filter(j => j.age >= age_min && j.age <= age_max)
+            } else if (i == 2) {
                 category_label = d;
                 demoFilter = vis.data.filter(j => j.race == d)
-            }
-            else {
+            } else {
                 category_label = d;
                 demoFilter = vis.data.filter(j => j[d] == 1)
             }
@@ -160,17 +159,23 @@ class DoubleBarchart {
 
             vis.displayData.push({
                 'category': category_label,
-                'guess': vis.surveyGuesses[i]/100,
+                'guess': vis.surveyGuesses[i] / 100,
                 'actual': disorder_percentage.toFixed(2)
             })
 
         });
 
+        vis.guessData = {
+            "gender": 0,
+            "age": 0,
+            "race": 0,
+            "job": 0
+        }
         console.log(vis.displayData);
         vis.updateVis();
     }
 
-    updateVis(){
+    updateVis() {
         let vis = this;
 
         vis.xScale0.domain(vis.displayData.map(d => d.category));
@@ -191,7 +196,7 @@ class DoubleBarchart {
             .enter()
             .append("rect")
             .attr("class", "bar field1")
-            .style("fill","blue")
+            .style("fill", "blue")
             .attr("x", d => vis.xScale1('guess'))
             .attr("y", d => vis.yScale(d.guess))
             .attr("width", vis.xScale1.bandwidth())
@@ -201,17 +206,18 @@ class DoubleBarchart {
 
         /*Add field 1 labels */
         let guess_label_data = vis.categoryName.selectAll('.guess-label')
-            .data(d=> [d]);
+            .data(d => [d]);
         guess_label_data.enter().append('text')
             .attr('class', 'guess-label')
             .style('font-size', '11px')
             .merge(guess_label_data)
-            .attr('x', d => vis.xScale1('guess') + vis.xScale1.bandwidth()/3)
-            .attr('y', d=> vis.yScale(d.guess) -10)
+            .attr('x', d => vis.xScale1('guess') + vis.xScale1.bandwidth() / 3)
+            .attr('y', d => vis.yScale(d.guess) - 10)
             .attr('fill', 'blue')
-            .text(d=> {
+            .text(d => {
                 let formatPerc = d3.format('.0%');
-                return formatPerc(d.guess)});
+                return formatPerc(d.guess)
+            });
         guess_label_data.exit().remove();
 
         // /* Add field2 bars */
@@ -220,7 +226,7 @@ class DoubleBarchart {
             .enter()
             .append("rect")
             .attr("class", "bar field2")
-            .style("fill","red")
+            .style("fill", "red")
             .attr("x", d => vis.xScale1('actual'))
             .attr("y", d => vis.yScale(d.actual))
             .attr("width", vis.xScale1.bandwidth())
@@ -230,17 +236,18 @@ class DoubleBarchart {
 
         /* Add field2 labels */
         let actual_label_data = vis.categoryName.selectAll('.actual-label')
-            .data(d=> [d]);
+            .data(d => [d]);
         actual_label_data.enter().append('text')
             .attr('class', 'guess-label')
             .style('font-size', '11px')
             .merge(actual_label_data)
-            .attr('x', d => vis.xScale1('actual') + vis.xScale1.bandwidth()/3)
-            .attr('y', d=> vis.yScale(d.actual) -10)
+            .attr('x', d => vis.xScale1('actual') + vis.xScale1.bandwidth() / 3)
+            .attr('y', d => vis.yScale(d.actual) - 10)
             .attr('fill', 'red')
-            .text(d=> {
+            .text(d => {
                 let formatPerc = d3.format('.0%');
-                return formatPerc(d.actual)});
+                return formatPerc(d.actual)
+            });
         actual_label_data.exit().remove();
 
         // Add the X Axis
@@ -255,6 +262,9 @@ class DoubleBarchart {
     }
 
     onSliderChanged(val) {
-        console.log(val);
+        let vis = this;
+        let splitVal = val.split(":");
+        vis.guessData[splitVal[0]] = parseFloat(splitVal[1]);
+        console.log(vis.guessData)
     }
 }
