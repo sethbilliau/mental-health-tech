@@ -35,7 +35,7 @@ Promise.all(promises)
     .then( function(data){ initMainPage(data) })
     .catch( function (err){console.log(err)} );
 
-let surveyDemographics = ['F', '18_25', 'Black or African American', 'Back-end Developer'];
+let surveyDemographics = ['F', '18_25', 'Black or African American', 'Developer'];
 let surveyGuesses = [25, 30, 35, 40];
 
 let MyEventHandler = {};
@@ -94,11 +94,11 @@ new TypeIt("#title", {
     waitUntilVisible: true
   }).go();
 
-new TypeIt("#text1", {
-    strings: "Here's the <em><strong>reality</strong></em> on the % of tech professionals suffering from a mental health disorder.",
-    speed: 50,
-    waitUntilVisible: true
-  }).go();
+// new TypeIt("#text1", {
+//     strings: "Here's the <em><strong>reality</strong></em> on the % of tech professionals suffering from a mental health disorder.",
+//     speed: 50,
+//     waitUntilVisible: true
+//   }).go();
 
 
 
