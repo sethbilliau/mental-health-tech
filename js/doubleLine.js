@@ -136,7 +136,13 @@ class DoubleLine {
         // Add the y-axis.
         vis.svg.append("g")
             .attr("class", "y axis")
-            .call(vis.yAxis);
+            .call(vis.yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("dy", ".75em")
+            .attr("y", 6)
+            .style("text-anchor", "end")
+            .text("% of people who have disorders");
 
         vis.svg.selectAll(".dot")
             .data(vis.displayData)
