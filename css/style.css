@@ -315,6 +315,10 @@ div.section {
     height: 60vh;
 }
 
+#doubleLine {
+    width: 100%;
+    height: 50vh;
+}
 
 /* particle vis */
 #bubble-chart {
