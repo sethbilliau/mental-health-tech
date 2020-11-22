@@ -128,6 +128,15 @@ h4{
     font-weight: 300 !important;
     line-height: 32px !important;
 }
+
+h6{
+    font-family: 'Source Sans Pro', sans-serif !important;
+    color: black;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    line-height: 32px !important;
+}
+
 em {
     color: #ff6666;
 }
