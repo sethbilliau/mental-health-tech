@@ -178,12 +178,12 @@ class BubbleChart {
                 {
                     label: "White",
                     xPos: 4 * labelWidth / 10,
-                    yPos: labelHeight / 2 + 105
+                    yPos: labelHeight / 2 + 118
                 },
                 {
                     label: "Asian",
-                    xPos: 7 * labelWidth / 10,
-                    yPos: 3 * labelHeight / 10 + 50
+                    xPos: 7 * labelWidth / 10 - 10,
+                    yPos: 3 * labelHeight / 10 + 55
                 },
                 {
                     label: "Hispanic/Black",
@@ -192,7 +192,7 @@ class BubbleChart {
                 },
                 {
                     label: "Other",
-                    xPos: 8 * labelWidth / 10,
+                    xPos: 8 * labelWidth / 10 - 10,
                     yPos: labelHeight / 2 + 55
                 },
                 {
@@ -205,12 +205,12 @@ class BubbleChart {
                 {
                     label: "Developers",
                     xPos: labelWidth / 2,
-                    yPos: labelHeight / 2 + 110
+                    yPos: labelHeight / 2 + 118
                 },
                 {
                     label: "Management",
                     xPos: 8 * labelWidth / 10,
-                    yPos: 2 * labelHeight / 10 + 150
+                    yPos: 2 * labelHeight / 10 + 155
                 },
                 {
                     label: "Other",
@@ -325,7 +325,7 @@ class BubbleChart {
                 },
                 {
                     label: "mgmt",
-                    xPos: 8 * labelWidth / 10 - 10,
+                    xPos: 8 * labelWidth / 10 - 5,
                     yPos: 3 * labelHeight / 10 + 10,
                     radius: 65
                 },
@@ -594,7 +594,7 @@ class BubbleChart {
             .attr("y", d => d.yPos)
             .text(d => d.label)
             .style("text-anchor", "middle")
-            .style("font-size", "24px")
+            .style("font-size", "20px")
 
         vis.texts.exit().remove();
 
