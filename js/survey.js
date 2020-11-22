@@ -68,6 +68,8 @@ function questionaire() {
         var q_5 = `<p><b>${q5[1]}</b></p>`
         document.getElementById("q5").innerHTML = q_5;
         document.getElementById("barchart-container").innerHTML = "<div id = 'double-barchart'></div>";
+        document.getElementById('barchart-caption').innerHTML ="You submitted your expectations. Here's the <strong>reality</strong> according to the Open Source Mental Health Survey:"
+        document.getElementById('barchart-transition').innerHTML = "And it's not just your demographic groups that are struggling..."
         myDoubleBar.initVis();
         var data = [0, 1]
         var sliderFill = d3

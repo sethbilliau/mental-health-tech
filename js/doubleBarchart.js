@@ -9,10 +9,10 @@ class DoubleBarchart {
         this.surveyDemographics = _surveyDemographics;
         this.surveyGuesses = _surveyGuesses;
         this.guessData = {
-            "gender": 50,
-            "age": 50,
-            "race": 50,
-            "job": 50
+            "gender": 0.5,
+            "age": 0.5,
+            "race": 0.5,
+            "job": 0.5
         }
 
         this.displayData = [];
@@ -115,15 +115,19 @@ class DoubleBarchart {
             .style('fill', 'darkgray')
             .text('% struggling with Mental Health disorder');
 
+        console.log(vis.displayData)
+
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
 
     wrangleData() {
+
         let vis = this
         let age_min;
         let age_max;
         let category_label;
+        vis.displayData = []
         vis.surveyDemographics = [selectedGender, selectedAge, selectedRace, selectedJob];
         vis.surveyGuesses = [vis.guessData.gender, vis.guessData.age, vis.guessData.race, vis.guessData.job]
         console.log(vis.surveyGuesses)
@@ -190,7 +194,7 @@ class DoubleBarchart {
 
             vis.displayData.push({
                 'category': category_label,
-                'guess': vis.surveyGuesses[i] / 100,
+                'guess': vis.surveyGuesses[i],
                 'actual': disorder_percentage.toFixed(2)
             })
 
@@ -223,16 +227,18 @@ class DoubleBarchart {
         vis.yScale.domain([0, 1])
 
 
-        vis.categoryName = vis.svg.selectAll(".category-name")
+        vis.categoryName_data = vis.svg.selectAll(".category-name")
             .data(vis.displayData)
-            .enter().append("g")
+        vis.categoryName = vis.categoryName_data.enter().append("g")
             .attr("class", "category-name")
+            .merge(vis.categoryName_data)
             .attr("transform", d => `translate(${vis.xScale0(d.category)},0)`);
+
+
 
         /* Add field1 bars */
         let guess_bar_data = vis.categoryName.selectAll(".bar.field1")
             .data(d => [d])
-
         guess_bar_data.enter()
             .append("rect")
             .attr("class", "bar field1")
@@ -245,6 +251,7 @@ class DoubleBarchart {
             .attr("height", d => {
                 return vis.height - vis.margin.top - vis.margin.bottom - vis.yScale(d.guess)
             });
+        guess_bar_data.exit().remove()
 
         /*Add field 1 labels */
         let guess_label_data = vis.categoryName.selectAll('.guess-label')
@@ -271,13 +278,14 @@ class DoubleBarchart {
             .attr("class", "bar field2")
             .style("fill", "red")
             .merge(actual_bar_data)
-            .transition().duration(300)
+            // .transition().duration(300)
             .attr("x", d => vis.xScale1('actual'))
             .attr("y", d => vis.yScale(d.actual))
             .attr("width", vis.xScale1.bandwidth())
             .attr("height", d => {
                 return vis.height - vis.margin.top - vis.margin.bottom - vis.yScale(d.actual)
             });
+        actual_bar_data.exit().remove();
 
         /* Add field2 labels */
         let actual_label_data = vis.categoryName.selectAll('.actual-label')
@@ -286,7 +294,7 @@ class DoubleBarchart {
             .attr('class', 'guess-label')
             .style('font-size', '11px')
             .merge(actual_label_data)
-            .transition().duration(300)
+            // .transition().duration(300)
             .attr('x', d => vis.xScale1('actual') + vis.xScale1.bandwidth() / 3)
             .attr('y', d => vis.yScale(d.actual) - 10)
             .attr('fill', 'red')
@@ -295,6 +303,7 @@ class DoubleBarchart {
                 return formatPerc(d.actual)
             });
         actual_label_data.exit().remove();
+        vis.categoryName.exit().remove();
 
         // Add the X Axis
         vis.xAxis_group
