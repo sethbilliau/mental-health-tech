@@ -118,17 +118,22 @@
 		<div class="line-divider"></div>
 	</div>
 
-	<div class="section nav-section" id="section3">
-		<div style="height:50px"></div>
-		<div data-aos="fade-in">
-			<h5 style="text-align: center;">Survey on how you think mental health disorder is distributed by your demographic </h5>
-			<div style="height:20px"></div>
-			<div class="col-md-9">
-				<div id = "survey-pea" style="height:500px"></div>
-			</div>
-
+	<div class="section nav-section" id = "section2"  style="margin-top: -3px;">
+		<div style="height:150px"></div>
+		<div class="row">
+			<div class="col-md-3" id="q1" style="padding-right: 40px;" data-aos="fade-in"></div>
+			<div class="col-md-3" id="q2" style="padding-left: 40px; padding-right: 40px;" data-aos="fade-in"></div>
+			<div class="col-md-3" id="q3" style="padding-left: 40px; padding-right: 40px;" data-aos="fade-in"></div>
+			<div class="col-md-3" id="q4" style="padding-left: 40px;" data-aos="fade-in"></div>
 		</div>
-		<div class="line-divider" data-aos="fade-in"></div>
+		<div style="height:150px"></div>
+		<div class="row align-content-center">
+			<div id="q5"></div>
+		</div>
+		<div class="row align-items-center">
+			<div class="col-sm-2"><p id="value-vertical"></p></div>
+			<div class="col-sm"><div id="slider-vertical"></div></div>
+		  </div>
 	</div>
 
 	<div class="section nav-section" id="section4">
@@ -354,6 +359,7 @@
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+	<script src="https://unpkg.com/d3-simple-slider"></script>
 
 	<!-- Include visulization js here -->
 	<script src="js/line.js"></script>
@@ -371,6 +377,7 @@
 	<script src="js/sankeyVis.js"></script>
 	<script src="js/sankey.js"></script>
 	<script src="js/doubleLine.js"></script>
+	<script src="js/survey.js"></script>
 
 	<!-- AOS must be included last -->
 	<script src="libraries/aos.js"></script>
