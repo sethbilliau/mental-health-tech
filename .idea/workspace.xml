@@ -31,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Final_Proj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,6 +44,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sarah\Google Drive\Harvard 2020-2021\CS171\mental-health-tech\img" />
       <recent name="C:\Users\sarah\Google Drive\Harvard 2020-2021\CS171\mental-health-tech\js" />
     </key>
   </component>
@@ -73,7 +74,7 @@
       <workItem from="1605496003272" duration="14000" />
       <workItem from="1605496019913" duration="170000" />
       <workItem from="1605573389985" duration="5281000" />
-      <workItem from="1605819544017" duration="60912000" />
+      <workItem from="1605819544017" duration="64408000" />
     </task>
     <servers />
   </component>
