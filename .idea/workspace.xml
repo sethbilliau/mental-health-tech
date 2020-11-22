@@ -73,7 +73,7 @@
       <workItem from="1605496003272" duration="14000" />
       <workItem from="1605496019913" duration="170000" />
       <workItem from="1605573389985" duration="5281000" />
-      <workItem from="1605819544017" duration="31521000" />
+      <workItem from="1605819544017" duration="35407000" />
     </task>
     <servers />
   </component>
@@ -114,6 +114,12 @@
           <line>140</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/doubleBarchart.js</url>
+          <line>87</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
