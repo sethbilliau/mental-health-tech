@@ -670,18 +670,18 @@ class BubbleChart {
                 console.log('LOOK AT ME HERE')
                 $(`#step${vis.step+1}`).html(`<h5><br><strong>41%</strong> of all respondents said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
             }
-            if(vis.step == 1){
-                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <strong>Females</strong> and <strong>Other</strong> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
-            }
-            if(vis.step == 2){
-                $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
-            }
-            if(vis.step == 3){
-                $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
-            }
-            else{
-                $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
-            }
+            // if(vis.step == 1){
+            //     $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <strong>Females</strong> and <strong>Other</strong> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+            // }
+            // if(vis.step == 2){
+            //     $(`#step${vis.step+1}`).html(`<h5>Test ${vis.step+1}</h5>`);
+            // }
+            // if(vis.step == 3){
+            //     $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
+            // }
+            // else{
+            //     $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
+            // }
            
 
         }
