@@ -52,12 +52,13 @@ class BubbleChart {
             "designer": "yellow"
         };
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
-        vis.step = 0;
+        // vis.step = 0;
 
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
         scroll.on('active', function (index) {
             // console.log(index, vis.nodes);
+            console.log(index)
             let jsonNodes = JSON.stringify(vis.nodes);
             // console.log(jsonNodes)
             // fs.writeFile(`./data/nodes${index}.json`, jsonNodes, err => {
@@ -548,7 +549,6 @@ class BubbleChart {
     updateVis() {
         let vis = this;
 
-
         vis.texts = vis.svg.selectAll(".bubble-label")
             .data(vis.bubbleLabels[vis.stepNames[vis.step]]);
 
@@ -603,6 +603,8 @@ class BubbleChart {
 
         vis.hoverCircles.enter()
             .append("circle")
+            .on('mouseover', highlight)
+            .on('mouseout', dehighlight)
             .merge(vis.hoverCircles)
             .transition()
             .duration(1000)
@@ -612,13 +614,15 @@ class BubbleChart {
             .attr("cx", d => d.xPos)
             .attr("cy", d => d.yPos)
             .attr("opacity", 0.1)
-            .attr('pointer-events', 'all')
+            .attr('pointer-events', 'all');
+
+
 
 
         vis.hoverCircles.exit().remove();
 
-        vis.hoverCircles.on('mouseover', highlight)
-            .on('mouseout', dehighlight);
+        // vis.hoverCircles.on('mouseover', highlight)
+        //     .on('mouseout', dehighlight);
 
         let groups = {
             "gender": ["M", "F", "Other-Gender"],
