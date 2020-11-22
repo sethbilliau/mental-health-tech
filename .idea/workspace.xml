@@ -38,6 +38,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -71,7 +73,7 @@
       <workItem from="1605496003272" duration="14000" />
       <workItem from="1605496019913" duration="170000" />
       <workItem from="1605573389985" duration="5281000" />
-      <workItem from="1605819544017" duration="28591000" />
+      <workItem from="1605819544017" duration="31521000" />
     </task>
     <servers />
   </component>
@@ -83,6 +85,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605819694059" />
+    <state x="2381" y="165" key="SettingsEditor" timestamp="1606023464251">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2381" y="165" key="SettingsEditor/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606023464251" />
     <state x="492" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605938725868">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -91,9 +97,25 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2983" y="0" width="627" height="1027" key="dock-window-1/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605469885196" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1606022914488">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1606022914488" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605480580531">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605480580531" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/sankeyVis.js</url>
+          <line>140</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
