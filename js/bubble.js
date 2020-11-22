@@ -55,7 +55,7 @@ class BubbleChart {
 
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
-        scroll.on('active', function(index) {
+        scroll.on('active', function (index) {
             // console.log(index, vis.nodes);
             let jsonNodes = JSON.stringify(vis.nodes);
             // console.log(jsonNodes)
@@ -68,11 +68,11 @@ class BubbleChart {
             // })
             d3.selectAll('.step')
                 .style('opacity', function (d, i) {
-                return i === index ? 1 : 0;
-            });
+                    return i === index ? 1 : 0;
+                });
             vis.step = index;
             d3.selectAll(`.circle-bubble`)
-            .style('fill', d => vis.updateColors(d));
+                .style('fill', d => vis.updateColors(d));
             vis.updateVis();
         })
 
@@ -118,15 +118,12 @@ class BubbleChart {
         let labelHeight = 616.797;
 
         vis.bubbleLabels = {
-            "start": [
-                {
-                    label: "Total (each icon represents 10 people)",
-                    xPos: labelWidth / 2,
-                    yPos: labelHeight / 2 + 100
-                }
-            ],
-            "gender": [
-                {
+            "start": [{
+                label: "Total (each icon represents 10 people)",
+                xPos: labelWidth / 2,
+                yPos: labelHeight / 2 + 100
+            }],
+            "gender": [{
                     label: "Male",
                     xPos: 2 * labelWidth / 10,
                     yPos: labelHeight / 3 + 170,
@@ -138,7 +135,7 @@ class BubbleChart {
                 },
                 {
                     label: "Other",
-                    xPos: 9 * labelWidth / 10 - 5, 
+                    xPos: 9 * labelWidth / 10 - 5,
                     yPos: 4 * labelHeight / 5 + 60
                 },
                 {
@@ -147,8 +144,7 @@ class BubbleChart {
                     yPos: labelHeight / 6
                 }
             ],
-            "age": [
-                {
+            "age": [{
                     label: "18-25",
                     xPos: 3 * labelWidth / 10 + 10,
                     yPos: 2 * labelHeight / 5 + 100
@@ -174,8 +170,7 @@ class BubbleChart {
                     yPos: labelHeight / 6
                 }
             ],
-            "race": [
-                {
+            "race": [{
                     label: "White",
                     xPos: 4 * labelWidth / 10,
                     yPos: labelHeight / 2 + 118
@@ -201,8 +196,7 @@ class BubbleChart {
                     yPos: labelHeight / 6
                 }
             ],
-            "occupation": [
-                {
+            "occupation": [{
                     label: "Developers",
                     xPos: labelWidth / 2,
                     yPos: labelHeight / 2 + 118
@@ -236,16 +230,13 @@ class BubbleChart {
         }
 
         vis.hoverData = {
-            0: [
-                {
-                    label: "Total",
-                    xPos: labelWidth / 2 + 5,
-                    yPos: labelHeight / 3 + 5,
-                    radius: 160,
-                }
-            ],
-            1: [
-                {
+            0: [{
+                label: "Total",
+                xPos: labelWidth / 2 + 5,
+                yPos: labelHeight / 3 + 5,
+                radius: 160,
+            }],
+            1: [{
                     label: "M",
                     xPos: 2 * labelWidth / 10 + 13,
                     yPos: labelHeight / 3 + 13,
@@ -259,13 +250,12 @@ class BubbleChart {
                 },
                 {
                     label: "Other-Gender",
-                    xPos: 9 * labelWidth / 10 - 5, 
+                    xPos: 9 * labelWidth / 10 - 5,
                     yPos: 4 * labelHeight / 5 - 5,
                     radius: 40
                 },
             ],
-            2: [
-                {
+            2: [{
                     label: "18-25",
                     xPos: 3 * labelWidth / 10 + 15,
                     yPos: 2 * labelHeight / 5 + 15,
@@ -275,13 +265,13 @@ class BubbleChart {
                     label: "26-35",
                     xPos: 8 * labelWidth / 10,
                     yPos: 2 * labelHeight / 5 + 10,
-                    radius: 110 
+                    radius: 110
                 },
                 {
                     label: "36-50",
                     xPos: 2 * labelWidth / 10 + 15,
                     yPos: 4 * labelHeight / 5,
-                    radius: 100 
+                    radius: 100
                 },
                 {
                     label: "51-75",
@@ -290,12 +280,11 @@ class BubbleChart {
                     radius: 40
                 },
             ],
-            3: [
-                {
+            3: [{
                     label: "White",
                     xPos: 4 * labelWidth / 10,
                     yPos: labelHeight / 2,
-                    radius: 95 
+                    radius: 95
                 },
                 {
                     label: "Asian",
@@ -316,8 +305,7 @@ class BubbleChart {
                     radius: 25
                 },
             ],
-            4: [
-                {
+            4: [{
                     label: "dev",
                     xPos: labelWidth / 2 + 5,
                     yPos: labelHeight / 2 + 5,
@@ -521,7 +509,7 @@ class BubbleChart {
                 }
             }
         }
-        
+
         console.log(counts)
 
         vis.nodes = d3.range(296).map(function (d, i) {
@@ -559,7 +547,59 @@ class BubbleChart {
     updateVis() {
         let vis = this;
 
-       
+
+        vis.texts = vis.svg.selectAll(".bubble-label")
+            .data(vis.bubbleLabels[vis.stepNames[vis.step]]);
+
+        vis.texts.enter()
+            .append("text")
+            .attr("class", "bubble-label")
+            .merge(vis.texts)
+            .transition()
+            .duration(1000)
+            .attr("x", d => d.xPos)
+            .attr("y", d => d.yPos)
+            .text(d => d.label)
+            .style("text-anchor", "middle")
+            .style("font-size", "20px")
+
+        vis.texts.exit().remove();
+
+        let circles = vis.svg.selectAll('.circle-bubble')
+            .data(vis.phaseData[vis.step]);
+
+        circles.enter()
+            .append('path')
+            // .attr('r', 6)
+            .merge(circles)
+            .transition()
+            .duration(1000)
+            .attr('class', function (d) {
+                let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
+                if (d["race"]) {
+                    className += ` circle-${d["race"][0]}`;
+                }
+                if (d["occupation"]) {
+                    className += ` circle-${d["occupation"][0]}`
+                }
+                return className;
+            })
+            .attr("d", vis.paths.e)
+            .attr('fill', d => vis.updateColors(d))
+            .attr("transform", function (d) {
+                return `translate(${d.x},${d.y}) scale(0.15)`
+            })
+        // .attr('cx', function (d) {
+        //     return d.x;
+        // })
+        // .attr('cy', function (d) {
+        //     return d.y;
+        // });
+
+        // circles.on('mouseover', highlight)
+        //     .on('mouseout', dehighlight);
+
+
         vis.hoverCircles = vis.svg.selectAll(".hover-circle")
             .data(vis.hoverData[vis.step])
 
@@ -579,94 +619,45 @@ class BubbleChart {
         vis.hoverCircles.exit().remove();
 
         vis.hoverCircles.on('mouseover', highlight)
-                .on('mouseout', dehighlight);
+            .on('mouseout', dehighlight);
 
-        vis.texts = vis.svg.selectAll(".bubble-label")
-        .data(vis.bubbleLabels[vis.stepNames[vis.step]]);
+        let groups = {
+            "gender": ["M", "F", "Other-Gender"],
+            "age": ["18-25", "26-35", "36-50", "51-75"],
+            "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
+            "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
+        }
 
-        vis.texts.enter()
-            .append("text")
-            .attr("class", "bubble-label")
-            .merge(vis.texts)
-            .transition()
-            .duration(1000)
-            .attr("x", d => d.xPos)
-            .attr("y", d => d.yPos)
-            .text(d => d.label)
-            .style("text-anchor", "middle")
-            .style("font-size", "20px")
 
-        vis.texts.exit().remove();
-
-        let circles = vis.svg.selectAll('.circle-bubble')
-                .data(vis.phaseData[vis.step]);
-
-            circles.enter()
-                .append('path')
-                // .attr('r', 6)
-                .merge(circles)
-                .transition()
-                .duration(1000)
-                .attr('class', function (d) {
-                    let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
-                    if (d["race"]) {
-                        className += ` circle-${d["race"][0]}`;
-                    } 
-                    if (d["occupation"]) {
-                        className += ` circle-${d["occupation"][0]}`
-                    }
-                    return className;
-                })
-                .attr("d", vis.paths.e)
-                .attr('fill', d => vis.updateColors(d))
-                .attr("transform", function (d) {
-                    return `translate(${d.x},${d.y}) scale(0.15)`
-                })
-            // .attr('cx', function (d) {
-            //     return d.x;
-            // })
-            // .attr('cy', function (d) {
-            //     return d.y;
-            // });
-
-            // circles.on('mouseover', highlight)
-            //     .on('mouseout', dehighlight);
-
-            let groups = {
-                "gender": ["M", "F", "Other-Gender"],
-                "age": ["18-25", "26-35", "36-50", "51-75"],
-                "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
-                "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
+        function highlight(e, d) {
+            let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
+            console.log("entered")
+            console.log(categories)
+            for (const category of categories) {
+                d3.selectAll(`.circle-${category}`)
+                    .style('fill', 'grey')
+                    .style('opacity', .3)
             }
 
-            function highlight(e, d) {
-                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
-                console.log(categories)
-                for (const category of categories) {
-                    d3.selectAll(`.circle-${category}`)
-                        .style('fill', 'grey')
-                        .style('opacity', .3)
-                }
+            $(vis.myEventHandler).trigger("bubbleHovered", d.label);
+        }
 
-                $(vis.myEventHandler).trigger("bubbleHovered", d.label);
+        function dehighlight(e, d) {
+            let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
+
+            for (const category of categories) {
+                d3.selectAll(`.circle-${category}`).style('fill', function (d) {
+                        if (d[vis.stepNames[vis.step]][1]) {
+                            return 'red';
+                        } else {
+                            return vis.colorScale[d[vis.stepNames[vis.step]][0]]
+                        }
+                    })
+                    .style('opacity', 1);
             }
-
-            function dehighlight(e, d) {
-                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
-
-                for (const category of categories) {
-                    d3.selectAll(`.circle-${category}`).style('fill', function (d) {
-                            if (d[vis.stepNames[vis.step]][1]) {
-                                return 'red';
-                            } else {
-                                return vis.colorScale[d[vis.stepNames[vis.step]][0]]
-                            }
-                        })
-                        .style('opacity', 1);
-                }
-                $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
-            }
-            circles.exit().remove();
+            $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
+        }
+        circles.exit().remove();
 
         // var simulation = d3.forceSimulation(vis.nodes)
         //     .force('charge', d3.forceManyBody().strength(2))
