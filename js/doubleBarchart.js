@@ -8,12 +8,18 @@ class DoubleBarchart {
         this.data = _data;
         this.surveyDemographics = _surveyDemographics;
         this.surveyGuesses = _surveyGuesses;
+        this.guessData = {
+            "gender": 50,
+            "age": 50,
+            "race": 50,
+            "job": 50
+        }
 
         this.displayData = [];
 
         console.log('hello')
 
-        this.initVis();
+        // this.initVis();
     }
 
     /*
@@ -55,6 +61,12 @@ class DoubleBarchart {
 
         vis.xAxis = d3.axisBottom(vis.xScale0).tickSizeOuter(axisTicks.outerSize);
         vis.yAxis = d3.axisLeft(vis.yScale).ticks(axisTicks.qty).tickSizeOuter(axisTicks.outerSize).tickFormat(axisTicks.tickFormat);
+
+        vis.xAxis_group = vis.svg.append("g")
+            .attr("class", "x-axis axis")
+            .attr("transform", `translate(0,${vis.height - vis.margin.top - vis.margin.bottom})`)
+        vis.yAxis_group = vis.svg.append("g")
+            .attr("class", "y-axis axis")
 
         //legend
         vis.svg.append('rect')
@@ -112,45 +124,64 @@ class DoubleBarchart {
         let age_min;
         let age_max;
         let category_label;
-
+        vis.surveyDemographics = [selectedGender, selectedAge, selectedRace, selectedJob];
+        vis.surveyGuesses = [vis.guessData.gender, vis.guessData.age, vis.guessData.race, vis.guessData.job]
+        console.log(vis.surveyGuesses)
         vis.surveyDemographics.forEach((d, i) => {
             let demoFilter;
 
             if (i == 0) {
-                if (d == 'F') {
-                    category_label = 'Female';
+                if (d == 'Female') {
+                    demoFilter = vis.data.filter(j => j.gender == 'F')
                 } else if (d == 'M') {
-                    category_label = 'Male';
+                    demoFilter = vis.data.filter(j => j.gender == 'M')
                 } else {
-                    category_label = 'Other';
+                    demoFilter = vis.data.filter(j => j.gender == 'Other')
                 }
-                demoFilter = vis.data.filter(j => j.gender == d)
+                category_label = d;
+
             } else if (i == 1) {
                 let age = d;
-                if (age == '18_25') {
+                if (age == '18-25') {
                     age_min = 18
                     age_max = 25
-                    category_label = '18-25'
-                } else if (age == '26_35') {
+                } else if (age == '26-35') {
                     age_min = 26
                     age_max = 35
-                    category_label = '26-35'
                 } else if (age == '36_50') {
                     age_min = 36
                     age_max = 50
-                    category_label = '36-50'
                 } else {
                     age_min = 51
                     age_max = 75
-                    category_label = '51-75'
                 }
+                category_label = d;
                 demoFilter = vis.data.filter(j => j.age >= age_min && j.age <= age_max)
             } else if (i == 2) {
                 category_label = d;
-                demoFilter = vis.data.filter(j => j.race == d)
+                if (d == 'Hispanic/Black'){
+                    demoFilter = vis.data.filter(j => j.race == 'Hispanic' || j.race == 'Black or African American')
+                }
+                else{
+                    demoFilter = vis.data.filter(j => j.race == d)
+                }
             } else {
+                if (d == 'Developer') {
+                    demoFilter = vis.data.filter(j => j.dev == 1)
+                }
+                else if(d=='Management'){
+                    demoFilter = vis.data.filter(j => j.mgmt == 1)
+                }
+                else if (d == 'Other'){
+                    demoFilter = vis.data.filter(j => j.other_job == 1)
+                }
+                else if (d == 'Designer'){
+                    demoFilter = vis.data.filter(j => j.designer == 1)
+                }
+                else{
+                    demoFilter = vis.data.filter(j => j.support == 1)
+                }
                 category_label = d;
-                demoFilter = vis.data.filter(j => j[d] == 1)
             }
 
             let disorder_filter = demoFilter.filter(j => j.disorder_diagnosed == "Yes" || j.past_disorder == "Yes" || j.disorder == "Yes")
@@ -166,18 +197,18 @@ class DoubleBarchart {
         });
 
 
-        //testing something - delete later
-        let filter = vis.data.filter(j => j.disorder == "Yes")
-        let count = filter.length;
-        let percentage = count / vis.data.length
-        console.log('percentage' + percentage)
+        // //testing something - delete later
+        // let filter = vis.data.filter(j => j.disorder == "Yes")
+        // let count = filter.length;
+        // let percentage = count / vis.data.length
+        // console.log('percentage' + percentage)
 
-        vis.guessData = {
-            "gender": 0,
-            "age": 0,
-            "race": 0,
-            "job": 0
-        }
+        // vis.guessData = {
+        //     "gender": 0,
+        //     "age": 0,
+        //     "race": 0,
+        //     "job": 0
+        // }
 
         console.log(vis.displayData);
         vis.updateVis();
@@ -199,12 +230,15 @@ class DoubleBarchart {
             .attr("transform", d => `translate(${vis.xScale0(d.category)},0)`);
 
         /* Add field1 bars */
-        vis.categoryName.selectAll(".bar.field1")
+        let guess_bar_data = vis.categoryName.selectAll(".bar.field1")
             .data(d => [d])
-            .enter()
+
+        guess_bar_data.enter()
             .append("rect")
             .attr("class", "bar field1")
             .style("fill", "blue")
+            .merge(guess_bar_data)
+            .transition().duration(300)
             .attr("x", d => vis.xScale1('guess'))
             .attr("y", d => vis.yScale(d.guess))
             .attr("width", vis.xScale1.bandwidth())
@@ -219,6 +253,7 @@ class DoubleBarchart {
             .attr('class', 'guess-label')
             .style('font-size', '11px')
             .merge(guess_label_data)
+            .transition().duration(300)
             .attr('x', d => vis.xScale1('guess') + vis.xScale1.bandwidth() / 3)
             .attr('y', d => vis.yScale(d.guess) - 10)
             .attr('fill', 'blue')
@@ -229,12 +264,14 @@ class DoubleBarchart {
         guess_label_data.exit().remove();
 
         // /* Add field2 bars */
-        vis.categoryName.selectAll(".bar.field2")
+        let actual_bar_data=vis.categoryName.selectAll(".bar.field2")
             .data(d => [d])
-            .enter()
+        actual_bar_data.enter()
             .append("rect")
             .attr("class", "bar field2")
             .style("fill", "red")
+            .merge(actual_bar_data)
+            .transition().duration(300)
             .attr("x", d => vis.xScale1('actual'))
             .attr("y", d => vis.yScale(d.actual))
             .attr("width", vis.xScale1.bandwidth())
@@ -249,6 +286,7 @@ class DoubleBarchart {
             .attr('class', 'guess-label')
             .style('font-size', '11px')
             .merge(actual_label_data)
+            .transition().duration(300)
             .attr('x', d => vis.xScale1('actual') + vis.xScale1.bandwidth() / 3)
             .attr('y', d => vis.yScale(d.actual) - 10)
             .attr('fill', 'red')
@@ -259,13 +297,10 @@ class DoubleBarchart {
         actual_label_data.exit().remove();
 
         // Add the X Axis
-        vis.svg.append("g")
-            .attr("class", "x-axis axis")
-            .attr("transform", `translate(0,${vis.height - vis.margin.top - vis.margin.bottom})`)
+        vis.xAxis_group
             .call(vis.xAxis);
         // Add the Y Axis
-        vis.svg.append("g")
-            .attr("class", "y-axis axis")
+        vis.yAxis_group
             .call(vis.yAxis);
     }
 
@@ -274,5 +309,6 @@ class DoubleBarchart {
         let splitVal = val.split(":");
         vis.guessData[splitVal[0]] = parseFloat(splitVal[1]);
         console.log(vis.guessData)
+        vis.wrangleData()
     }
 }

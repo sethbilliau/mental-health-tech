@@ -73,7 +73,7 @@
       <workItem from="1605496003272" duration="14000" />
       <workItem from="1605496019913" duration="170000" />
       <workItem from="1605573389985" duration="5281000" />
-      <workItem from="1605819544017" duration="54464000" />
+      <workItem from="1605819544017" duration="60912000" />
     </task>
     <servers />
   </component>
@@ -157,30 +157,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="492" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1605938725868" />
-    <state x="2983" y="0" width="627" height="1027" key="dock-window-1" timestamp="1605469885196">
+    <state x="2172" y="0" width="539" height="964" key="dock-window-1" timestamp="1606079477154">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2983" y="0" width="627" height="1027" key="dock-window-1/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605469885196" />
-    <state x="2366" y="231" key="run.anything.popup" timestamp="1606071431196">
+    <state x="2172" y="0" width="539" height="964" key="dock-window-1/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606079477154" />
+    <state x="2366" y="231" key="run.anything.popup" timestamp="1606083106583">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2366" y="231" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606071431196" />
+    <state x="2366" y="231" key="run.anything.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606083106583" />
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1606022914488" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605480580531">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605480580531" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/doubleBarchart.js</url>
-          <line>96</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
