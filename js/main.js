@@ -35,7 +35,7 @@ Promise.all(promises)
     .then( function(data){ initMainPage(data) })
     .catch( function (err){console.log(err)} );
 
-let surveyDemographics = ['F', '18_25', 'Black or African American', 'Developer'];
+let surveyDemographics = ['F', '18_25', 'Black or African American', 'dev'];
 let surveyGuesses = [25, 30, 35, 40];
 
 let MyEventHandler = {};
