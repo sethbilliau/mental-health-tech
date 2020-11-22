@@ -133,9 +133,16 @@ h6{
     color: black;
     font-size: 15px !important;
     font-weight: 300 !important;
-    line-height: 32px !important;
+    /*line-height: 32px !important;*/
 }
 
+p{
+    font-family: 'Source Sans Pro', sans-serif !important;
+    color: black;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    line-height: 32px !important;
+}
 em {
     color: #ff6666;
 }
