@@ -52,7 +52,7 @@ class BubbleChart {
             "designer": "yellow"
         };
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
-        // vis.step = 0;
+        vis.step = 0;
 
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
