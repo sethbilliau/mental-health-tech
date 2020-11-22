@@ -336,6 +336,11 @@ div.section {
     top: 0;
 }
 
+/* sankey vis */
+.sankey_label{
+    font-weight:500 !important;
+}
+
 /* Vertical Navigation Bar*/
 
 #cd-vertical-nav a {
