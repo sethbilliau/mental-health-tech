@@ -509,3 +509,10 @@ ul {
 .tooltip p {
     font: 6px;
 }
+
+.team-img {
+    float: center;
+    width:  200px;
+    height: 225px;
+    object-fit: cover;
+}
