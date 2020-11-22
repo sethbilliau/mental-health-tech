@@ -142,7 +142,7 @@ class BubbleChart {
                 {
                     label: "By Gender",
                     xPos: labelWidth / 2,
-                    yPos: labelHeight / 6
+                    yPos: labelHeight / 6 - 20
                 }
             ],
             "age": [{
@@ -590,12 +590,9 @@ class BubbleChart {
             .attr("transform", function (d) {
                 return `translate(${d.x},${d.y}) scale(0.15)`
             })
-        // .attr('cx', function (d) {
-        //     return d.x;
-        // })
-        // .attr('cy', function (d) {
-        //     return d.y;
-        // });
+
+        circles.exit().remove();
+
 
         // circles.on('mouseover', highlight)
         //     .on('mouseout', dehighlight);
@@ -615,6 +612,7 @@ class BubbleChart {
             .attr("cx", d => d.xPos)
             .attr("cy", d => d.yPos)
             .attr("opacity", 0.1)
+            .attr('pointer-events', 'all')
 
 
         vis.hoverCircles.exit().remove();
@@ -631,37 +629,42 @@ class BubbleChart {
 
 
         function highlight(e, d) {
-            let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
-            console.log("entered")
-            console.log(categories)
-            for (const category of categories) {
-                d3.selectAll(`.circle-${category}`)
-                    .style('fill', 'grey')
-                    .style('opacity', .3)
+            if (vis.step !== 0) {
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el !== d.label);
+                console.log("entered")
+                console.log(categories)
+                for (const category of categories) {
+                    d3.selectAll(`.circle-${category}`)
+                        .style('fill', 'grey')
+                        .style('opacity', .3)
+                }
             }
+           
             $('html, body').animate({
-                scrollTop: $(`#step${vis.step+1}`).offset().top - 70
+                scrollTop: $(`#step${vis.step+1}`).offset().top - 90
             }, 1000);
 
             $(vis.myEventHandler).trigger("bubbleHovered", d.label);
         }
 
         function dehighlight(e, d) {
-            let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
+            if (vis.step !== 0) {
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d.label);
 
-            for (const category of categories) {
-                d3.selectAll(`.circle-${category}`).style('fill', function (d) {
-                        if (d[vis.stepNames[vis.step]][1]) {
-                            return 'red';
-                        } else {
-                            return vis.colorScale[d[vis.stepNames[vis.step]][0]]
-                        }
-                    })
-                    .style('opacity', 1);
+                for (const category of categories) {
+                    d3.selectAll(`.circle-${category}`).style('fill', function (d) {
+                            if (d[vis.stepNames[vis.step]][1]) {
+                                return 'red';
+                            } else {
+                                return vis.colorScale[d[vis.stepNames[vis.step]][0]]
+                            }
+                        })
+                        .style('opacity', 1);
+                }
             }
+           
             $(`#step${vis.step+1}`).html(`<h5>Text ${vis.step+1}</h5>`);
         }
-        circles.exit().remove();
 
         // var simulation = d3.forceSimulation(vis.nodes)
         //     .force('charge', d3.forceManyBody().strength(2))

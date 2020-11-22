@@ -51,6 +51,7 @@ class BubbleBar {
             .attr("class", "y-axis axis");
 
         vis.colorScale = {
+            "Total": 'orange',
             "M": 'orange',
             "F": 'lightblue',
             "Other-Gender": '#B19CD9',
@@ -70,6 +71,7 @@ class BubbleBar {
         };
 
         vis.step = {
+            "Total": 0,
             "M": 1,
             "F": 1,
             "Other-Gender": 1,
@@ -156,6 +158,10 @@ class BubbleBar {
                     for (const key of keys) {
                         vis.filteredData[key] += parseInt(el[key]);
                     }
+                }
+            } else {
+                for (const key of keys) {
+                    vis.filteredData[key] += parseInt(el[key]);
                 }
             }
         })
