@@ -16,7 +16,7 @@ class SankeyVis {
         let vis = this;
 
         vis.margin = {
-            top: 30,
+            top: 45,
             right: 20,
             bottom: 20,
             left: 100
@@ -32,38 +32,141 @@ class SankeyVis {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
+        let font_size = '12px'
+        //Question 1 Label
+        let q1_xpos =vis.width/30
         vis.svg.append('text')
-            .attr('id', 'sankey_tech_q')
-            .attr('x', 0)
-            .attr('y', -20)
-            .attr('text-anchor', 'middle')
-            .style('font-size', '12px')
-            .text('Out of 5 (best), how well does the tech industry support MH?')
-
-        vis.svg.append('text')
-            .attr('id', 'sankey_formal_q')
-            .attr('x', vis.width/3)
-            .attr('y', 0)
-            .attr('text-anchor', 'middle')
-            .style('font-size', '12px')
-            .text('Has your employer ever formally discussed MH?')
-
-        vis.svg.append('text')
-            .attr('id', 'sankey_resources_q1')
-            .attr('x', vis.width/2)
+            .attr('class', 'sankey_label')
+            .attr('x', q1_xpos)
             .attr('y', -30)
             .attr('text-anchor', 'middle')
-            .style('font-size', '12px')
-            .text('Does your employer offer resources to learn')
+            .style('font-size', font_size)
+            .text('Out of 5 (best), how')
         vis.svg.append('text')
-            .attr('id', 'sankey_resources_q2')
-            .attr('x', vis.width/2)
+            .attr('class', 'sankey_label')
+            .attr('x', q1_xpos)
             .attr('y', -20)
             .attr('text-anchor', 'middle')
-            .style('font-size', '12px')
-            .text('more about MH and options for seeking help?')
+            .style('font-size', font_size)
+            .text('well does the tech industry')
+            vis.svg.append('text')
+                .attr('class', 'sankey_label')
+                .attr('x', q1_xpos)
+                .attr('y', -10)
+                .attr('text-anchor', 'middle')
+                .style('font-size', font_size)
+                .text('support MH?')
+
+        //Question 2 Label
+        let q2_xpos = vis.width/3.8
+
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q2_xpos)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('Has your employer')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q2_xpos)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('ever formally')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q2_xpos)
+            .attr('y', -10)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('discussed MH?')
+
+        //Question 3 Label
+        let q3_xpos = vis.width/2;
+
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q3_xpos)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('Does your employer offer resources')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q3_xpos)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('to learn more about MH and')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q3_xpos)
+            .attr('y', -10)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('options for seeking help?')
+
+        //Question 4 Label
+        let q4_xpos = vis.width/1.35;
+
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q4_xpos)
+            .attr('y', -30)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('Have you ever witnessed')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q4_xpos)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('a badly handled response')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q4_xpos)
+            .attr('y', -10)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('to a MH issue at work?')
+
+        //Question 5 Label
+        let q5_xpos = vis.width/1.06
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q5_xpos)
+            .attr('y', -35)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('Would you feel')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q5_xpos)
+            .attr('y', -25)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('comfortable discussing')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q5_xpos)
+            .attr('y', -15)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('an MH issue')
+        vis.svg.append('text')
+            .attr('class', 'sankey_label')
+            .attr('x', q5_xpos)
+            .attr('y', -5)
+            .attr('text-anchor', 'middle')
+            .style('font-size', font_size)
+            .text('with your coworkers?')
+
+        //)
 
         vis.wrangleData();
+
     }
 
     wrangleData() {
