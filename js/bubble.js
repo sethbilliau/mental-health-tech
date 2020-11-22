@@ -18,8 +18,9 @@ class BubbleChart {
             left: 40
         };
 
-        vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
-            vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+        // Harcoded so that particles don't fly around
+        vis.width = 538.078;
+        vis.height = 616.797;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -638,6 +639,9 @@ class BubbleChart {
                     .style('fill', 'grey')
                     .style('opacity', .3)
             }
+            $('html, body').animate({
+                scrollTop: $(`#step${vis.step+1}`).offset().top - 70
+            }, 1000);
 
             $(vis.myEventHandler).trigger("bubbleHovered", d.label);
         }
