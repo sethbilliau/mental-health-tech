@@ -109,10 +109,10 @@ class DoubleLine {
         let vis = this;
         vis.x.domain(d3.extent(vis.displayData, d => vis.parseYear(d.year)))
 
-        // const tooltip = d3.select("body").append("div")
-        //     .attr("class", "tooltip-line")
-        //     .style("opacity", 0)
-        //     .style("position", "absolute");
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip-line")
+            .style("opacity", 0)
+            .style("position", "absolute");
 
 
         let line = d3.line()
@@ -122,18 +122,10 @@ class DoubleLine {
 
         vis.svg.append("path")
             .datum(vis.displayData)
-            .attr('clip-path', 'url(#clip)')
             .attr("fill", "none")
             .style("stroke", "red")
             .style("stroke-width", "2")
             .attr("d", line);
-
-
-        vis.svg.append("clipPath")
-            .attr("id", "clip")
-            .append("rect")
-            .attr("width", vis.width)
-            .attr("height", vis.height);
 
         // Add the x-axis.
         vis.svg.append("g")
@@ -153,7 +145,43 @@ class DoubleLine {
             .attr("cx", d => vis.x(vis.parseYear(d.year)))
             .attr("cy", d => vis.y(parseFloat(d.count)))
             .attr("r", 5)
-            .attr("fill", "red");
+            .attr("fill", "red")
+            .on('mouseover', function (event, d) {
+                tooltip.transition()
+                    .delay(30)
+                    .duration(200)
+                    .style("opacity", 1);
+
+                tooltip.html(
+                        `
+                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px;">
+                    <h6> Percent with mental health disorder: ${d.count}%</h6>                   
+                </div>`
+                    )
+                    .style("left", (event.pageX + 25) + "px")
+                    .style("top", (event.pageY) + "px");
+
+                const selection = d3.select(this).raise();
+
+                selection
+                    .transition()
+                    .delay("20")
+                    .duration("200")
+                    .attr("r", 10)
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+
+                const selection = d3.select(this);
+
+                selection
+                    .transition()
+                    .delay("20")
+                    .duration("200")
+                    .attr("r", 5)
+            });;
 
         let curtain = vis.svg.append('rect')
             .attr('x', -1 * vis.width - 5)
