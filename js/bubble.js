@@ -52,7 +52,7 @@ class BubbleChart {
             "designer": "yellow"
         };
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
-        // vis.step = 0;
+        vis.step = 0;
 
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
@@ -667,6 +667,7 @@ class BubbleChart {
                 }
             }
             if(vis.step == 0){
+                console.log('LOOK AT ME HERE')
                 $(`#step${vis.step+1}`).html(`<h5><br><strong>41%</strong> of all respondents said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
             }
             if(vis.step == 1){

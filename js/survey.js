@@ -29,6 +29,7 @@ function questionaire() {
     d3.select("#q1").on("change", function () {
         a1 = d3.select('input[name="q1"]:checked').property("value");
         an1.push(+a1);
+        selectedGender = op1[a1];
         var section = 1;
         document.getElementById("q1").innerHTML = "<p class='smalltext' style='color:#404040;'>" + q1[1] + "<br><br>" + op1[a1] + "</p>"
 
@@ -39,6 +40,7 @@ function questionaire() {
     d3.select("#q2").on("change", function () {
         a2 = d3.select('input[name="q2"]:checked').property("value");
         an2.push(+a2);
+        selectedAge = op2[a2];
         var q = "<p class='smalltext' style='color:#404040;'>" + q2[1] + "<br><br>" + op2[a2] + "</p>"
         document.getElementById("q2").innerHTML = q;
         var q_2 = "<p class='smalltext' data-aos='fade-in'><b>" + q3[1] + "</b></p><form id='question" + q3[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Asian<br><input type='radio' name='group-stack' value=1>Hispanic/Black<br><input type='radio' name='group-stack' value=2>White<br><input type='radio' name='group-stack' value=3>Other</form>"
@@ -49,6 +51,7 @@ function questionaire() {
     d3.select("#q3").on("change", function () {
         a3 = d3.select('input[name="group-stack"]:checked').node().value;
         an3.push(+a3);
+        selectedRace = op3[a3];
         var q = "<p class='smalltext' style='color:#404040;'>" + q3[1] + "<br><br>" + op3[a3] + "</p>"
         document.getElementById("q3").innerHTML = q;
         var q_3 = "<p class='smalltext' data-aos='fade-in'><b>" + q4[1] + "</b></p><form id='question" + q4[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Developer<br><input type='radio' name='group-stack' value=1>Operations/Management<br><input type='radio' name='group-stack' value=2>Support<br><input type='radio' name='group-stack' value=3>Designer<br><input type='radio' name='group-stack' value=4>Other</form>"
@@ -59,40 +62,107 @@ function questionaire() {
     d3.select("#q4").on("change", function () {
         a4 = d3.select('input[name="group-stack"]:checked').node().value;
         an4.push(+a4);
+        selectedJob = op4[a4];
         var q_4 = "<p class='smalltext' style='color:#404040;'>" + q4[1] + "<br><br>" + op4[a4] + "</p>"
         document.getElementById("q4").innerHTML = q_4;
         var q_5 = `<p><b>${q5[1]}</b></p>`
         document.getElementById("q5").innerHTML = q_5;
 
         var data = [0, 1]
-        var sliderVertical = d3
-            .sliderLeft()
+        var sliderFill = d3
+            .sliderBottom()
             .min(d3.min(data))
             .max(d3.max(data))
-            .height(300)
+            .width(200)
             .tickFormat(d3.format('.0%'))
             .ticks(4)
             .default(0.5)
-            .handle(
-                d3
-                  .symbol()
-                  .type(d3.symbolCircle)
-                  .size(200)()
-              )
+            .fill('#2196f3')
             .on('onchange', val => {
-                d3.select('p#value-vertical').text(d3.format('.0%')(val));
+                let valString = "gender:" + val
+                $(MyEventHandler2).trigger("sliderChanged", valString);
             });
 
-        var gVertical = d3
-            .select('div#slider-vertical')
+        var gFill = d3
+            .select('div#slider-fill')
             .append('svg')
-            .attr('width', 100)
-            .attr('height', 400)
+            .attr('width', 300)
+            .attr('height', 100)
             .append('g')
-            .attr('transform', 'translate(60,30)');
+            .attr('transform', 'translate(30,30)');
 
-        gVertical.call(sliderVertical);
+        gFill.call(sliderFill);
 
-        d3.select('p#value-vertical').text(d3.format('.0%')(sliderVertical.value()));
+        var sliderFill2 = d3
+            .sliderBottom()
+            .min(d3.min(data))
+            .max(d3.max(data))
+            .width(200)
+            .tickFormat(d3.format('.0%'))
+            .ticks(4)
+            .default(0.5)
+            .fill('#2196f3')
+            .on('onchange', val => {
+                let valString = "age:" + val
+                $(MyEventHandler2).trigger("sliderChanged", valString);
+            });
+
+        var gFill2 = d3
+            .select('div#slider-fill2')
+            .append('svg')
+            .attr('width', 300)
+            .attr('height', 100)
+            .append('g')
+            .attr('transform', 'translate(30,30)');
+
+        gFill2.call(sliderFill2);
+
+        var sliderFill3 = d3
+            .sliderBottom()
+            .min(d3.min(data))
+            .max(d3.max(data))
+            .width(200)
+            .tickFormat(d3.format('.0%'))
+            .ticks(4)
+            .default(0.5)
+            .fill('#2196f3')
+            .on('onchange', val => {
+                let valString = "race:" + val
+                $(MyEventHandler2).trigger("sliderChanged", valString);
+            });
+
+        var gFill3 = d3
+            .select('div#slider-fill3')
+            .append('svg')
+            .attr('width', 300)
+            .attr('height', 100)
+            .append('g')
+            .attr('transform', 'translate(30,30)');
+
+        gFill3.call(sliderFill3);
+
+        var sliderFill4 = d3
+            .sliderBottom()
+            .min(d3.min(data))
+            .max(d3.max(data))
+            .width(200)
+            .tickFormat(d3.format('.0%'))
+            .ticks(4)
+            .default(0.5)
+            .fill('#2196f3')
+            .on('onchange', val => {
+                let valString = "job:" + val
+                $(MyEventHandler2).trigger("sliderChanged", valString);
+            });
+
+        var gFill4 = d3
+            .select('div#slider-fill4')
+            .append('svg')
+            .attr('width', 300)
+            .attr('height', 100)
+            .append('g')
+            .attr('transform', 'translate(30,30)');
+
+        gFill4.call(sliderFill4);
     });
 }
