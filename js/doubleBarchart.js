@@ -166,6 +166,11 @@ class DoubleBarchart {
 
         });
 
+        //testing something - delete later
+        let filter = vis.data.filter(j => j.disorder == "Yes")
+        let count = filter.length;
+        let percentage = count / vis.data.length
+        console.log('percentage' + percentage)
         console.log(vis.displayData);
         vis.updateVis();
     }
