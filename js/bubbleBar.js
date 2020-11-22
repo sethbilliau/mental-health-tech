@@ -12,8 +12,8 @@ class BubbleBar {
         vis.margin = {
             top: 20,
             right: 20,
-            bottom: 60,
-            left: 40
+            bottom: 20,
+            left: 100
         };
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,
@@ -30,27 +30,28 @@ class BubbleBar {
         // vis.subfilter = "M";
 
 
-        vis.x = d3.scaleBand()
-            .rangeRound([0, vis.width])
+        vis.x = d3.scaleLinear()
+            .range([0, vis.width]);
+
+        vis.y = d3.scaleBand()
+            .rangeRound([vis.height, 0])
             .paddingInner(0.1);
 
-        vis.y = d3.scaleLinear()
-            .range([vis.height, 0]);
-
-        vis.xAxis = d3.axisBottom()
-            .scale(vis.x);
+        vis.xAxis = d3.axisTop()
+            .scale(vis.x)
+            .ticks(6);
 
         vis.yAxis = d3.axisLeft()
             .scale(vis.y);
 
         let xAxisGroup = vis.svg.append("g")
-            .attr("class", "x-axis axis")
-            .attr("transform", `translate(0,${vis.height})`);
+            .attr("class", "x-axis axis");
 
         let yAxisGroup = vis.svg.append("g")
             .attr("class", "y-axis axis");
 
         vis.colorScale = {
+            "Total": 'orange',
             "M": 'orange',
             "F": 'lightblue',
             "Other-Gender": '#B19CD9',
@@ -70,6 +71,7 @@ class BubbleBar {
         };
 
         vis.step = {
+            "Total": 0,
             "M": 1,
             "F": 1,
             "Other-Gender": 1,
@@ -157,6 +159,10 @@ class BubbleBar {
                         vis.filteredData[key] += parseInt(el[key]);
                     }
                 }
+            } else {
+                for (const key of keys) {
+                    vis.filteredData[key] += parseInt(el[key]);
+                }
             }
         })
 
@@ -173,16 +179,16 @@ class BubbleBar {
         }
 
 
-        vis.displayData.sort((a, b) => b.count - a.count);
+        vis.displayData.sort((a, b) => a.count - b.count);
 
-        // console.log(vis.displayData)
+        console.log(vis.displayData)
         this.updateVis();
     }
 
     updateVis() {
         let vis = this;
-        vis.x.domain(vis.displayData.map(d => d.name));
-        vis.y.domain([0, d3.max(vis.displayData, d => d.count)]);
+        vis.y.domain(vis.displayData.map(d => d.name));
+        vis.x.domain([0, d3.max(vis.displayData, d => d.count)]);
 
         let bars = vis.svg.selectAll(".rect-disorders")
             .data(vis.displayData);
@@ -192,10 +198,10 @@ class BubbleBar {
             .transition()
             .duration(1000)
             .attr("class", "rect-disorders")
-            .attr("x", d => vis.x(d.name))
-            .attr("y", d => vis.y(d.count))
-            .attr("width", vis.x.bandwidth())
-            .attr("height", d => vis.height - vis.y(d.count))
+            .attr("x", 0)
+            .attr("y", d => vis.y(d.name))
+            .attr("width", d => vis.x(d.count))
+            .attr("height", vis.y.bandwidth())
             .attr("fill", vis.colorScale[vis.subfilter]);
 
         bars.exit().remove();
@@ -203,13 +209,7 @@ class BubbleBar {
         vis.svg.select(".x-axis")
             .transition()
             .duration(1000)
-            .call(vis.xAxis)
-            .selectAll("text")
-            .attr("y", 0)
-            .attr("x", 9)
-            .attr("dy", ".35em")
-            .attr("transform", "rotate(90)")
-            .style("text-anchor", "start");
+            .call(vis.xAxis);
 
         vis.svg.select(".y-axis")
             .transition()
@@ -221,6 +221,7 @@ class BubbleBar {
         let vis = this;
         // console.log(key);
         vis.subfilter = key;
+        console.log(key)
         $(`#step${vis.step[key]+1}`).html('<div id="bubble-bar"></div>');
         vis.initVis();
     }
