@@ -67,7 +67,8 @@ function questionaire() {
         document.getElementById("q4").innerHTML = q_4;
         var q_5 = `<p><b>${q5[1]}</b></p>`
         document.getElementById("q5").innerHTML = q_5;
-
+        document.getElementById("barchart-container").innerHTML = "<div id = 'double-barchart'></div>";
+        myDoubleBar.initVis();
         var data = [0, 1]
         var sliderFill = d3
             .sliderBottom()
