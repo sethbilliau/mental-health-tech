@@ -38,7 +38,8 @@ class BubbleBar {
             .paddingInner(0.1);
 
         vis.xAxis = d3.axisTop()
-            .scale(vis.x);
+            .scale(vis.x)
+            .ticks(6);
 
         vis.yAxis = d3.axisLeft()
             .scale(vis.y);
@@ -214,6 +215,7 @@ class BubbleBar {
         let vis = this;
         // console.log(key);
         vis.subfilter = key;
+        console.log(key)
         $(`#step${vis.step[key]+1}`).html('<div id="bubble-bar"></div>');
         vis.initVis();
     }
