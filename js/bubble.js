@@ -644,10 +644,11 @@ class BubbleChart {
                 }
             }
            
-            $('html, body').animate({
-                scrollTop: $(`#step${vis.step+1}`).offset().top - 90
-            }, 1000);
+            // $('html, body').animate({
+            //     scrollTop: $(`#step${vis.step+1}`).offset().top - 90
+            // }, 1000);
 
+            $('body').addClass('stop-scrolling');
             $(vis.myEventHandler).trigger("bubbleHovered", d.label);
         }
 
@@ -683,6 +684,7 @@ class BubbleChart {
                 $(`#step${vis.step+1}`).html(`<h5><strong>Designers</strong> had the highest proportion of mental health issues. <strong>Developers</strong> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
            
+            $('body').removeClass('stop-scrolling');
 
         }
 

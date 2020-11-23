@@ -1,7 +1,7 @@
 //credit goes to Loneliness Vis
 
 questionaire(); // for avoiding naming issue
-
+initSliders();
 
 
 
@@ -67,11 +67,25 @@ function questionaire() {
         document.getElementById("q4").innerHTML = q_4;
         var q_5 = `<p><b>${q5[1]}</b></p>`
         document.getElementById("q5").innerHTML = q_5;
-        document.getElementById("barchart-container").innerHTML = "<div id = 'double-barchart'></div>";
+        // document.getElementById("barchart-container").innerHTML = "<div id = 'double-barchart'></div>";
+
+        $("#double-barchart").css({visibility: "visible"});
         document.getElementById('barchart-caption').innerHTML ="You submitted your expectations. Here's the <strong>reality</strong> according to the Open Source Mental Health Survey:"
         document.getElementById('barchart-transition').innerHTML = "And it's not just your demographic groups that are struggling..."
         myDoubleBar.initVis();
-        var data = [0, 1]
+
+        $("#slider-fill").css({ visibility: "visible"});
+        $("#slider-fill2").css({ visibility: "visible"});
+        $("#slider-fill3").css({ visibility: "visible"});
+        $("#slider-fill4").css({ visibility: "visible"});
+        $(".container").css({ visibility: "visible"});;
+
+        // bubbleChart.initVis();
+    });
+}
+
+function initSliders() {
+    var data = [0, 1]
         var sliderFill = d3
             .sliderBottom()
             .min(d3.min(data))
@@ -167,5 +181,5 @@ function questionaire() {
             .attr('transform', 'translate(30,30)');
 
         gFill4.call(sliderFill4);
-    });
+
 }
