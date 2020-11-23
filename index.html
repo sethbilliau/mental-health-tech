@@ -93,9 +93,10 @@
 	</div>
 
 	<div class="section nav-section" id="section1"
-		style="background-position: center bottom; background-repeat: no-repeat; background-size: cover; padding-top: 35vh; padding-bottom: 35vh;">
+		style="padding-top: 35vh; padding-bottom: 35vh;">
 		<div data-aos="fade-in">
 			<h1 id="title"></h1>
+			<h5 id="subtitle"></h5>
 		</div>
 	</div>
 
@@ -158,19 +159,25 @@
 		</div>
 		<div class="row align-items-center">
 			<div class="col-sm-3">
-				<div id="slider-fill"></div>
+				<div style="visibility: hidden;" id="slider-fill"></div>
 			</div>
 			<div class="col-sm-3">
-				<div id="slider-fill2"></div>
+				<div style="visibility: hidden;" id="slider-fill2"></div>
 			</div>
 			<div class="col-sm-3">
-				<div id="slider-fill3"></div>
+				<div style="visibility: hidden;" id="slider-fill3"></div>
 			</div>
 			<div class="col-sm-3">
-				<div id="slider-fill4"></div>
+				<div style="visibility: hidden;" id="slider-fill4"></div>
 			</div>
 		</div>
-<!--		<div style="height:150px"></div>-->
+		<div class="container" style="visibility: hidden;" onclick="onScrollClick()">
+			<div class="chevron"></div>
+			<div class="chevron"></div>
+			<div class="chevron"></div>
+			<span class="scroll-text">Scroll down</span>
+		  </div>
+		<div style="height:250px"></div>
 
 	</div>
 
@@ -183,7 +190,7 @@
 			<h5 style="text-align: center;" id = 'barchart-caption'></h5>
 			<div style="height:20px"></div>
 			<div class="col-md-12 align-items-center" id = 'barchart-container'>
-				<div id="double-barchart"></div>
+				<div id="double-barchart" style="visibility: hidden;"></div>
 			</div>
 			<div class='col-md-12'>
 				<h5 style='text-align: center;' id = 'barchart-transition'></h5>
@@ -442,6 +449,8 @@
 	<script src="libraries/d3-geo-projection.v2.min.js"></script>
 	<script src="libraries/navigation.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+
 
 
 	<!-- OptionalJS -->
