@@ -94,11 +94,29 @@ function generateText() {
 
 
 
-new TypeIt("#title", {
-    strings: "Mental Health in the Tech Industry",
+let title = new TypeIt("#title", {
     speed: 50,
-    waitUntilVisible: true
-  }).go();
+    waitUntilVisible: true,
+    lifeLike: true,
+    afterComplete: async(step, instance) => {
+        new TypeIt("#subtitle", {
+            speed: 50,
+            lifeLike: true,
+          })
+          .type("Mental Health in the Tech Industry")
+          .go();
+        title.destroy();
+    }
+  })
+  .type("More than Just Code?", {delay: 1000})
+  .delete(1)
+  .type(".", {delay: 1000})
+//   .type("<br><h5>Mental Health in the Tech Industry</h5>")
+  .move('END')
+  .go();
+
+
+
 
 // new TypeIt("#text1", {
 //     strings: "Here's the <em><strong>reality</strong></em> on the % of tech professionals suffering from a mental health disorder.",
@@ -115,3 +133,10 @@ $(MyEventHandler).bind("bubbleHovered", function(event, key) {
 $(MyEventHandler2).bind("sliderChanged", function (event, value) {
     myDoubleBar.onSliderChanged(value);
 })
+
+function onScrollClick(e) {
+    $('html, body').animate({
+        scrollTop: $(`#section4`).offset().top - 90
+    }, 1000);
+
+}
