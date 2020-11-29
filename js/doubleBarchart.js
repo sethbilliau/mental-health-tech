@@ -130,14 +130,15 @@ class DoubleBarchart {
         vis.displayData = []
         vis.surveyDemographics = [selectedGender, selectedAge, selectedRace, selectedJob];
         vis.surveyGuesses = [vis.guessData.gender, vis.guessData.age, vis.guessData.race, vis.guessData.job]
-        console.log(vis.surveyGuesses)
+        console.log(vis.data)
         vis.surveyDemographics.forEach((d, i) => {
             let demoFilter;
 
             if (i == 0) {
                 if (d == 'Female') {
+                    console.log('Female')
                     demoFilter = vis.data.filter(j => j.gender == 'F')
-                } else if (d == 'M') {
+                } else if (d == 'Male') {
                     demoFilter = vis.data.filter(j => j.gender == 'M')
                 } else {
                     demoFilter = vis.data.filter(j => j.gender == 'Other')
@@ -166,6 +167,11 @@ class DoubleBarchart {
                 if (d == 'Hispanic/Black'){
                     demoFilter = vis.data.filter(j => j.race == 'Hispanic' || j.race == 'Black or African American')
                 }
+                else if (d == 'Other Race'){
+                    console.log('other race')
+                    demoFilter = vis.data.filter(j => j.race != 'Hispanic' && j.race != 'Black or African American' && j.race != 'Asian' && j.race != 'White'&& j.race != 'NA')
+                    console.log(demoFilter)
+                }
                 else{
                     demoFilter = vis.data.filter(j => j.race == d)
                 }
@@ -176,8 +182,10 @@ class DoubleBarchart {
                 else if(d=='Management'){
                     demoFilter = vis.data.filter(j => j.mgmt == 1)
                 }
-                else if (d == 'Other'){
+                else if (d == 'Other Role'){
+                    console.log('other job');
                     demoFilter = vis.data.filter(j => j.other_job == 1)
+                    console.log(demoFilter)
                 }
                 else if (d == 'Designer'){
                     demoFilter = vis.data.filter(j => j.designer == 1)
@@ -188,7 +196,8 @@ class DoubleBarchart {
                 category_label = d;
             }
 
-            let disorder_filter = demoFilter.filter(j => j.disorder_diagnosed == "Yes" || j.past_disorder == "Yes" || j.disorder == "Yes")
+            let disorder_filter = demoFilter.filter(j => j.disorder == "Yes")
+            // let disorder_filter = demoFilter.filter(j => j.disorder_diagnosed == "Yes" || j.past_disorder == "Yes" || j.disorder == "Yes")
             let disorder_count = disorder_filter.length;
             let disorder_percentage = disorder_count / demoFilter.length
 
