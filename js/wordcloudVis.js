@@ -80,9 +80,10 @@ class WordCloudVis {
            vis.words.enter().append("text")
                .merge(vis.words)
                 .style("font-size", function(d) { return d.size + "px"; })
-                // .style("fill", "white")
+                // .style("fill", )
                 .style("font-family", "Impact")
                 .attr("text-anchor", "middle")
+               .attr("id", function(d) { return d.text; })
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
                 })
@@ -95,8 +96,18 @@ class WordCloudVis {
 
         vis.layout.words(vis.displayData);
 
+
         vis.layout.start();
 
+    }
+
+    highlight(i) {
+        d3.select("#" + i.text).style('fill', "cornflowerblue")
+
+    }
+
+    unhighlight(i) {
+        d3.select("#" + i.text).style('fill', "black")
     }
 
 }
