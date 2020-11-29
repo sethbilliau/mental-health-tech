@@ -145,3 +145,12 @@ function onScrollClick(e) {
     }, 1000);
 
 }
+
+function onMouseOver(d, i) {
+    myCloudVis.highlight(i);
+}
+
+
+function onMouseOut(d, i) {
+    myCloudVis.unhighlight(i);
+}

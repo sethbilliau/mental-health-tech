@@ -78,7 +78,8 @@ class WordBar {
         this.updateVis();
     }
 
-    updateVis() {
+    updateVis(input) {
+
         let vis = this;
         vis.x.domain([0, d3.max(vis.displayData, d => d.size)]);
         vis.y.domain(vis.displayData.map(d => d.text));
@@ -87,6 +88,8 @@ class WordBar {
             .data(vis.displayData);
 
         bars.enter().append("rect")
+            .on("mouseover", onMouseOver) //Add listener for the mouseover event
+            .on("mouseout", onMouseOut)   //Add listener for the mouseout event;
             .merge(bars)
             .transition()
             .duration(1000)
@@ -95,21 +98,15 @@ class WordBar {
             .attr("y", d => vis.y(d.text))
             .attr("width", d => vis.x(d.size))
             .attr("height", vis.y.bandwidth())
-            .attr("fill", "cornflowerblue");
+            .attr("fill", "cornflowerblue")
+
 
         bars.exit().remove();
 
         vis.svg.select(".x-axis")
             .transition()
             .duration(1000)
-            .call(vis.xAxis)
-            // .selectAll("text")
-            // .attr("y", 0)
-            // .attr("x", 2)
-            // .style("text-anchor", "end")
-            // .attr("dx", "-.8em")
-            // .attr("dy", ".15em")
-            // .attr("transform", "rotate(-90)");
+            .call(vis.xAxis);
 
         vis.svg.select(".y-axis")
             .transition()
