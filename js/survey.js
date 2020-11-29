@@ -11,18 +11,18 @@ function questionaire() {
     var q3 = [3, "What is your race?"];
     var q4 = [4, "What is your work position?"];
     var q5 = [5, "What % of tech professionals in each group have a mental health disorder?"]
-    var op1 = ["Male", "Female", "Other"],
+    var op1 = ["Male", "Female", "Other Gender"],
         an1 = [];
     var op2 = ['18-25', '26-35', '36-50', '51-75'],
         an2 = []
-    var op3 = ['Asian', 'Hispanic/Black', 'White', 'Other'],
+    var op3 = ['Asian', 'Hispanic/Black', 'White', 'Other Race'],
         an3 = []
-    var op4 = ['Developer', 'Operations/Management', 'Support', "Designer", "Other"],
+    var op4 = ['Developer', 'Operations/Management', 'Support', "Designer", "Other Role"],
         an4 = []
 
 
 
-    var q_1 = "<p class='smalltext' data-aos='fade-in'><b>" + q1[1] + "</b></p><form id='question" + q1[0] + "'data-aos='fade-in'><input type='radio' name='q1' value='1'>Female<br><input type='radio' name='q1' value='0'>Male<br><input type='radio' name='q1' value='2'>Other</form>";
+    var q_1 = "<p class='smalltext' data-aos='fade-in'><b>" + q1[1] + "</b></p><form id='question" + q1[0] + "'data-aos='fade-in'><input type='radio' name='q1' value='1'>Female<br><input type='radio' name='q1' value='0'>Male<br><input type='radio' name='q1' value='2'>Other Gender</form>";
 
     document.getElementById("q1").innerHTML = q_1;
 
@@ -43,7 +43,7 @@ function questionaire() {
         selectedAge = op2[a2];
         var q = "<p class='smalltext' style='color:#404040;'>" + q2[1] + "<br><br>" + op2[a2] + "</p>"
         document.getElementById("q2").innerHTML = q;
-        var q_2 = "<p class='smalltext' data-aos='fade-in'><b>" + q3[1] + "</b></p><form id='question" + q3[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Asian<br><input type='radio' name='group-stack' value=1>Hispanic/Black<br><input type='radio' name='group-stack' value=2>White<br><input type='radio' name='group-stack' value=3>Other</form>"
+        var q_2 = "<p class='smalltext' data-aos='fade-in'><b>" + q3[1] + "</b></p><form id='question" + q3[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Asian<br><input type='radio' name='group-stack' value=1>Hispanic/Black<br><input type='radio' name='group-stack' value=2>White<br><input type='radio' name='group-stack' value=3>Other Race</form>"
         document.getElementById("q3").innerHTML = q_2;
     });
 
@@ -54,7 +54,7 @@ function questionaire() {
         selectedRace = op3[a3];
         var q = "<p class='smalltext' style='color:#404040;'>" + q3[1] + "<br><br>" + op3[a3] + "</p>"
         document.getElementById("q3").innerHTML = q;
-        var q_3 = "<p class='smalltext' data-aos='fade-in'><b>" + q4[1] + "</b></p><form id='question" + q4[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Developer<br><input type='radio' name='group-stack' value=1>Operations/Management<br><input type='radio' name='group-stack' value=2>Support<br><input type='radio' name='group-stack' value=3>Designer<br><input type='radio' name='group-stack' value=4>Other</form>"
+        var q_3 = "<p class='smalltext' data-aos='fade-in'><b>" + q4[1] + "</b></p><form id='question" + q4[0] + "'data-aos='fade-in'><input type='radio' name='group-stack' value=0>Developer<br><input type='radio' name='group-stack' value=1>Operations/Management<br><input type='radio' name='group-stack' value=2>Support<br><input type='radio' name='group-stack' value=3>Designer<br><input type='radio' name='group-stack' value=4>Other Role</form>"
         document.getElementById("q4").innerHTML = q_3;
     });
 
