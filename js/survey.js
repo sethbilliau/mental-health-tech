@@ -70,8 +70,9 @@ function questionaire() {
         // document.getElementById("barchart-container").innerHTML = "<div id = 'double-barchart'></div>";
 
         $("#double-barchart").css({visibility: "visible"});
-        document.getElementById('barchart-caption').innerHTML ="You submitted your expectations. Here's the <strong>reality</strong> according to the Open Source Mental Health Survey:"
-        document.getElementById('barchart-transition').innerHTML = "And it's not just your demographic groups that are struggling..."
+        document.getElementById('barchart-caption').innerHTML ="You submitted your expectations. Here's how they compare against OSMI's survey results:"
+        document.getElementById('barchart-transition1').innerHTML = "How did you do? Were you surprised by your results?"
+        document.getElementById('barchart-transition2').innerHTML = "<br>And it's not just your demographic groups that are struggling..."
         myDoubleBar.initVis();
 
         $("#slider-fill").css({ visibility: "visible"});

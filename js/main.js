@@ -116,13 +116,18 @@ let title = new TypeIt("#title", {
   .go();
 
 
-
-
-// new TypeIt("#text1", {
-//     strings: "Here's the <em><strong>reality</strong></em> on the % of tech professionals suffering from a mental health disorder.",
-//     speed: 50,
-//     waitUntilVisible: true
-//   }).go();
+new TypeIt("#osmi-title", {
+    strings: "<strong>OSMI's survey on mental health in the tech industry.</strong>",
+    speed: 35,
+    waitUntilVisible: true
+  })
+    .go();
+new TypeIt("#quiz-title", {
+    strings: "<strong>How much do you think tech professionals in <i>your</i> demographic groups are struggling with mental health issues?</strong>",
+    speed: 35,
+    waitUntilVisible: true
+})
+    .go();
 
 
 
