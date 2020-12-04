@@ -72,7 +72,8 @@ class WordBar {
         vis.displayData = vis.displayData.sort(function(x, y){
             return d3.ascending(x.size, y.size);
         })
-
+        SPECIALSTRINGS = vis.displayData.map(d => d.text)
+        // console.log("bardata", vis.displayData.map(d => d.text))
 
 
         this.updateVis();

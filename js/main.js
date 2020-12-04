@@ -19,6 +19,8 @@ let selectedAge;
 let selectedRace;
 let selectedJob;
 
+let SPECIALSTRINGS;
+
 // load data using promises
 let promises = [
 
