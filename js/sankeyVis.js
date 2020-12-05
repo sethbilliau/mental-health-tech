@@ -36,17 +36,22 @@ class SankeyVis {
             .size([vis.width, vis.height]);
 
         vis.path = vis.sankey.link();
+        vis.defs = vis.svg.append('defs');
 
         vis.links = vis.svg.append("g");
         vis.nodes = vis.svg.append("g");
 
         vis.options = [{
+                value: "disorder",
+                text: "Have you been diagnosed with a mental health disorder?"
+            },
+            {
                 value: "scale_tech_industry_supports",
-                text: "How well does the tech industry support MH?"
+                text: "How well does the tech industry support mental health?"
             },
             {
                 value: "employer_formally_discussed",
-                text: "Has your employer ever formally discussed MH?"
+                text: "Has your employer ever formally discussed mental health?"
             },
             {
                 value: "employer_offers_resources",
@@ -216,8 +221,7 @@ class SankeyVis {
 
         //)
 
-        vis.phases = [
-            {
+        vis.phases = [{
                 category1: "scale_tech_industry_supports",
                 category2: "badly_handled_MH",
                 highlightedLinks: ["#link-1", "#link-2", "#link-3"],
@@ -243,6 +247,7 @@ class SankeyVis {
 
 
         let response_list = {
+            "disorder": ["Yes", "No", "Don't Know"],
             "scale_tech_industry_supports": [1, 2, 3, 4, 5],
             "employer_formally_discussed": ['Yes', 'No'],
             "employer_offers_resources": ['Yes', 'No', "I don't know"],
@@ -366,9 +371,10 @@ class SankeyVis {
         var formatNumber = d3.format(",.0f"), // zero decimal places
             format = function (d) {
                 return formatNumber(d) + " " + units;
-            },
-            // color = d3.scaleOrdinal(d3.schemeCategory10)
-            color = d3.scaleOrdinal(['#ECECEC','#84C3EB', '#58ABE1', '#0F83CD', '#06639F'])
+            };
+        // color = d3.scaleOrdinal(d3.schemeCategory10)
+        let colorLeft = d3.scaleOrdinal(['#ECECEC', '#84C3EB', '#58ABE1', '#0F83CD', '#06639F'])
+        let colorRight = d3.scaleOrdinal(['#ECECEC', '#FBCFA2', '#F9AE6B', '#F78D3D', '#E6550D'])
 
 
         // let optionLabel1;
@@ -391,8 +397,65 @@ class SankeyVis {
             .layout(0);
 
 
+        // let nodes = vis.svg.append("g").attr("class", "nodes");
+
+        // add in the nodes
+        let node = vis.nodes.selectAll(".node")
+            .data(vis.displayData.nodes, d => d.name);
+
+        let newNode = node
+            .enter().append("g")
+            .attr("class", "node")
+            .merge(node);
+
+        newNode.on("mouseover", (event, d) => highlight_node_links(d, true))
+            .on("mouseout", (event, d) => highlight_node_links(d, false))
 
 
+        newNode.transition().duration(1000)
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            })
+
+        // newNode.call(d3.drag()
+        //     .subject(function (d) {
+        //         return d;
+        //     })
+        //     .on("start", function () {
+        //         this.parentNode.appendChild(this);
+        //     })
+        //     .on("drag", dragmove));
+
+        // node.transition().duration(1000)
+        // .attr("transform", function (d) {
+        //     return "translate(" + d.x + "," + d.y + ")";
+        // })
+
+        // node = newNode.merge(node);
+
+        newNode.append("rect");
+        newNode.append("text");
+        // add the rectangles for the nodes
+        newNode.select("rect")
+            .attr("height", function (d) {
+                return d.dy;
+            })
+            .attr("width", vis.sankey.nodeWidth())
+            .style("fill", function (d) {
+                console.log(d)
+                if (d.targetLinks.length === 0) {
+                    return d.color = colorLeft(d.name);
+                } else {
+                    return d.color = colorRight(d.name);
+                }
+            })
+            .style("stroke", function (d) {
+                return d3.rgb(d.color).darker(2);
+            })
+        // .append("title")
+        // .text(function (d) {
+        //     return d.name + "\n" + format(d.value);
+        // });
 
         let link = vis.links.selectAll(".link")
             .data(vis.displayData.links);
@@ -413,6 +476,58 @@ class SankeyVis {
             })
             .style("stroke-width", function (d) {
                 return Math.max(1, d.dy);
+            })
+            .style('stroke', (d, i) => {
+                console.log('d from gradient stroke func', d);
+
+                // make unique gradient ids  
+                let gradientID = `gradient${i}`;
+
+                let startColor = d.source.color;
+                let stopColor = d.target.color;
+
+                if (startColor !== stopColor) {
+                    console.log('startColor', startColor);
+                    console.log('stopColor', stopColor);
+
+                    const linearGradient = vis.defs.append('linearGradient')
+                        .attr('id', gradientID);
+
+                    let newGradient = linearGradient.selectAll('stop')
+                        .data([{
+                                offset: '10%',
+                                color: startColor
+                            },
+                            {
+                                offset: '90%',
+                                color: stopColor
+                            }
+                        ]);
+
+                    newGradient
+                        .enter().append('stop')
+                        .merge(newGradient)
+                        .attr('offset', d => {
+                            console.log('d.offset', d.offset);
+                            return d.offset;
+                        })
+                        .attr('stop-color', d => {
+                            console.log('d.color', d.color);
+                            return d.color;
+                        });
+
+                    newGradient.exit().remove();
+
+                    return `url(#${gradientID})`;
+                } else {
+                    return d.source.color;
+                }
+
+            })
+            .style('opacity', function (d) {
+                if (d.value === 0) {
+                    return 0;
+                }
             });
 
         newLink.on('mouseover', function (event, d) {
@@ -460,61 +575,6 @@ class SankeyVis {
 
 
         link.exit().remove();
-
-        // let nodes = vis.svg.append("g").attr("class", "nodes");
-
-        // add in the nodes
-        let node = vis.nodes.selectAll(".node")
-            .data(vis.displayData.nodes, d => d.name);
-
-        let newNode = node
-            .enter().append("g")
-            .attr("class", "node")
-            .merge(node);
-
-        newNode.on("mouseover", (event, d) => highlight_node_links(d, true))
-            .on("mouseout", (event, d) => highlight_node_links(d, false))
-
-
-        newNode.transition().duration(1000)
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            })
-
-        // newNode.call(d3.drag()
-        //     .subject(function (d) {
-        //         return d;
-        //     })
-        //     .on("start", function () {
-        //         this.parentNode.appendChild(this);
-        //     })
-        //     .on("drag", dragmove));
-
-        // node.transition().duration(1000)
-        // .attr("transform", function (d) {
-        //     return "translate(" + d.x + "," + d.y + ")";
-        // })
-
-        // node = newNode.merge(node);
-
-        newNode.append("rect");
-        newNode.append("text");
-        // add the rectangles for the nodes
-        newNode.select("rect")
-            .attr("height", function (d) {
-                return d.dy;
-            })
-            .attr("width", vis.sankey.nodeWidth())
-            .style("fill", function (d) {
-                return d.color = color(d.name.replace(/ .*/, ""));
-            })
-            .style("stroke", function (d) {
-                return d3.rgb(d.color).darker(2);
-            })
-        // .append("title")
-        // .text(function (d) {
-        //     return d.name + "\n" + format(d.value);
-        // });
 
 
         function highlight_node_links(node, highlighted) {
@@ -572,14 +632,7 @@ class SankeyVis {
         }
 
         vis.svg.selectAll(".link")
-            .style('stroke', function (d) {
-                return d.source.color;
-            })
-            .style('opacity', function (d) {
-                if (d.value === 0) {
-                    return 0;
-                }
-            })
+            
 
 
         // node.select("rect")
