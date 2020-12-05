@@ -367,7 +367,8 @@ class SankeyVis {
             format = function (d) {
                 return formatNumber(d) + " " + units;
             },
-            color = d3.scaleOrdinal(d3.schemeCategory10)
+            // color = d3.scaleOrdinal(d3.schemeCategory10)
+            color = d3.scaleOrdinal(['#ECECEC','#84C3EB', '#58ABE1', '#0F83CD', '#06639F'])
 
 
         // let optionLabel1;

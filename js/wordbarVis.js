@@ -45,26 +45,26 @@ class WordBar {
         let yAxisGroup = vis.svg.append("g")
             .attr("class", "y-axis axis");
 
-
         this.wrangleData();
     }
 
     wrangleData() {
         let vis = this;
-        // check out the data
 
-
+        // Get Selected Category from appropriate Div
         vis.selectedCategory = $('#wordSelector').val();
-        // check out the data
+
+        // Filter by selected
         vis.filteredData = vis.surveyData.filter(function(d) {
             return d.type == vis.selectedCategory;
         });
 
-
+        // Get a words list
         vis.wordslist = vis.filteredData.map(function(d, i) {
             return {index: i, text: d.word, size: +d.freq};
         })
 
+        // Filter according to desired number of words
         vis.displayData = vis.wordslist.filter(function(d) {
             return d.index < 10;
         });
@@ -72,9 +72,9 @@ class WordBar {
         vis.displayData = vis.displayData.sort(function(x, y){
             return d3.ascending(x.size, y.size);
         })
-        SPECIALSTRINGS = vis.displayData.map(d => d.text)
-        // console.log("bardata", vis.displayData.map(d => d.text))
 
+        // change SPECIALSTRINGS global for word stories
+        SPECIALSTRINGS = vis.displayData.map(d => d.text)
 
         this.updateVis();
     }
@@ -82,9 +82,12 @@ class WordBar {
     updateVis(input) {
 
         let vis = this;
+
+        // Set x axes
         vis.x.domain([0, d3.max(vis.displayData, d => d.size)]);
         vis.y.domain(vis.displayData.map(d => d.text));
 
+        // enter, update, exit bars
         let bars = vis.svg.selectAll(".rect-disorders")
             .data(vis.displayData);
 
@@ -99,11 +102,12 @@ class WordBar {
             .attr("y", d => vis.y(d.text))
             .attr("width", d => vis.x(d.size))
             .attr("height", vis.y.bandwidth())
-            .attr("fill", "cornflowerblue")
+            .attr("fill", "#8be9fd")
 
 
         bars.exit().remove();
 
+        // Draw Axes
         vis.svg.select(".x-axis")
             .transition()
             .duration(1000)
