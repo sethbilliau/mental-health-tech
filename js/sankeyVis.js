@@ -216,11 +216,27 @@ class SankeyVis {
 
         //)
 
+        vis.phases = [
+            {
+                category1: "scale_tech_industry_supports",
+                category2: "badly_handled_MH",
+                highlightedLinks: ["#link-1", "#link-2", "#link-3"],
+                text: "text 1"
+            },
+            {
+                category1: "employer_formally_discussed",
+                category2: "comfortable_discussing_coworkers",
+                highlightedLinks: ["#link-4", "#link-5", "#link-6"],
+                text: "text 2"
+            }
+        ]
+
+        vis.currPhase = -1;
         vis.wrangleData();
 
     }
 
-    wrangleData(firstTime = true) {
+    wrangleData(phase = 0) {
         let vis = this;
         let nodes = [];
         let links = [];
@@ -234,8 +250,19 @@ class SankeyVis {
             "comfortable_discussing_coworkers": ["Yes", "Maybe", "No"]
         }
 
-        let selectedCategory1 = $('#sankeySelector1').val();
-        let selectedCategory2 = $('#sankeySelector2').val();
+        let selectedCategory1;
+        let selectedCategory2;
+        if (phase != 0) {
+            vis.currPhase += phase;
+            selectedCategory1 = vis.phases[vis.currPhase].category1;
+            selectedCategory2 = vis.phases[vis.currPhase].category2;
+            d3.select('#sankeySelector1').property('value', selectedCategory1);
+            d3.select('#sankeySelector2').property('value', selectedCategory2);
+        } else {
+            selectedCategory1 = $('#sankeySelector1').val();
+            selectedCategory2 = $('#sankeySelector2').val();
+        }
+        console.log(selectedCategory1, selectedCategory2)
 
         let counter = 0;
         let index_list1 = [];
@@ -498,7 +525,7 @@ class SankeyVis {
             let stroke_opacity;
 
             if (highlighted) {
-                stroke_opacity = .7;
+                stroke_opacity = .8;
             } else {
                 stroke_opacity = .2;
             }
@@ -616,6 +643,12 @@ class SankeyVis {
         //     vis.sankey.relayout();
         //     link.attr("d", vis.path);
         // }
+        if (vis.currPhase >= 0) {
+            d3.selectAll(".link").style("stroke-opacity", .3);
+            vis.phases[vis.currPhase].highlightedLinks.forEach(el => {
+                d3.select(el).style("stroke-opacity", .8);
+            })
+        }
 
     }
 }

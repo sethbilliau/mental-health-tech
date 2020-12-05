@@ -82,7 +82,15 @@ function categoryChange() {
 }
 
 function sankeyChange() {
-    mySankey.wrangleData(false);
+    mySankey.wrangleData(0);
+}
+
+function nextPhase() {
+    mySankey.wrangleData(1);
+}
+
+function prevPhase() {
+    mySankey.wrangleData(-1);
 }
 
 function wordChange() {
