@@ -78,6 +78,10 @@ function categoryChange() {
     myMapVis.wrangleData();
 }
 
+function sankeyChange() {
+    mySankey.wrangleData(false);
+}
+
 function wordChange() {
     $("#stories-p").html("")
     myWordBar.wrangleData();
@@ -141,7 +145,7 @@ $(MyEventHandler2).bind("sliderChanged", function (event, value) {
 
 function onScrollClick(e) {
     $('html, body').animate({
-        scrollTop: $(`#section4`).offset().top - 90
+        scrollTop: $(`#section5`).offset().top - 90
     }, 1000);
 
 }
