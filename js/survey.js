@@ -10,7 +10,7 @@ function questionaire() {
     var q2 = [2, "What is your age?"];
     var q3 = [3, "What is your race?"];
     var q4 = [4, "What is your work position?"];
-    var q5 = [5, "What % of tech professionals in each group have a mental health disorder?"]
+    var q5 = [5, "What % of tech professionals in each group have a mental health issue?"]
     var op1 = ["Male", "Female", "Other Gender"],
         an1 = [];
     var op2 = ['18-25', '26-35', '36-50', '51-75'],
@@ -79,7 +79,20 @@ function questionaire() {
         $("#slider-fill2").css({ visibility: "visible"});
         $("#slider-fill3").css({ visibility: "visible"});
         $("#slider-fill4").css({ visibility: "visible"});
-        $(".container").css({ visibility: "visible"});;
+        $(".container").css({ visibility: "visible"});
+
+        $("#slider-header1").css({ visibility: "visible"});
+        $('#slider-header1').html(selectedGender);
+
+        $("#slider-header2").css({ visibility: "visible"});
+        $('#slider-header2').html(selectedAge);
+
+        $("#slider-header3").css({ visibility: "visible"});
+        $('#slider-header3').html(selectedRace);
+
+        $("#slider-header4").css({ visibility: "visible"});
+        $('#slider-header4').html(selectedJob);
+
 
         // bubbleChart.initVis();
     });
