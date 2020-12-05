@@ -481,52 +481,10 @@ class SankeyVis {
                 console.log('d from gradient stroke func', d);
 
                 // make unique gradient ids  
-<<<<<<< HEAD
-                let gradientID = `gradient${i}`;
-=======
->>>>>>> 9bc9f50c3fa0b0437170a9218c781788d7e452b7
 
                 let startColor = d.source.color;
                 let stopColor = d.target.color;
 
-<<<<<<< HEAD
-                if (startColor !== stopColor) {
-                    console.log('startColor', startColor);
-                    console.log('stopColor', stopColor);
-
-                    const linearGradient = vis.defs.append('linearGradient')
-                        .attr('id', gradientID);
-
-                    let newGradient = linearGradient.selectAll('stop')
-                        .data([{
-                                offset: '10%',
-                                color: startColor
-                            },
-                            {
-                                offset: '90%',
-                                color: stopColor
-                            }
-                        ]);
-
-                    newGradient
-                        .enter().append('stop')
-                        .merge(newGradient)
-                        .attr('offset', d => {
-                            console.log('d.offset', d.offset);
-                            return d.offset;
-                        })
-                        .attr('stop-color', d => {
-                            console.log('d.color', d.color);
-                            return d.color;
-                        });
-
-                    newGradient.exit().remove();
-
-                    return `url(#${gradientID})`;
-                } else {
-                    return d.source.color;
-                }
-=======
                 let gradientID = `gradient${String(d.dy)}`;
 
                 // if (startColor !== stopColor) {
@@ -579,7 +537,6 @@ class SankeyVis {
                 // } else {
                 //     return d.source.color;
                 // }
->>>>>>> 9bc9f50c3fa0b0437170a9218c781788d7e452b7
 
             })
             .style('opacity', function (d) {
