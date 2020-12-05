@@ -44,7 +44,7 @@ class Story {
                 // console.log('Seth is here')
 
                 // console.log(specialStrings)
-                let newstr = '<b style=\"color:cornflowerblue\">' + specialStrings + '</b>'
+                let newstr = '<b style=\"color:#8be9fd\">' + specialStrings + '</b>'
                 // console.log(newstr)
                 // let regex = "(\\s|^)" + specialStrings+ "(?=\\s|$)"
                 vis.storyString = vis.storyString.toLowerCase().replaceAll(specialStrings, newstr)

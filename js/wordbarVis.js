@@ -99,7 +99,7 @@ class WordBar {
             .attr("y", d => vis.y(d.text))
             .attr("width", d => vis.x(d.size))
             .attr("height", vis.y.bandwidth())
-            .attr("fill", "cornflowerblue")
+            .attr("fill", "#8be9fd")
 
 
         bars.exit().remove();
