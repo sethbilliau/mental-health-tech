@@ -35,7 +35,7 @@ class Story {
         for (specialStrings of allStrings) {
             // Check if special string appears in response and replace with regex match
             if (vis.storyString.toLowerCase().includes(specialStrings)) {
-                let newstr = '<b style=\"color:#8be9fd\">' + specialStrings + '</b>'
+                let newstr = '<b style=\"color: lightblue\">' + specialStrings + '</b>'
                 let regex = new RegExp("\\b" + specialStrings+ "\\b", "g")
                 vis.storyString = vis.storyString.toLowerCase().replaceAll(regex, newstr)
             }
