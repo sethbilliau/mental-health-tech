@@ -129,7 +129,7 @@ new TypeIt("#osmi-title", {
   })
     .go();
 new TypeIt("#quiz-title", {
-    strings: "<strong>How much do you think tech professionals in <i>your</i> demographic groups are struggling with mental health issues?</strong>",
+    strings: "<strong>How much do you think tech professionals in <orange>your demographic groups </orange> are struggling with mental health issues?</strong>",
     speed: 35,
     waitUntilVisible: true
 })

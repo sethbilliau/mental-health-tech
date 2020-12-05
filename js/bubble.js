@@ -347,21 +347,21 @@ class BubbleChart {
         let vis = this;
         if (vis.stepNames[vis.step] === "start") {
             if (d["gender"][1]) {
-                return "red";
+                return "#ff5555";
             } else {
-                return "orange"
+                return "#8be9fd"
             }
         } else if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
             if (!d[vis.stepNames[vis.step]]) {
                 return "none";
             } else if (d[vis.stepNames[vis.step]][1]) {
-                return "red";
+                return "#ff5555";
             } else {
                 return vis.colorScale[d[vis.stepNames[vis.step]][0]];
             }
         } else {
             if (d[vis.stepNames[vis.step]][1]) {
-                return "red";
+                return "#ff5555";
             } else {
                 return vis.colorScale[d[vis.stepNames[vis.step]][0]];
             }
