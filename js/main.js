@@ -19,6 +19,8 @@ let selectedAge;
 let selectedRace;
 let selectedJob;
 
+let SPECIALSTRINGS;
+
 // load data using promises
 let promises = [
 
@@ -121,7 +123,7 @@ let title = new TypeIt("#title", {
 
 
 new TypeIt("#osmi-title", {
-    strings: "<strong>OSMI's survey on mental health in the tech industry.</strong>",
+    strings: "<orange-bold>OSMI's survey on mental health in the tech industry.</orange-bold>",
     speed: 35,
     waitUntilVisible: true
   })

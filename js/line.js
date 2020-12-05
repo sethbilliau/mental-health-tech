@@ -77,7 +77,7 @@ class LineGraph {
             .attr("fill", "none")
             .style("stroke", function (d, i) {
                 if (i === 0) {
-                    return "#ed3700";
+                    return "#bd93f9";
                 } else {
                     return "#d2d2d2";
                 }
@@ -96,7 +96,7 @@ class LineGraph {
             .attr("x", 5)
             .style("fill", function (d, i) {
                 if (i === 0) {
-                    return "#2b2929";
+                    return "#d2d2d2";
                 } else {
                     return "#d2d2d2";
                 }
@@ -116,7 +116,7 @@ class LineGraph {
                 selection
                     .transition()
                     .delay("100").duration("10")
-                    .style("stroke", "blue")
+                    .style("stroke", "#ffb86c")
                     .style("opacity", "1")
                     .style("stroke-width", "3");
 
@@ -128,7 +128,7 @@ class LineGraph {
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("fill", "#2b2929");
+                    .style("fill", "#fafafa");
             })
 
             .on('mouseout', function () {
@@ -220,7 +220,7 @@ class LineGraph {
 
                 tooltip.html(
                         `
-                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
+                <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 20px">
                     <h6> Year: ${d.date}</h6>
                     <h6> Weight: ${d.percent}%</h6>
                     <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
@@ -237,7 +237,7 @@ class LineGraph {
                     .duration("200")
                     .attr("r", 6)
                     .style("opacity", 1)
-                    .style("fill", "black");
+                    .style("fill", '#555555');
             })
             .on("mouseout", function (d) {
                 tooltip.transition()
@@ -284,7 +284,7 @@ class LineGraph {
             .attr('width', vis.width)
             .attr('class', 'curtain')
             .attr('transform', 'rotate(180)')
-            .style('fill', '#ffffff')
+            .style('fill', '#2c2c2c')
 
         let t = vis.svg.transition()
             .delay(750)
