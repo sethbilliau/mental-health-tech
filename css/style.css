@@ -345,7 +345,7 @@ div.section {
   }
   
   .link:hover {
-    stroke-opacity: .5;
+    stroke-opacity: .5 !important;
   }
 
   .d3-tip h1 {
@@ -366,6 +366,7 @@ div.section {
 .d3-tip h3 {
     font-weight: normal;
     font-size: 8px;
+    color: black !important;
     margin: 0;
     padding: 0;
 }

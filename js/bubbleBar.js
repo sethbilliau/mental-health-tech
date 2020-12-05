@@ -10,7 +10,7 @@ class BubbleBar {
         let vis = this;
 
         vis.margin = {
-            top: 20,
+            top: 50,
             right: 20,
             bottom: 20,
             left: 160
@@ -209,7 +209,13 @@ class BubbleBar {
         vis.svg.select(".x-axis")
             .transition()
             .duration(1000)
-            .call(vis.xAxis);
+            .call(vis.xAxis)
+
+        vis.svg.select(".x-axis")
+            .append("text")
+            .attr("x", 100)
+            .attr("y", -30)
+            .text("# of people diagnosed with disorder");
 
         vis.svg.select(".y-axis")
             .transition()
