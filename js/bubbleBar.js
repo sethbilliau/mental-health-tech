@@ -51,23 +51,23 @@ class BubbleBar {
             .attr("class", "y-axis axis");
 
         vis.colorScale = {
-            "Total": 'orange',
-            "M": 'orange',
+            "Total": 'lightblue',
+            "M": '#fff9c4',
             "F": 'lightblue',
             "Other-Gender": '#B19CD9',
-            "18-25": 'orange',
+            "18-25": '#fff9c4',
             "26-35": 'lightblue',
             "36-50": '#B19CD9',
-            "51-75": 'green',
-            "White": 'orange',
+            "51-75": '#8bc34a',
+            "White": '#fff9c4',
             "Asian": 'lightblue',
             "Hispanic-Black": '#B19CD9',
-            "Other-Race": 'green',
-            "dev": 'orange',
+            "Other-Race": '#8bc34a',
+            "dev": '#fff9c4',
             "mgmt": 'lightblue',
             "other_job": '#B19CD9',
-            "support": 'green',
-            "designer": "yellow"
+            "support": '#8bc34a',
+            "designer": "#ffb86c"
         };
 
         vis.step = {
