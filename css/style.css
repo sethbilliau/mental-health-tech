@@ -33,6 +33,12 @@ purple-bold{
     color: #bd93f9;
     font-weight:bold;
 }
+
+/*bubble chart colors*/
+yellow{
+    color: #fff9c4;
+}
+
 /*@font-face{*/
 /*    font-family: 'sudo-thin';*/
 /*    src: url('/fonts/Sudo-Thin.ttf')*/
@@ -728,5 +734,10 @@ ul {
 }
 #q4{
     color: #fafafa;
+    font-family: 'sudo-regular' !important;
+}
+
+.img-div{
+    color: #ececec;
     font-family: 'sudo-regular' !important;
 }
