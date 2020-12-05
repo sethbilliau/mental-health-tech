@@ -108,7 +108,7 @@ class WordCloudVis {
 
     // Functions for highlighting and unhighlighting link with barchart
     highlight(i) {
-        d3.select("#" + i.text).style('fill', "#8be9fd")
+        d3.select("#" + i.text).style('fill', "lightblue")
 
     }
 
