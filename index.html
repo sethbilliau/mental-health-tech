@@ -106,16 +106,22 @@
 			<!--			<h5>This largely because the tech industry is one of the fastest growing sectors in the US Economy...</h5>-->
 		</div>
 		<div class="row align-items-center">
-			<div class="col-md-7" id="lineGraphDiv" style="padding-left: 0px !important"></div>
+			<div data-aos="fade-in" data-aos-id="aos-line" class="col-md-7" id="lineGraphDiv"
+				style="padding-left: 0px !important"></div>
 			<div class="col-md-5">
-				<h5 style = ' text-align: end !important;'>Over the past 20 years, the tech industry has become one of the <strong><purple-bold>fastest growing</purple-bold></strong> sectors in the US
+				<h5 style=' text-align: end !important;'>Over the past 20 years, the tech industry has become one of the
+					<strong>
+						<purple-bold>fastest growing</purple-bold>
+					</strong> sectors in the US
 					Economy.</h5>
 			</div>
 		</div>
 		<div class="row align-items-center" style="text-align: left;">
 			<div class='col'>
-				<h5 style = 'font-size: 22px !important;'>As a result of the tech boom, jobs in tech have become extremely desirable, advertising <orange>high
-					salaries</orange>, <cyan>job stability</cyan>, and a <lime>fast-paced work environment</lime>...</h5>
+				<h5 style='font-size: 22px !important;'>As a result of the tech boom, jobs in tech have become extremely
+					desirable, advertising <orange>high
+						salaries</orange>, <cyan>job stability</cyan>, and a <lime>fast-paced work environment</lime>...
+				</h5>
 				<h3 style="text-align: end; margin-top: 80px;"><strong>...But is a job in tech really all that it
 						seems?</strong></h3>
 			</div>
@@ -138,14 +144,19 @@
 	<!--				<div id = "survey-pea" style ="height:500px"></div>-->
 	<!--			</div>-->
 	<div class="section nav-section" id="section3" style="margin-top: -3px;">
-		<div class = 'row' style = 'height: 100vh; margin-top:50px;'>
-			<div class = 'col'>
-				<h5 style = 'font-size:22px !important;'>Introducing the Dataset:</h5>
-				<h4 id = 'osmi-title'></h4>
-				<h5 style = 'font-size: 18px !important;'><br>The nonprofit <cyan>Open Sourcing Mental Illness (OSMI)</cyan> conducted an annual survey from 2016 to 2019, in which tech professionals voluntarily answered questions about their experience with mental health in the tech industry.</h5>
-				<h5 style = 'font-size: 18px !important;'><br>Over these four years, <lime>2,958 people</lime> took the survey.</h5>
-				<h5 style = 'font-size: 18px !important;'><br>The following visualizations examine OSMI's survey results, and what the results say about mental health in tech.</h5>
-				<h4 style = 'text-align: center;'><br><br><br>How well do you <purple-bold><i>really</i></purple-bold> know the people behind the code?</h4>
+		<div class='row' style='height: 100vh; margin-top:50px;'>
+			<div class='col'>
+				<h5 style='font-size:22px !important;'>Introducing the Dataset:</h5>
+				<h4 id='osmi-title'></h4>
+				<h5 style='font-size: 18px !important;'><br>The nonprofit <cyan>Open Sourcing Mental Illness (OSMI)
+					</cyan> conducted an annual survey from 2016 to 2019, in which tech professionals voluntarily
+					answered questions about their experience with mental health in the tech industry.</h5>
+				<h5 style='font-size: 18px !important;'><br>Over these four years, <lime>2,958 people</lime> took the
+					survey.</h5>
+				<h5 style='font-size: 18px !important;'><br>The following visualizations examine OSMI's survey results,
+					and what the results say about mental health in tech.</h5>
+				<h4 style='text-align: center;'><br><br><br>How well do you <purple-bold><i>really</i></purple-bold>
+					know the people behind the code?</h4>
 
 
 			</div>
@@ -296,29 +307,35 @@
 			health issues?</h5>
 		<div style='height: 30px;'></div>
 		<div class="row align-items-center">
-			<div class="col-md-9" id="sankeyDiv" style="height:500px;padding-left: 0px !important"></div>
-			<div class="col-md-3">
-				<select id='sankeySelector1' class="custom-select align-self-center" 
-					onchange="sankeyChange()">
-					<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option>
+			<div class="col-md-9" id="sankeyDiv" style="height:500px;padding-left: 0px !important">
+				<div class="row">
+				<div class="col-md-6">
+					<select id='sankeySelector1' class="custom-select align-self-center" onchange="sankeyChange()">
+						<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option>
 					<option value="employer_formally_discussed">Has your employer ever formally discussed MH?</option>
 					<option value="employer_offers_resources">Does your employer offer resources to learn more about MH and options for seeking help?</option>
 					<option value="badly_handled_MH">Have you ever witnessed a badly handled response to a MH issue at work?</option>
 					<option value="comfortable_discussing_coworkers">Would you feel comfortable discussing an MH issue with your coworkers?</option> -->
-				</select>
-				<select id='sankeySelector2' class="custom-select align-self-center" 
-					onchange="sankeyChange()">
-					<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option> -->
-					<!-- <option value="employer_formally_discussed">Has your employer ever formally discussed MH?</option>
-					<option value="employer_offers_resources">Does your employer offer resources to learn more about MH and options for seeking help?</option>
-					<option value="badly_handled_MH">Have you ever witnessed a badly handled response to a MH issue at work?</option>
-					<option value="comfortable_discussing_coworkers">Would you feel comfortable discussing an MH issue with your coworkers?</option> -->
-				</select>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<select id='sankeySelector2' class="custom-select align-self-center" onchange="sankeyChange()">
+						<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option> -->
+						<!-- <option value="employer_formally_discussed">Has your employer ever formally discussed MH?</option>
+						<option value="employer_offers_resources">Does your employer offer resources to learn more about MH and options for seeking help?</option>
+						<option value="badly_handled_MH">Have you ever witnessed a badly handled response to a MH issue at work?</option>
+						<option value="comfortable_discussing_coworkers">Would you feel comfortable discussing an MH issue with your coworkers?</option> -->
+					</select>
+			</div>
+		</div>
+			</div>
+			<div class="col-md-3">
 				<h5> <br>These survey responses about employer and coworker behavior point to <strong>culture</strong>
 					as a significant factor.</h5>
 			</div>
 		</div>
 	</div>
+	<div style='height: 100px;'></div>
 
 	<div class="section" data-aos="fade-in">
 		<div class="line-divider"></div>
@@ -394,7 +411,7 @@
 			<div style="height:20px"></div>
 			<div class='row'>
 				<div class="col-md-4">
-					<div id="doubleLine"></div>
+					<div data-aos="fade-in" data-aos-id="double-aos" id="doubleLine"></div>
 				</div>
 				<div class='col-md-8'>
 					<h5 style='font-size: 20px !important;'><strong>The trajectory for the future of mental health in

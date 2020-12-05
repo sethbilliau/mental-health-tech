@@ -40,7 +40,7 @@ class SankeyVis {
         vis.links = vis.svg.append("g");
         vis.nodes = vis.svg.append("g");
 
-        let options = [{
+        vis.options = [{
                 value: "scale_tech_industry_supports",
                 text: "How well does the tech industry support MH?"
             },
@@ -64,62 +64,34 @@ class SankeyVis {
 
         d3.select("#sankeySelector1")
             .selectAll("myOptions1")
-            .data(options)
+            .data(vis.options)
             .enter().append('option')
             .text(d => d.text)
             .attr("value", d => d.value);
 
         d3.select("#sankeySelector2")
             .selectAll("myOptions2")
-            .data(options)
+            .data(vis.options)
             .enter().append('option')
             .text(d => d.text)
             .attr("value", d => d.value);
 
-
-        vis.linkTooltipOffset = 72
-
-        vis.tipLinks = d3.tip()
-            .attr('class', 'd3-tip')
-            .offset([-10, 0]);
-
-
-        vis.tipLinks.html(function (d) {
-            var title, candidate;
-            console.log(d)
-            if (vis.displayData.links.indexOf(d.source.name) > -1) {
-                candidate = d.source.name;
-                title = d.target.name;
-            } else {
-                candidate = d.target.name;
-                title = d.source.name;
-            }
-            var html = '<div class="table-wrapper">' +
-                '<h1>' + title + '</h1>' +
-                '<table>' +
-                '<tr>' +
-                '<td class="col-left">' + candidate + '</td>' +
-                '<td align="right">' + d.value + '</td>' +
-                '</tr>' +
-                '</table>' +
-                '</div>';
-            return html;
-        });
-
-        vis.svg.call(vis.tipLinks);
-
+        vis.tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip-sankey")
+            .style("opacity", 0)
+            .style("position", "absolute");
 
 
         let font_size = '12px'
         //Question 1 Label
         let q1_xpos = vis.width / 30
-        vis.svg.append('text')
-            .attr('class', 'sankey_label')
-            .attr('x', q1_xpos)
-            .attr('y', -30)
-            .attr('text-anchor', 'middle')
-            .style('font-size', font_size)
-            .text($('#sankeySelector1').val())
+        // vis.svg.append('text')
+        //     .attr('class', 'sankey_label')
+        //     .attr('x', q1_xpos)
+        //     .attr('y', -30)
+        //     .attr('text-anchor', 'middle')
+        //     .style('font-size', font_size)
+        //     .text($('#sankeySelector1').val())
         // vis.svg.append('text')
         //     .attr('class', 'sankey_label')
         //     .attr('x', q1_xpos)
@@ -128,12 +100,13 @@ class SankeyVis {
         //     .style('font-size', font_size)
         //     .text('well does the tech industry')
         // vis.svg.append('text')
-        //     .attr('class', 'sankey_label')
+        //     .attr('class', 'sankey_label1')
         //     .attr('x', q1_xpos)
         //     .attr('y', -10)
         //     .attr('text-anchor', 'middle')
+        //     .attr('fill', 'white')
         //     .style('font-size', font_size)
-        //     .text('support MH?')
+        //     .text($('#sankeySelector1').val())
 
         //Question 2 Label
         // let q2_xpos = vis.width / 3.8
@@ -212,34 +185,34 @@ class SankeyVis {
 
         //Question 5 Label
         let q5_xpos = vis.width / 1.06
-        vis.svg.append('text')
-            .attr('class', 'sankey_label')
-            .attr('x', q5_xpos)
-            .attr('y', -35)
-            .attr('text-anchor', 'middle')
-            .style('font-size', font_size)
-            .text('Would you feel')
-        vis.svg.append('text')
-            .attr('class', 'sankey_label')
-            .attr('x', q5_xpos)
-            .attr('y', -25)
-            .attr('text-anchor', 'middle')
-            .style('font-size', font_size)
-            .text('comfortable discussing')
-        vis.svg.append('text')
-            .attr('class', 'sankey_label')
-            .attr('x', q5_xpos)
-            .attr('y', -15)
-            .attr('text-anchor', 'middle')
-            .style('font-size', font_size)
-            .text('an MH issue')
-        vis.svg.append('text')
-            .attr('class', 'sankey_label')
-            .attr('x', q5_xpos)
-            .attr('y', -5)
-            .attr('text-anchor', 'middle')
-            .style('font-size', font_size)
-            .text('with your coworkers?')
+        // vis.svg.append('text')
+        //     .attr('class', 'sankey_label')
+        //     .attr('x', q5_xpos)
+        //     .attr('y', -35)
+        //     .attr('text-anchor', 'middle')
+        //     .style('font-size', font_size)
+        //     .text('Would you feel')
+        // vis.svg.append('text')
+        //     .attr('class', 'sankey_label')
+        //     .attr('x', q5_xpos)
+        //     .attr('y', -25)
+        //     .attr('text-anchor', 'middle')
+        //     .style('font-size', font_size)
+        //     .text('comfortable discussing')
+        // vis.svg.append('text')
+        //     .attr('class', 'sankey_label')
+        //     .attr('x', q5_xpos)
+        //     .attr('y', -15)
+        //     .attr('text-anchor', 'middle')
+        //     .style('font-size', font_size)
+        //     .text('an MH issue')
+        // vis.svg.append('text')
+        //     .attr('class', 'sankey_label2')
+        //     .attr('x', q5_xpos)
+        //     .attr('y', -10)
+        //     .attr('text-anchor', 'middle')
+        //     .style('font-size', font_size)
+        //     .text($('#sankeySelector2').val())
 
         //)
 
@@ -370,7 +343,19 @@ class SankeyVis {
             color = d3.scaleOrdinal(d3.schemeCategory10)
 
 
+        // let optionLabel1;
+        // let optionLabel2;
 
+        // vis.options.forEach(el => {
+        //     if (el.value === $('#sankeySelector1').val()) {
+        //         optionLabel1 = el.text;
+        //     } else if (el.value === $('#sankeySelector2').val()) {
+        //         optionLabel2 = el.text;
+        //     }
+        // })
+
+        // d3.select(".sankey_label1").text(optionLabel1);
+        // d3.select(".sankey_label2").text(optionLabel2);
 
         vis.sankey
             .nodes(vis.displayData.nodes)
@@ -387,43 +372,63 @@ class SankeyVis {
         let newLink = link
             .enter().append("path")
             .attr("class", "link")
-            // .merge(link)
-            // .transition().duration(1000)
-            .attr("d", vis.path)
+            .merge(link);
+
+        newLink
+            .transition().duration(1000)
+            .attr("d", vis.path);
+
+        newLink
+            .attr("id", function (d, i) {
+                d.id = i;
+                return "link-" + i;
+            })
             .style("stroke-width", function (d) {
                 return Math.max(1, d.dy);
-            }).on('mousemove', function (event, d) {
-                vis.tipLinks
-                    .style("top", (event.pageY - vis.linkTooltipOffset) + "px")
-                    .style("left", function () {
-                        var left = (Math.max(event.pageX - vis.linkTooltipOffset, 10));
-                        left = Math.min(left, window.innerWidth - $('.d3-tip').width() - 20)
-                        return left + "px";
-                    })
+            });
+
+        newLink.on('mouseover', function (event, d) {
+                vis.tooltip.transition()
+                    .delay(30)
+                    .duration(200)
+                    .style("opacity", 1);
+
+                vis.tooltip.html(
+                        `
+                <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 10px">
+                    <h6> Respondents: ${d.value}</h6>                     
+                </div>`
+                    )
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY) + "px");
+
+                const selection = d3.select(this).raise();
+
             })
-            .on('mouseover', function (event, d) {
-                vis.tipLinks.show(d, this)
-            })
-            .on('mouseout', vis.tipLinks.hide);;
+            .on("mouseout", function (d) {
+                vis.tooltip.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+            });
 
         // .sort(function (a, b) {
         //     return b.dy - a.dy;
         // });
 
         // add the link titles
-        newLink.append("title")
-            .text(function (d) {
-                return d.source.name + " → " +
-                    d.target.name + "\n" + format(d.value);
-            });
+        // newLink.append("title")
+        //     .text(function (d) {
+        //         return d.source.name + " → " +
+        //             d.target.name + "\n" + format(d.value);
+        //     });
 
         // link = newLink.merge(link);
 
-        link.transition().duration(1000)
-            .attr("d", vis.path)
-            .style("stroke-width", function (d) {
-                return Math.max(1, d.dy);
-            });
+        // newLink.transition().duration(1000)
+        //     .attr("d", vis.path)
+        //     .style("stroke-width", function (d) {
+        //         return Math.max(1, d.dy);
+        //     });
 
 
         link.exit().remove();
@@ -439,7 +444,8 @@ class SankeyVis {
             .attr("class", "node")
             .merge(node);
 
-        newNode.on("mouseover", (event, d) => highlight_node_links(d))
+        newNode.on("mouseover", (event, d) => highlight_node_links(d, true))
+            .on("mouseout", (event, d) => highlight_node_links(d, false))
 
 
         newNode.transition().duration(1000)
@@ -477,58 +483,65 @@ class SankeyVis {
             .style("stroke", function (d) {
                 return d3.rgb(d.color).darker(2);
             })
-            // .append("title")
-            // .text(function (d) {
-            //     return d.name + "\n" + format(d.value);
-            // });
+        // .append("title")
+        // .text(function (d) {
+        //     return d.name + "\n" + format(d.value);
+        // });
 
-        
-            function highlight_node_links(node){
-                console.log(node)
 
-                var remainingNodes=[],
-                    nextNodes=[];
-            
-                let stroke_opacity = 1;
-                // var stroke_opacity = 0;
-                // if( d3.select(this).attr("data-clicked") == "1" ){
-                //   d3.select(this).attr("data-clicked","0");
-                //   stroke_opacity = 0.2;
-                // }else{
-                //   d3.select(this).attr("data-clicked","1");
-                //   stroke_opacity = 0.5;
-                // }
-            
-                var traverse = [{
-                                  linkType : "sourceLinks",
-                                  nodeType : "target"
-                                },{
-                                  linkType : "targetLinks",
-                                  nodeType : "source"
-                                }];
-            
-                traverse.forEach(function(step){
-                  node[step.linkType].forEach(function(link) {
+        function highlight_node_links(node, highlighted) {
+            console.log(node)
+
+            var remainingNodes = [],
+                nextNodes = [];
+
+            let stroke_opacity;
+
+            if (highlighted) {
+                stroke_opacity = .7;
+            } else {
+                stroke_opacity = .2;
+            }
+            // var stroke_opacity = 0;
+            // if( d3.select(this).attr("data-clicked") == "1" ){
+            //   d3.select(this).attr("data-clicked","0");
+            //   stroke_opacity = 0.2;
+            // }else{
+            //   d3.select(this).attr("data-clicked","1");
+            //   stroke_opacity = 0.5;
+            // }
+
+            var traverse = [{
+                linkType: "sourceLinks",
+                nodeType: "target"
+            }, {
+                linkType: "targetLinks",
+                nodeType: "source"
+            }];
+
+            traverse.forEach(function (step) {
+                node[step.linkType].forEach(function (link) {
                     remainingNodes.push(link[step.nodeType]);
                     highlight_link(link.id, stroke_opacity);
-                  });
-            
-                  while (remainingNodes.length) {
+                });
+
+                while (remainingNodes.length) {
                     nextNodes = [];
-                    remainingNodes.forEach(function(node) {
-                      node[step.linkType].forEach(function(link) {
-                        nextNodes.push(link[step.nodeType]);
-                        highlight_link(link.id, stroke_opacity);
-                      });
+                    remainingNodes.forEach(function (node) {
+                        node[step.linkType].forEach(function (link) {
+                            nextNodes.push(link[step.nodeType]);
+                            highlight_link(link.id, stroke_opacity);
+                        });
                     });
                     remainingNodes = nextNodes;
-                  }
-                });
-              }
-            
-              function highlight_link(id,opacity){
-                  d3.select("#link-"+id).style("stroke-opacity", opacity);
-              }
+                }
+            });
+        }
+
+        function highlight_link(id, opacity) {
+            console.log(id)
+            d3.select("#link-" + id).style("stroke-opacity", opacity);
+        }
 
         vis.svg.selectAll(".link")
             .style('stroke', function (d) {
@@ -565,7 +578,7 @@ class SankeyVis {
             .text(function (d) {
                 return d.name;
             })
-            .style("fill", d => d3.rgb(d.color).darker(2.4))
+            .style("fill", "white")
             .filter(function (d) {
                 return d.x < vis.width / 2;
             })
