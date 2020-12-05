@@ -94,6 +94,7 @@ purple-bold{
 
 /* General */
 body {
+    /*background-color: #302c2c!important;*/
     background-color: #2c2c2c !important;
     /*font-family: 'Source Sans Pro', sans-serif;*/
     /*font-family: sudo-regular;*/
@@ -193,8 +194,8 @@ p{
 }
 
 b {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: black;
+    font-family: 'sudo-regular' !important;
+    color: #fafafa;
     font-weight: 700;
     text-align: right;
 }
@@ -422,6 +423,8 @@ div.section {
   }
   
   .chevron {
+    /*background-color: #fafafa;*/
+    color: #fafafa;
     position: absolute;
     margin-top: 10px;
     width: 28px;
@@ -446,7 +449,7 @@ div.section {
     top: 0;
     height: 100%;
     width: 51%;
-    background: black;
+    background: #fafafa;
   }
   
   .chevron:before {
@@ -484,7 +487,7 @@ div.section {
     margin-top: 75px;
     margin-left: -25px;
     font-size: 12px;
-    color: black;
+    color: #fafafa;
     text-transform: uppercase;
     white-space: nowrap;
     opacity: .25;
@@ -501,6 +504,7 @@ div.section {
     width: 35vw;
     height: 70vh;
     text-align: left;
+    /*background-color: #fafafa;*/
 }
 
 .scattertooltip {
@@ -702,4 +706,26 @@ ul {
     width:  200px;
     height: 225px;
     object-fit: cover;
+}
+
+.smalltext{
+    color: #fafafa !important;
+    font-family: 'sudo-regular' !important;
+}
+
+#q1{
+    color: #fafafa;
+    font-family: 'sudo-regular' !important;
+}
+#q2{
+    color: #fafafa;
+    font-family: 'sudo-regular' !important;
+}
+#q3{
+    color: #fafafa;
+    font-family: 'sudo-regular' !important;
+}
+#q4{
+    color: #fafafa;
+    font-family: 'sudo-regular' !important;
 }
