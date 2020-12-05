@@ -6,7 +6,7 @@ Yes,2.0,No,I don't know,Maybe/Not sure,Yes
 No,2.0,No,I don't know,"Yes, I observed",Maybe
 Yes,2.0,No,No,No,No
 No,2.0,No,No,No,Maybe
-Don't Know,2.0,No,No,No,Maybe
+No,2.0,No,No,No,Maybe
 Yes,1.0,No,No,"Yes, I experienced",No
 Yes,1.0,No,I don't know,"Yes, I experienced",No
 No,4.0,No,No,Maybe/Not sure,Yes
@@ -15,13 +15,13 @@ Yes,3.0,No,I don't know,No,Yes
 Yes,4.0,No,I don't know,"Yes, I experienced",Maybe
 Yes,5.0,No,No,"Yes, I experienced",Yes
 Yes,3.0,No,No,No,Maybe
-Don't Know,3.0,No,I don't know,Maybe/Not sure,Maybe
+No,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,No,No,No,No
 Yes,3.0,Yes,Yes,No,Yes
 Yes,1.0,No,No,"Yes, I observed",Yes
 Yes,3.0,No,No,No,Maybe
-Don't Know,3.0,Yes,No,No,Maybe
-Don't Know,2.0,No,No,No,Maybe
+No,3.0,Yes,No,No,Maybe
+No,2.0,No,No,No,Maybe
 Yes,2.0,No,I don't know,"Yes, I experienced",No
 Yes,3.0,No,No,"Yes, I observed",Maybe
 Yes,4.0,Yes,Yes,"Yes, I observed",Yes
@@ -45,7 +45,7 @@ Yes,2.0,No,No,No,Maybe
 Yes,3.0,No,I don't know,No,Yes
 Yes,3.0,Yes,No,"Yes, I observed",Maybe
 Yes,2.0,No,I don't know,"Yes, I experienced",No
-Don't Know,4.0,No,I don't know,Maybe/Not sure,Maybe
+No,4.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,Yes,Yes,"Yes, I observed",No
 Yes,2.0,No,No,"Yes, I experienced",No
 No,2.0,Yes,I don't know,No,Yes
@@ -60,7 +60,7 @@ Yes,3.0,No,No,"Yes, I experienced",Maybe
 No,4.0,No,I don't know,No,Maybe
 No,1.0,No,No,Maybe/Not sure,Maybe
 No,3.0,No,No,No,Yes
-Don't Know,3.0,No,I don't know,No,Maybe
+No,3.0,No,I don't know,No,Maybe
 Yes,3.0,Yes,Yes,"Yes, I observed",Maybe
 No,2.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,2.0,Yes,I don't know,Maybe/Not sure,No
@@ -71,13 +71,13 @@ Yes,3.0,No,No,"Yes, I experienced",Maybe
 Yes,2.0,No,No,"Yes, I observed",No
 Yes,2.0,No,I don't know,"Yes, I observed",Maybe
 Yes,4.0,No,I don't know,No,Yes
-Don't Know,2.0,Yes,I don't know,No,Maybe
+No,2.0,Yes,I don't know,No,Maybe
 Yes,2.0,No,No,No,Maybe
 Yes,2.0,No,I don't know,No,Maybe
 Yes,3.0,No,No,"Yes, I observed",Maybe
 No,1.0,Yes,Yes,Maybe/Not sure,No
 Yes,3.0,Yes,Yes,"Yes, I experienced",Maybe
-Don't Know,4.0,Yes,I don't know,No,Yes
+No,4.0,Yes,I don't know,No,Yes
 Yes,2.0,No,No,No,No
 Yes,3.0,No,No,Maybe/Not sure,Maybe
 Yes,2.0,No,I don't know,"Yes, I experienced",Yes
@@ -89,7 +89,7 @@ Yes,4.0,No,I don't know,Maybe/Not sure,Maybe
 No,1.0,No,Yes,"Yes, I observed",No
 Yes,2.0,No,I don't know,"Yes, I observed",Maybe
 Yes,2.0,Yes,I don't know,No,No
-Don't Know,2.0,No,No,No,No
+No,2.0,No,No,No,No
 Yes,4.0,No,No,Maybe/Not sure,No
 Yes,2.0,No,No,"Yes, I experienced",Maybe
 Yes,1.0,Yes,I don't know,"Yes, I observed",Yes
@@ -99,13 +99,13 @@ Yes,3.0,Yes,Yes,No,Maybe
 Yes,3.0,Yes,Yes,"Yes, I experienced",Maybe
 No,2.0,Yes,No,"Yes, I observed",No
 Yes,4.0,Yes,Yes,Maybe/Not sure,Maybe
-Don't Know,3.0,Yes,Yes,Maybe/Not sure,Maybe
+No,3.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,2.0,No,Yes,Maybe/Not sure,Maybe
 No,3.0,No,No,No,Yes
 Yes,1.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,3.0,No,Yes,"Yes, I observed",Yes
 Yes,3.0,No,No,"Yes, I observed",Yes
-Don't Know,3.0,Yes,Yes,Maybe/Not sure,Maybe
+No,3.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,2.0,No,No,"Yes, I observed",Yes
 No,4.0,No,No,No,No
 Yes,2.0,No,Yes,"Yes, I experienced",Maybe
@@ -113,7 +113,7 @@ Yes,2.0,No,Yes,No,No
 Yes,3.0,Yes,I don't know,No,No
 No,3.0,Yes,I don't know,Maybe/Not sure,Yes
 Yes,3.0,No,No,"Yes, I experienced",Maybe
-Don't Know,3.0,Yes,Yes,Maybe/Not sure,Yes
+No,3.0,Yes,Yes,Maybe/Not sure,Yes
 No,5.0,No,Yes,No,Yes
 Yes,2.0,No,I don't know,"Yes, I observed",No
 Yes,3.0,No,No,Maybe/Not sure,Maybe
@@ -138,7 +138,7 @@ Yes,4.0,No,No,Maybe/Not sure,Maybe
 Yes,3.0,No,Yes,"Yes, I observed",No
 No,3.0,No,No,No,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,3.0,No,I don't know,No,Maybe
+No,3.0,No,I don't know,No,Maybe
 Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,2.0,No,No,"Yes, I observed",Yes
 Yes,3.0,Yes,Yes,No,Maybe
@@ -153,8 +153,8 @@ No,1.0,No,No,No,Maybe
 No,3.0,No,No,No,Maybe
 No,3.0,No,I don't know,No,Maybe
 No,1.0,No,No,No,Maybe
-Don't Know,1.0,No,No,No,No
-Don't Know,2.0,No,No,No,No
+No,1.0,No,No,No,No
+No,2.0,No,No,No,No
 No,5.0,No,No,No,No
 Yes,4.0,Yes,Yes,No,Maybe
 Yes,2.0,No,I don't know,"Yes, I observed",Maybe
@@ -163,7 +163,7 @@ Yes,2.0,Yes,No,"Yes, I observed",Yes
 Yes,1.0,No,No,"Yes, I experienced",No
 Yes,1.0,Yes,Yes,"Yes, I observed",Yes
 No,2.0,Yes,Yes,No,Maybe
-Don't Know,4.0,Yes,No,Maybe/Not sure,No
+No,4.0,Yes,No,Maybe/Not sure,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Yes
 No,2.0,No,Yes,"Yes, I observed",Maybe
 Yes,2.0,No,No,No,Maybe
@@ -172,13 +172,13 @@ No,3.0,No,No,"Yes, I observed",Yes
 Yes,2.0,No,Yes,"Yes, I observed",Maybe
 No,1.0,No,I don't know,Maybe/Not sure,No
 Yes,3.0,No,I don't know,No,No
-Don't Know,3.0,No,No,No,No
-Don't Know,4.0,No,I don't know,Maybe/Not sure,Maybe
+No,3.0,No,No,No,No
+No,4.0,No,I don't know,Maybe/Not sure,Maybe
 No,2.0,No,No,No,Yes
-Don't Know,3.0,No,No,Maybe/Not sure,Maybe
+No,3.0,No,No,Maybe/Not sure,Maybe
 No,3.0,No,No,No,Yes
-Don't Know,3.0,No,No,No,Yes
-Don't Know,3.0,No,No,No,Yes
+No,3.0,No,No,No,Yes
+No,3.0,No,No,No,Yes
 No,2.0,No,Yes,No,Yes
 No,2.0,Yes,Yes,Maybe/Not sure,Yes
 No,2.0,Yes,Yes,No,Yes
@@ -188,11 +188,11 @@ Yes,4.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,2.0,Yes,Yes,"Yes, I experienced",Maybe
 Yes,1.0,Yes,Yes,"Yes, I observed",No
 Yes,2.0,No,No,Maybe/Not sure,Maybe
-Don't Know,3.0,No,I don't know,No,Maybe
+No,3.0,No,I don't know,No,Maybe
 Yes,2.0,No,No,No,No
 Yes,2.0,No,I don't know,No,Maybe
 Yes,1.0,No,I don't know,No,No
-Don't Know,3.0,No,No,"Yes, I observed",Yes
+No,3.0,No,No,"Yes, I observed",Yes
 Yes,2.0,No,I don't know,No,Maybe
 No,4.0,Yes,Yes,Maybe/Not sure,Yes
 No,3.0,Yes,No,No,No
@@ -208,7 +208,7 @@ Yes,3.0,Yes,Yes,"Yes, I experienced",No
 Yes,3.0,No,I don't know,"Yes, I observed",Maybe
 No,2.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,2.0,No,I don't know,Maybe/Not sure,Maybe
+No,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,Yes,Yes,No,Maybe
 Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 No,3.0,Yes,Yes,No,Yes
@@ -226,7 +226,7 @@ Yes,2.0,No,I don't know,Maybe/Not sure,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,Yes,Yes,No,Yes
 Yes,1.0,No,No,No,Yes
-Don't Know,4.0,No,I don't know,No,Maybe
+No,4.0,No,I don't know,No,Maybe
 Yes,2.0,No,I don't know,"Yes, I observed",Maybe
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,Yes,Yes,No,Maybe
@@ -239,7 +239,7 @@ Yes,3.0,No,No,No,Maybe
 Yes,3.0,No,I don't know,"Yes, I observed",Maybe
 No,3.0,No,No,No,Maybe
 No,2.0,No,No,No,Maybe
-Don't Know,3.0,No,I don't know,No,Yes
+No,3.0,No,I don't know,No,Yes
 Yes,3.0,No,No,No,No
 Yes,1.0,No,Yes,No,Maybe
 Yes,4.0,Yes,Yes,No,Maybe
@@ -248,7 +248,7 @@ Yes,4.0,No,Yes,"Yes, I experienced",Maybe
 Yes,3.0,Yes,Yes,"Yes, I observed",Yes
 No,3.0,Yes,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,No,I don't know,No,Maybe
-Don't Know,3.0,No,No,No,No
+No,3.0,No,No,No,No
 No,3.0,No,I don't know,Maybe/Not sure,No
 Yes,3.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,2.0,No,Yes,"Yes, I observed",No
@@ -293,9 +293,9 @@ Yes,3.0,Yes,Yes,No,Yes
 Yes,3.0,Yes,Yes,Maybe/Not sure,Maybe
 No,3.0,Yes,No,Maybe/Not sure,Yes
 Yes,3.0,No,Yes,"Yes, I experienced",Yes
-Don't Know,2.0,No,No,No,Yes
-Don't Know,3.0,No,No,Maybe/Not sure,Yes
-Don't Know,3.0,No,No,Maybe/Not sure,No
+No,2.0,No,No,No,Yes
+No,3.0,No,No,Maybe/Not sure,Yes
+No,3.0,No,No,Maybe/Not sure,No
 No,3.0,No,I don't know,No,Yes
 No,2.0,No,No,Maybe/Not sure,Maybe
 No,2.0,No,No,Maybe/Not sure,No
@@ -313,20 +313,20 @@ No,2.0,Yes,No,"Yes, I observed",Maybe
 Yes,3.0,Yes,I don't know,No,Yes
 No,3.0,Yes,Yes,No,Maybe
 No,2.0,No,No,"Yes, I observed",Maybe
-Don't Know,1.0,No,No,No,No
+No,1.0,No,No,No,No
 Yes,1.0,No,No,No,No
 Yes,3.0,No,No,"Yes, I experienced",No
 No,3.0,Yes,Yes,Maybe/Not sure,No
 Yes,2.0,No,No,Maybe/Not sure,Maybe
 Yes,1.0,No,Yes,"Yes, I experienced",No
 Yes,2.0,No,Yes,Maybe/Not sure,No
-Don't Know,2.0,No,No,"Yes, I observed",No
+No,2.0,No,No,"Yes, I observed",No
 Yes,3.0,Yes,Yes,"Yes, I observed",Maybe
-Don't Know,2.0,Yes,I don't know,"Yes, I observed",No
+No,2.0,Yes,I don't know,"Yes, I observed",No
 No,5.0,Yes,Yes,Maybe/Not sure,Yes
 No,2.0,No,No,No,No
 Yes,1.0,No,No,Maybe/Not sure,No
-Don't Know,2.0,No,No,No,No
+No,2.0,No,No,No,No
 No,3.0,No,I don't know,No,No
 Yes,3.0,No,No,No,No
 No,2.0,No,I don't know,Maybe/Not sure,No
@@ -335,20 +335,20 @@ Yes,3.0,No,No,Maybe/Not sure,Yes
 Yes,3.0,No,No,No,Maybe
 No,2.0,No,I don't know,No,Yes
 No,2.0,No,No,"Yes, I observed",Yes
-Don't Know,2.0,Yes,Yes,No,Maybe
+No,2.0,Yes,Yes,No,Maybe
 Yes,3.0,No,No,Maybe/Not sure,Yes
 Yes,2.0,No,No,Maybe/Not sure,No
 No,1.0,No,No,"Yes, I observed",Yes
 Yes,4.0,No,No,No,Yes
-Don't Know,2.0,No,No,Maybe/Not sure,Maybe
+No,2.0,No,No,Maybe/Not sure,Maybe
 Yes,3.0,No,I don't know,No,Maybe
 No,3.0,No,No,"Yes, I experienced",Maybe
 Yes,2.0,Yes,Yes,No,Yes
 Yes,2.0,No,No,"Yes, I experienced",Maybe
 Yes,1.0,No,Yes,Maybe/Not sure,No
-Don't Know,2.0,No,I don't know,No,Maybe
+No,2.0,No,I don't know,No,Maybe
 No,3.0,No,Yes,No,Maybe
-Don't Know,2.0,Yes,Yes,"Yes, I experienced",No
+No,2.0,Yes,Yes,"Yes, I experienced",No
 Yes,3.0,No,No,No,No
 Yes,2.0,No,I don't know,"Yes, I observed",Maybe
 No,3.0,No,No,No,Maybe
@@ -361,7 +361,7 @@ No,3.0,No,I don't know,Maybe/Not sure,Yes
 Yes,1.0,No,I don't know,"Yes, I observed",No
 Yes,4.0,Yes,Yes,No,Yes
 Yes,2.0,Yes,Yes,No,Yes
-Don't Know,1.0,Yes,Yes,"Yes, I observed",Maybe
+No,1.0,Yes,Yes,"Yes, I observed",Maybe
 No,3.0,No,No,No,Maybe
 Yes,2.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,No,"Yes, I observed",Maybe
@@ -377,9 +377,9 @@ No,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,No
 No,3.0,No,No,Maybe/Not sure,Maybe
 Yes,1.0,Yes,I don't know,No,No
-Don't Know,4.0,No,I don't know,No,No
+No,4.0,No,I don't know,No,No
 No,2.0,No,Yes,Maybe/Not sure,Maybe
-Don't Know,2.0,No,No,No,Maybe
+No,2.0,No,No,No,Maybe
 Yes,3.0,No,No,No,Yes
 Yes,2.0,Yes,Yes,"Yes, I observed",Yes
 Yes,4.0,No,I don't know,Maybe/Not sure,Yes
@@ -417,7 +417,7 @@ Yes,2.0,No,No,Maybe/Not sure,Yes
 Yes,3.0,No,No,Maybe/Not sure,No
 Yes,3.0,No,No,No,No
 Yes,3.0,No,Yes,No,Maybe
-Don't Know,2.0,Yes,Yes,Maybe/Not sure,Maybe
+No,2.0,Yes,Yes,Maybe/Not sure,Maybe
 No,2.0,No,I don't know,No,Maybe
 No,4.0,Yes,Yes,No,Yes
 Yes,2.0,No,No,Maybe/Not sure,Yes
@@ -431,7 +431,7 @@ No,2.0,Yes,Yes,Maybe/Not sure,No
 No,1.0,No,No,"Yes, I observed",Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,No,No,No,Maybe
-Don't Know,3.0,No,I don't know,No,Maybe
+No,3.0,No,I don't know,No,Maybe
 Yes,2.0,Yes,No,"Yes, I observed",Yes
 Yes,3.0,No,I don't know,No,Maybe
 Yes,4.0,No,No,No,No
@@ -441,7 +441,7 @@ Yes,3.0,Yes,Yes,Maybe/Not sure,Maybe
 No,3.0,No,Yes,No,Maybe
 Yes,1.0,No,I don't know,"Yes, I experienced",No
 Yes,3.0,No,Yes,Maybe/Not sure,Maybe
-Don't Know,3.0,No,Yes,No,Maybe
+No,3.0,No,Yes,No,Maybe
 Yes,2.0,No,No,No,Maybe
 Yes,2.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,4.0,No,No,No,Maybe
@@ -460,16 +460,16 @@ No,2.0,No,No,No,Yes
 Yes,3.0,Yes,Yes,No,Maybe
 Yes,4.0,No,No,"Yes, I experienced",Yes
 Yes,3.0,No,I don't know,No,Yes
-Don't Know,3.0,No,I don't know,No,No
+No,3.0,No,I don't know,No,No
 Yes,4.0,Yes,I don't know,No,Yes
 Yes,3.0,Yes,Yes,No,Yes
 Yes,3.0,Yes,I don't know,Maybe/Not sure,No
 Yes,3.0,No,Yes,No,Yes
 Yes,3.0,No,No,No,No
-Don't Know,4.0,No,Yes,"Yes, I observed",Maybe
+No,4.0,No,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,Yes,No,Yes
 Yes,3.0,Yes,Yes,Maybe/Not sure,No
-Don't Know,4.0,Yes,Yes,No,Maybe
+No,4.0,Yes,Yes,No,Maybe
 Yes,1.0,No,Yes,Maybe/Not sure,No
 No,3.0,Yes,No,No,Yes
 Yes,1.0,Yes,I don't know,No,No
@@ -484,7 +484,7 @@ Yes,4.0,Yes,No,Maybe/Not sure,No
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,5.0,Yes,I don't know,No,Yes
 Yes,4.0,Yes,Yes,Maybe/Not sure,Yes
-Don't Know,3.0,Yes,Yes,Maybe/Not sure,Maybe
+No,3.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,1.0,No,No,Maybe/Not sure,Maybe
 Yes,3.0,No,No,Maybe/Not sure,Maybe
 No,3.0,No,I don't know,Maybe/Not sure,Yes
@@ -528,7 +528,7 @@ Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,4.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,No,No,No,Yes
-Don't Know,3.0,Yes,Yes,No,No
+No,3.0,Yes,Yes,No,No
 No,4.0,No,No,"Yes, I experienced",No
 Yes,1.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,3.0,No,No,Maybe/Not sure,Maybe
@@ -573,16 +573,16 @@ No,3.0,No,I don't know,No,Maybe
 Yes,3.0,Yes,No,Maybe/Not sure,No
 No,4.0,No,I don't know,No,Maybe
 Yes,4.0,Yes,Yes,Maybe/Not sure,Maybe
-Don't Know,3.0,No,I don't know,Maybe/Not sure,Maybe
+No,3.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,No,No,"Yes, I observed",No
 Yes,3.0,No,No,No,Yes
 Yes,2.0,No,No,No,No
 Yes,2.0,No,No,No,Maybe
-Don't Know,2.0,No,I don't know,Maybe/Not sure,No
+No,2.0,No,I don't know,Maybe/Not sure,No
 No,3.0,Yes,Yes,"Yes, I observed",Yes
 Yes,2.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,3.0,No,No,Maybe/Not sure,Yes
-Don't Know,2.0,No,No,No,Maybe
+No,2.0,No,No,No,Maybe
 Yes,1.0,No,No,Maybe/Not sure,Maybe
 Yes,2.0,No,No,"Yes, I observed",No
 Yes,2.0,No,Yes,"Yes, I observed",Maybe
@@ -614,12 +614,12 @@ Yes,2.0,Yes,No,"Yes, I observed",Yes
 No,2.0,No,Yes,No,Maybe
 Yes,3.0,No,I don't know,No,No
 Yes,3.0,No,I don't know,No,Yes
-Don't Know,3.0,No,No,Maybe/Not sure,Maybe
+No,3.0,No,No,Maybe/Not sure,Maybe
 No,3.0,No,Yes,Maybe/Not sure,Maybe
 Yes,3.0,No,No,No,Yes
-Don't Know,3.0,Yes,Yes,No,Maybe
+No,3.0,Yes,Yes,No,Maybe
 No,2.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,2.0,No,No,Maybe/Not sure,No
+No,2.0,No,No,Maybe/Not sure,No
 Yes,3.0,Yes,No,"Yes, I observed",Maybe
 No,5.0,No,No,No,No
 No,4.0,No,I don't know,No,Maybe
@@ -632,7 +632,7 @@ Yes,1.0,No,Yes,No,Yes
 No,2.0,No,Yes,No,Maybe
 Yes,3.0,Yes,Yes,"Yes, I observed",Maybe
 No,4.0,Yes,I don't know,Maybe/Not sure,Yes
-Don't Know,1.0,No,I don't know,No,No
+No,1.0,No,I don't know,No,No
 No,3.0,No,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,I don't know,No,Maybe
 No,3.0,Yes,Yes,No,No
@@ -651,7 +651,7 @@ No,3.0,No,I don't know,No,Yes
 Yes,2.0,No,No,No,Maybe
 Yes,4.0,No,No,No,Maybe
 Yes,1.0,No,No,Maybe/Not sure,No
-Don't Know,1.0,No,Yes,"Yes, I observed",No
+No,1.0,No,Yes,"Yes, I observed",No
 Yes,2.0,Yes,Yes,No,Maybe
 Yes,2.0,No,No,No,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Yes
@@ -659,7 +659,7 @@ Yes,1.0,No,No,No,No
 Yes,2.0,No,No,"Yes, I experienced",Maybe
 Yes,4.0,No,Yes,Maybe/Not sure,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,3.0,No,No,No,No
+No,3.0,No,No,No,No
 Yes,3.0,No,I don't know,No,Yes
 Yes,4.0,No,Yes,No,Maybe
 Yes,2.0,No,No,"Yes, I observed",No
@@ -669,7 +669,7 @@ No,1.0,No,No,No,Maybe
 Yes,2.0,No,No,Maybe/Not sure,Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,No
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,1.0,No,No,No,Maybe
+No,1.0,No,No,No,Maybe
 Yes,2.0,Yes,Yes,"Yes, I observed",Yes
 Yes,3.0,No,I don't know,No,No
 Yes,1.0,No,No,"Yes, I observed",No
@@ -678,7 +678,7 @@ No,3.0,Yes,Yes,No,Maybe
 Yes,2.0,Yes,Yes,No,No
 Yes,1.0,No,No,Maybe/Not sure,No
 Yes,3.0,No,No,Maybe/Not sure,Yes
-Don't Know,2.0,No,No,No,Maybe
+No,2.0,No,No,No,Maybe
 Yes,3.0,Yes,Yes,No,Yes
 Yes,3.0,No,No,No,No
 Yes,4.0,Yes,Yes,No,Yes
@@ -712,11 +712,11 @@ No,4.0,Yes,Yes,No,Yes
 Yes,3.0,No,Yes,No,Maybe
 No,3.0,Yes,Yes,"Yes, I observed",No
 Yes,3.0,Yes,Yes,"Yes, I observed",Yes
-Don't Know,1.0,No,No,No,Maybe
+No,1.0,No,No,No,Maybe
 Yes,1.0,No,No,Maybe/Not sure,No
 Yes,3.0,No,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,No,"Yes, I observed",Yes
-Don't Know,4.0,No,I don't know,Maybe/Not sure,Maybe
+No,4.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,4.0,Yes,Yes,Maybe/Not sure,Yes
 No,3.0,No,Yes,No,Maybe
 Yes,2.0,No,Yes,"Yes, I experienced",Maybe
@@ -727,7 +727,7 @@ No,1.0,No,No,"Yes, I observed",No
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,No,Yes,"Yes, I observed",Maybe
 No,1.0,No,No,No,Maybe
-Don't Know,3.0,Yes,Yes,No,No
+No,3.0,Yes,Yes,No,No
 No,4.0,Yes,Yes,Maybe/Not sure,No
 Yes,1.0,No,No,"Yes, I observed",No
 No,2.0,No,I don't know,No,Yes
@@ -735,7 +735,7 @@ No,3.0,No,No,No,Maybe
 Yes,1.0,No,No,No,Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,No,Yes,No,Maybe
-Don't Know,2.0,No,I don't know,"Yes, I observed",Maybe
+No,2.0,No,I don't know,"Yes, I observed",Maybe
 Yes,4.0,No,I don't know,No,Maybe
 Yes,3.0,Yes,No,No,Yes
 No,2.0,No,No,"Yes, I observed",Maybe
@@ -748,7 +748,7 @@ Yes,2.0,Yes,Yes,"Yes, I experienced",Yes
 No,3.0,No,Yes,No,Maybe
 Yes,3.0,No,No,"Yes, I observed",No
 Yes,3.0,No,No,"Yes, I experienced",Maybe
-Don't Know,3.0,No,I don't know,"Yes, I observed",Yes
+No,3.0,No,I don't know,"Yes, I observed",Yes
 Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,No,No,"Yes, I experienced",Maybe
@@ -772,7 +772,7 @@ Yes,2.0,No,No,"Yes, I observed",No
 Yes,2.0,No,I don't know,"Yes, I observed",Yes
 No,3.0,No,Yes,No,Maybe
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
-Don't Know,2.0,No,I don't know,No,Yes
+No,2.0,No,I don't know,No,Yes
 No,3.0,No,I don't know,No,Maybe
 Yes,3.0,Yes,Yes,"Yes, I observed",Yes
 Yes,3.0,No,No,No,Maybe
@@ -787,14 +787,14 @@ Yes,2.0,No,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,No,No,Maybe
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,No,No,No,Yes
-Don't Know,3.0,No,No,Maybe/Not sure,No
-Don't Know,3.0,No,No,"Yes, I observed",Yes
+No,3.0,No,No,Maybe/Not sure,No
+No,3.0,No,No,"Yes, I observed",Yes
 No,3.0,No,I don't know,"Yes, I observed",Yes
-Don't Know,2.0,Yes,Yes,No,Maybe
+No,2.0,Yes,Yes,No,Maybe
 No,2.0,Yes,Yes,Maybe/Not sure,Maybe
 No,2.0,No,No,No,Maybe
 Yes,2.0,No,Yes,Maybe/Not sure,Maybe
-Don't Know,1.0,No,I don't know,"Yes, I observed",No
+No,1.0,No,I don't know,"Yes, I observed",No
 Yes,3.0,No,Yes,"Yes, I observed",Maybe
 Yes,2.0,Yes,I don't know,"Yes, I observed",Yes
 No,2.0,No,I don't know,"Yes, I observed",No
@@ -823,7 +823,7 @@ Yes,2.0,No,No,"Yes, I observed",Maybe
 No,3.0,Yes,Yes,No,Maybe
 Yes,2.0,No,No,Maybe/Not sure,Maybe
 Yes,4.0,Yes,I don't know,"Yes, I observed",Yes
-Don't Know,3.0,No,No,No,Maybe
+No,3.0,No,No,No,Maybe
 Yes,2.0,No,I don't know,"Yes, I experienced",No
 Yes,4.0,No,Yes,"Yes, I experienced",Yes
 No,5.0,No,No,No,Yes
@@ -841,7 +841,7 @@ Yes,2.0,No,No,"Yes, I experienced",Maybe
 Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,2.0,No,No,"Yes, I experienced",No
 Yes,2.0,No,No,No,Maybe
-Don't Know,3.0,No,No,No,Maybe
+No,3.0,No,No,No,Maybe
 Yes,2.0,No,Yes,Maybe/Not sure,No
 No,1.0,No,No,"Yes, I experienced",Yes
 Yes,2.0,No,I don't know,No,Yes
@@ -874,19 +874,19 @@ No,2.0,No,I don't know,"Yes, I observed",Yes
 Yes,4.0,Yes,Yes,Maybe/Not sure,Maybe
 Yes,2.0,No,I don't know,No,Maybe
 Yes,3.0,No,No,No,Yes
-Don't Know,1.0,Yes,Yes,"Yes, I observed",Maybe
+No,1.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,No,No,No
 Yes,2.0,No,No,No,Maybe
 Yes,3.0,Yes,Yes,Maybe/Not sure,No
-Don't Know,2.0,No,No,Maybe/Not sure,Maybe
-Don't Know,3.0,No,I don't know,No,Yes
+No,2.0,No,No,Maybe/Not sure,Maybe
+No,3.0,No,I don't know,No,Yes
 Yes,3.0,No,Yes,No,No
 No,1.0,No,No,No,Yes
 Yes,3.0,Yes,Yes,"Yes, I experienced",Maybe
-Don't Know,2.0,No,I don't know,Maybe/Not sure,No
+No,2.0,No,I don't know,Maybe/Not sure,No
 Yes,3.0,No,No,Maybe/Not sure,Maybe
 Yes,4.0,Yes,Yes,"Yes, I observed",Yes
-Don't Know,2.0,No,I don't know,Maybe/Not sure,Maybe
+No,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,No,No,"Yes, I observed",Yes
 Yes,2.0,No,No,No,Maybe
 No,3.0,No,I don't know,"Yes, I observed",Yes
@@ -917,7 +917,7 @@ Yes,2.0,No,No,Maybe/Not sure,Yes
 Yes,2.0,Yes,Yes,"Yes, I experienced",Yes
 No,2.0,No,No,No,Yes
 No,4.0,No,I don't know,No,Yes
-Don't Know,5.0,No,No,No,Yes
+No,5.0,No,No,No,Yes
 No,4.0,No,No,No,Maybe
 No,3.0,No,No,No,No
 Yes,2.0,No,No,"Yes, I observed",Yes
@@ -976,7 +976,7 @@ No,3.0,No,I don't know,No,Maybe
 Yes,3.0,No,No,Maybe/Not sure,No
 Yes,3.0,No,I don't know,Maybe/Not sure,No
 Yes,1.0,No,I don't know,No,Maybe
-Don't Know,3.0,Yes,I don't know,No,Maybe
+No,3.0,Yes,I don't know,No,Maybe
 Yes,4.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,1.0,No,No,Maybe/Not sure,No
 Yes,2.0,No,I don't know,"Yes, I experienced",No
@@ -984,7 +984,7 @@ Yes,2.0,No,No,"Yes, I experienced",Yes
 No,3.0,No,No,Maybe/Not sure,No
 Yes,2.0,No,No,"Yes, I observed",No
 No,1.0,No,I don't know,No,No
-Don't Know,2.0,No,No,Maybe/Not sure,No
+No,2.0,No,No,Maybe/Not sure,No
 Yes,3.0,Yes,Yes,No,Maybe
 Yes,3.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,3.0,Yes,Yes,Maybe/Not sure,Maybe
@@ -1003,7 +1003,7 @@ Yes,3.0,No,Yes,"Yes, I experienced",No
 Yes,3.0,No,I don't know,No,Maybe
 Yes,2.0,No,Yes,Maybe/Not sure,Yes
 Yes,2.0,No,No,"Yes, I observed",Yes
-Don't Know,4.0,Yes,Yes,No,Yes
+No,4.0,Yes,Yes,No,Yes
 Yes,1.0,No,Yes,"Yes, I observed",Maybe
 No,2.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,Yes,Yes,No,Maybe
@@ -1034,7 +1034,7 @@ Yes,4.0,No,I don't know,"Yes, I observed",Maybe
 No,3.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,2.0,Yes,No,"Yes, I observed",Yes
 Yes,2.0,Yes,I don't know,"Yes, I experienced",Yes
-Don't Know,4.0,No,I don't know,No,Maybe
+No,4.0,No,I don't know,No,Maybe
 Yes,4.0,No,No,No,Yes
 Yes,3.0,No,I don't know,Maybe/Not sure,Maybe
 No,3.0,Yes,Yes,No,Yes
@@ -1053,10 +1053,10 @@ Yes,3.0,No,I don't know,No,No
 No,3.0,Yes,Yes,Maybe/Not sure,No
 No,2.0,No,No,"Yes, I observed",No
 Yes,2.0,No,No,No,No
-Don't Know,4.0,No,No,No,No
+No,4.0,No,No,No,No
 Yes,2.0,No,No,"Yes, I experienced",Yes
 No,2.0,No,No,"Yes, I experienced",Yes
-Don't Know,3.0,No,No,Maybe/Not sure,No
+No,3.0,No,No,Maybe/Not sure,No
 Yes,2.0,No,Yes,Maybe/Not sure,Maybe
 Yes,3.0,No,I don't know,"Yes, I experienced",Maybe
 Yes,3.0,Yes,Yes,"Yes, I experienced",Yes
@@ -1077,7 +1077,7 @@ No,2.0,No,I don't know,No,Yes
 No,2.0,Yes,Yes,Maybe/Not sure,Maybe
 No,2.0,No,No,No,Yes
 No,2.0,No,No,"Yes, I observed",No
-Don't Know,4.0,No,No,No,Maybe
+No,4.0,No,No,No,Maybe
 Yes,4.0,No,No,No,Maybe
 Yes,2.0,Yes,No,Maybe/Not sure,Yes
 No,3.0,No,I don't know,No,Maybe
@@ -1086,7 +1086,7 @@ Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 No,3.0,Yes,Yes,No,Yes
 Yes,2.0,No,Yes,"Yes, I observed",Maybe
 Yes,2.0,Yes,No,"Yes, I experienced",Maybe
-Don't Know,1.0,No,Yes,No,No
+No,1.0,No,Yes,No,No
 No,3.0,No,Yes,No,Yes
 Yes,3.0,No,No,"Yes, I experienced",Yes
 Yes,2.0,Yes,Yes,"Yes, I observed",No
@@ -1109,10 +1109,10 @@ Yes,4.0,No,No,Maybe/Not sure,Yes
 Yes,2.0,No,No,No,Maybe
 Yes,1.0,No,I don't know,"Yes, I experienced",Maybe
 No,4.0,Yes,Yes,No,Maybe
-Don't Know,2.0,No,No,Maybe/Not sure,No
+No,2.0,No,No,Maybe/Not sure,No
 Yes,1.0,No,Yes,"Yes, I experienced",No
 Yes,3.0,Yes,Yes,No,Yes
-Don't Know,5.0,No,No,Maybe/Not sure,Yes
+No,5.0,No,No,Maybe/Not sure,Yes
 Yes,4.0,Yes,Yes,Maybe/Not sure,Maybe
 No,3.0,No,No,No,Yes
 Yes,2.0,Yes,I don't know,"Yes, I observed",Maybe
@@ -1156,7 +1156,7 @@ Yes,2.0,No,Yes,Maybe/Not sure,No
 Yes,2.0,Yes,Yes,No,Maybe
 Yes,1.0,Yes,Yes,"Yes, I experienced",Maybe
 Yes,2.0,Yes,Yes,No,Maybe
-Don't Know,3.0,No,I don't know,No,No
+No,3.0,No,I don't know,No,No
 Yes,3.0,No,Yes,"Yes, I experienced",Yes
 Yes,1.0,No,No,"Yes, I observed",No
 Yes,1.0,Yes,No,"Yes, I observed",No
@@ -1164,7 +1164,7 @@ No,3.0,Yes,Yes,No,Yes
 No,3.0,Yes,Yes,"Yes, I experienced",No
 Yes,5.0,No,No,No,Maybe
 No,3.0,No,Yes,"Yes, I observed",Maybe
-Don't Know,3.0,No,No,No,No
+No,3.0,No,No,No,No
 No,3.0,No,I don't know,No,Maybe
 Yes,2.0,No,No,"Yes, I experienced",Yes
 Yes,2.0,No,Yes,"Yes, I experienced",Maybe
@@ -1173,10 +1173,10 @@ Yes,3.0,No,Yes,Maybe/Not sure,No
 Yes,1.0,No,I don't know,No,Yes
 No,2.0,No,No,Maybe/Not sure,Maybe
 Yes,4.0,No,Yes,Maybe/Not sure,Maybe
-Don't Know,2.0,No,I don't know,"Yes, I observed",Maybe
+No,2.0,No,I don't know,"Yes, I observed",Maybe
 No,3.0,Yes,Yes,No,Yes
 Yes,2.0,No,No,No,Maybe
-Don't Know,3.0,No,No,"Yes, I observed",Maybe
+No,3.0,No,No,"Yes, I observed",Maybe
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 Yes,3.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,4.0,Yes,Yes,"Yes, I observed",Yes
@@ -1190,7 +1190,7 @@ Yes,3.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,3.0,No,No,"Yes, I experienced",Maybe
 Yes,1.0,No,No,"Yes, I experienced",No
 Yes,2.0,Yes,Yes,"Yes, I experienced",Yes
-Don't Know,3.0,Yes,No,"Yes, I observed",Maybe
+No,3.0,Yes,No,"Yes, I observed",Maybe
 Yes,2.0,Yes,No,"Yes, I observed",Maybe
 Yes,3.0,Yes,I don't know,No,No
 Yes,2.0,No,No,Maybe/Not sure,No
@@ -1201,7 +1201,7 @@ No,4.0,No,Yes,No,Maybe
 Yes,4.0,No,No,"Yes, I observed",Maybe
 Yes,3.0,No,I don't know,No,Maybe
 Yes,1.0,No,No,Maybe/Not sure,Maybe
-Don't Know,3.0,No,No,No,Yes
+No,3.0,No,No,No,Yes
 Yes,2.0,No,I don't know,Maybe/Not sure,Maybe
 No,2.0,No,No,Maybe/Not sure,Maybe
 No,3.0,No,No,Maybe/Not sure,Maybe
@@ -1211,7 +1211,7 @@ No,3.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,2.0,No,No,Maybe/Not sure,No
 Yes,3.0,No,I don't know,"Yes, I observed",Maybe
 Yes,1.0,No,No,"Yes, I observed",No
-Don't Know,2.0,No,No,"Yes, I observed",Maybe
+No,2.0,No,No,"Yes, I observed",Maybe
 Yes,1.0,No,No,"Yes, I observed",No
 No,3.0,No,No,Maybe/Not sure,Maybe
 No,3.0,Yes,Yes,"Yes, I observed",Maybe
@@ -1229,12 +1229,12 @@ No,2.0,No,No,"Yes, I experienced",Yes
 No,3.0,Yes,Yes,Maybe/Not sure,No
 Yes,2.0,Yes,Yes,Maybe/Not sure,Yes
 Yes,3.0,Yes,I don't know,Maybe/Not sure,Yes
-Don't Know,4.0,No,Yes,No,No
+No,4.0,No,Yes,No,No
 Yes,3.0,No,I don't know,No,Maybe
 No,4.0,Yes,No,Maybe/Not sure,Maybe
 Yes,2.0,No,No,Maybe/Not sure,Yes
-Don't Know,1.0,No,No,Maybe/Not sure,No
-Don't Know,2.0,Yes,No,Maybe/Not sure,No
+No,1.0,No,No,Maybe/Not sure,No
+No,2.0,Yes,No,Maybe/Not sure,No
 Yes,2.0,Yes,Yes,"Yes, I experienced",No
 Yes,3.0,No,No,"Yes, I experienced",Yes
 Yes,1.0,Yes,No,"Yes, I observed",No
@@ -1266,7 +1266,7 @@ Yes,3.0,No,No,"Yes, I experienced",Maybe
 No,3.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,1.0,No,No,No,Yes
 No,3.0,No,No,Maybe/Not sure,Yes
-Don't Know,3.0,No,No,No,No
+No,3.0,No,No,No,No
 No,5.0,No,No,"Yes, I experienced",No
 No,2.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,2.0,No,No,"Yes, I experienced",Maybe
@@ -1283,7 +1283,7 @@ Yes,2.0,Yes,Yes,"Yes, I experienced",Yes
 Yes,3.0,No,I don't know,No,Maybe
 Yes,4.0,Yes,Yes,No,Yes
 No,3.0,No,No,"Yes, I observed",No
-Don't Know,3.0,No,Yes,"Yes, I observed",Maybe
+No,3.0,No,Yes,"Yes, I observed",Maybe
 No,1.0,No,Yes,"Yes, I observed",Yes
 Yes,3.0,Yes,Yes,"Yes, I observed",Maybe
 Yes,3.0,No,No,"Yes, I observed",Maybe
@@ -1306,3 +1306,4 @@ No,3.0,No,No,No,No
 Yes,3.0,No,I don't know,"Yes, I observed",No
 Yes,2.0,No,No,Maybe/Not sure,Maybe
 Yes,3.0,No,Yes,Maybe/Not sure,No
+No,,,,,
