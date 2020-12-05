@@ -670,7 +670,7 @@ class BubbleChart {
             }
             if(vis.step == 0){
                 console.log('LOOK AT ME HERE')
-                $(`#step${vis.step+1}`).html(`<h5><br><strong>41%</strong> of all respondents said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5><br><cyan>41% of all respondents</cyan> said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
             }
             else if(vis.step == 1){
                 $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
