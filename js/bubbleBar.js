@@ -29,6 +29,21 @@ class BubbleBar {
         // vis.filter = "gender";
         // vis.subfilter = "M";
 
+        let translate = {
+            "anxiety": "Anxiety Disorders",
+            "mood": "Mood Disorders",
+            "psychotic": "Psychotic Disorders",
+            "eating": "Eating Disorders",
+            "adhd": "ADHD",
+            "personality": "Pesonality Disorders",
+            "ocd": "OCD",
+            "ptsd": "PTSD",
+            "stress_response_syndromes": "Stress Response Syndromes",
+            "dissociative": "Dissociative Disorders",
+            "substance_use": "Substance Use Disorder",
+            "addictive": "Addictive Disorders",
+            "other_disorder": "Other Disorders"
+        };
 
         vis.x = d3.scaleLinear()
             .range([0, vis.width]);
@@ -42,7 +57,8 @@ class BubbleBar {
             .ticks(6);
 
         vis.yAxis = d3.axisLeft()
-            .scale(vis.y);
+            .scale(vis.y)
+            .tickFormat(d => translate[d]);
 
         let xAxisGroup = vis.svg.append("g")
             .attr("class", "x-axis axis");
@@ -187,6 +203,7 @@ class BubbleBar {
 
     updateVis() {
         let vis = this;
+
         vis.y.domain(vis.displayData.map(d => d.name));
         vis.x.domain([0, d3.max(vis.displayData, d => d.count)]);
 
