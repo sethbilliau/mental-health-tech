@@ -43,7 +43,7 @@ class SankeyVis {
 
         vis.options = [{
                 value: "disorder",
-                text: "Have you been diagnosed with a mental health disorder?"
+                text: "Are you struggling with a mental health issue?"
             },
             {
                 value: "scale_tech_industry_supports",
