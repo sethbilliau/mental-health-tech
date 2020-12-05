@@ -481,47 +481,63 @@ class SankeyVis {
                 console.log('d from gradient stroke func', d);
 
                 // make unique gradient ids  
-                let gradientID = `gradient${i}`;
+
 
                 let startColor = d.source.color;
                 let stopColor = d.target.color;
 
-                if (startColor !== stopColor) {
+                let gradientID = `gradient${String(d.dy)}`;
+
+                // if (startColor !== stopColor) {
                     console.log('startColor', startColor);
                     console.log('stopColor', stopColor);
+                    console.log(d.source.name, d.target.name)
+                    let gradient = vis.defs.append('linearGradient')
+                        .attr('id', gradientID)
+                        // .attr("x1", "10%")
+                        // .attr("x2", "90%")
+                        // .attr("y1", "0%")
+                        // .attr("y2", "90%");
+                     
+                        gradient.append("stop")
+                        .attr('class', 'start')
+                        .attr("offset", "10%")
+                        .attr("stop-color", startColor)
+                        .attr("stop-opacity", 1);
+                     
+                     gradient.append("stop")
+                        .attr('class', 'end')
+                        .attr("offset", "90%")
+                        .attr("stop-color", stopColor)
+                        .attr("stop-opacity", 1);
 
-                    const linearGradient = vis.defs.append('linearGradient')
-                        .attr('id', gradientID);
+                    // let newGradient = linearGradient.selectAll('stop')
+                    //     .data([{
+                    //             offset: '10%',
+                    //             color: startColor
+                    //         },
+                    //         {
+                    //             offset: '90%',
+                    //             color: stopColor
+                    //         }
+                    //     ])
+                    //     .enter().append('stop')
+                    //     // .merge(newGradient)
+                    //     .attr('offset', d => {
+                    //         console.log('d.offset', d.offset);
+                    //         return d.offset;
+                    //     })
+                    //     .attr('stop-color', d => {
+                    //         console.log('d.color', d.color);
+                    //         return d.color;
+                    //     })
 
-                    let newGradient = linearGradient.selectAll('stop')
-                        .data([{
-                                offset: '10%',
-                                color: startColor
-                            },
-                            {
-                                offset: '90%',
-                                color: stopColor
-                            }
-                        ]);
+                    // newGradient.exit().remove();
 
-                    newGradient
-                        .enter().append('stop')
-                        .merge(newGradient)
-                        .attr('offset', d => {
-                            console.log('d.offset', d.offset);
-                            return d.offset;
-                        })
-                        .attr('stop-color', d => {
-                            console.log('d.color', d.color);
-                            return d.color;
-                        });
-
-                    newGradient.exit().remove();
-
-                    return `url(#${gradientID})`;
-                } else {
-                    return d.source.color;
-                }
+                    return `url(#gradient${String(d.dy)})`;
+                // } else {
+                //     return d.source.color;
+                // }
 
             })
             .style('opacity', function (d) {
