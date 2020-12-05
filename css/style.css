@@ -105,7 +105,7 @@ body {
 h1 {
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-regular' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 48px !important;
     font-weight: 300 !important;
     margin-right: -0.3em !important;
@@ -115,7 +115,7 @@ h1 {
 h3 {
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-regular' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 36px !important;
     font-weight: 300 !important;
     margin-bottom: 30px;
@@ -160,7 +160,7 @@ text {
 h5 {
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-regular' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 26px !important;
     font-weight: 300 !important;
     line-height: 32px !important;
@@ -169,7 +169,7 @@ h5 {
 h4{
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-thin' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 30px !important;
     font-weight: 300 !important;
     line-height: 32px !important;
@@ -178,7 +178,7 @@ h4{
 h6{
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-thin' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 15px !important;
     font-weight: 300 !important;
     /*line-height: 32px !important;*/
@@ -187,7 +187,7 @@ h6{
 p{
     /*font-family: 'Source Sans Pro', sans-serif !important;*/
     font-family: 'sudo-thin' !important;
-    color: #fafafa;
+    color: #ececec;
     font-size: 15px !important;
     font-weight: 300 !important;
     line-height: 32px !important;
@@ -195,7 +195,7 @@ p{
 
 b {
     font-family: 'sudo-regular' !important;
-    color: #fafafa;
+    color: #ececec;
     font-weight: 700;
     text-align: right;
 }
@@ -258,7 +258,7 @@ div.section {
     margin-top: 10px;
     margin-bottom: 10px;
     height: 1px;
-    background: #fafafa;
+    background: #ececec;
 }
 
 /* CONTAINER */
