@@ -431,7 +431,7 @@ div.section {
   
   .chevron {
     /*background-color: #fafafa;*/
-    color: #fafafa;
+    color: #ececec;
     position: absolute;
     margin-top: 10px;
     width: 28px;
@@ -456,7 +456,7 @@ div.section {
     top: 0;
     height: 100%;
     width: 51%;
-    background: #fafafa;
+    background: #ececec;
   }
   
   .chevron:before {
@@ -494,7 +494,7 @@ div.section {
     margin-top: 75px;
     margin-left: -25px;
     font-size: 12px;
-    color: #fafafa;
+    color: #ececec;
     text-transform: uppercase;
     white-space: nowrap;
     opacity: .25;
@@ -648,7 +648,7 @@ ul {
 }
 
 #cd-vertical-nav a.is-selected .cd-dot {
-    background-color: #fafafa;
+    background-color: #ececec;
     opacity: 1;
 }
 
@@ -659,7 +659,7 @@ ul {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: #fafafa;
+    background-color: #ececec;
     -webkit-transition: -webkit-transform 0.2s, background-color 0.5s;
     -moz-transition: -moz-transform 0.2s, background-color 0.5s;
     transition: transform 0.2s, background-color 0.5s;
@@ -673,7 +673,7 @@ ul {
 
 #cd-vertical-nav .cd-label {
     position: relative;
-    color: #fafafa;
+    color: #ececec;
     font-size: 12px;
     padding-top: 10px;
     padding-left: 12px;
@@ -716,24 +716,24 @@ ul {
 }
 
 .smalltext{
-    color: #fafafa !important;
+    color: #ececec !important;
     font-family: 'sudo-regular' !important;
 }
 
 #q1{
-    color: #fafafa;
+    color: #ececec;
     font-family: 'sudo-regular' !important;
 }
 #q2{
-    color: #fafafa;
+    color: #ececec;
     font-family: 'sudo-regular' !important;
 }
 #q3{
-    color: #fafafa;
+    color: #ececec;
     font-family: 'sudo-regular' !important;
 }
 #q4{
-    color: #fafafa;
+    color: #ececec;
     font-family: 'sudo-regular' !important;
 }
 
