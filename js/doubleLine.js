@@ -196,15 +196,18 @@ class DoubleLine {
             .attr('width', vis.width)
             .attr('class', 'curtain')
             .attr('transform', 'rotate(180)')
-            .style('fill', '#ffffff')
+            .style('fill', '#2c2c2c')
 
-        let t = vis.svg.transition()
+        document.addEventListener('aos:in:double-aos', ({ detail }) => {
+            let t = vis.svg.transition()
             .delay(750)
             .duration(6000)
             .ease(d3.easeLinear);
 
-        t.select('rect.curtain')
-            .attr('width', 0);
+            t.select('rect.curtain')
+                .attr('width', 0);
+        });
+       
 
     }
 }

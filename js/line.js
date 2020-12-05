@@ -286,13 +286,20 @@ class LineGraph {
             .attr('transform', 'rotate(180)')
             .style('fill', '#2c2c2c')
 
-        let t = vis.svg.transition()
+        document.addEventListener('aos:out:aos-line', () => {
+            d3.select('rect.curtain').attr('x', -1 * vis.width - 5);
+        })
+
+        document.addEventListener('aos:in:aos-line', ({ detail }) => {
+            let t = vis.svg.transition()
             .delay(750)
             .duration(6000)
             .ease(d3.easeLinear);
-
-        t.select('rect.curtain')
+            
+            t.select('rect.curtain')
             .attr('width', 0);
+        });
+       
 
         console.log(vis.displayData)
 

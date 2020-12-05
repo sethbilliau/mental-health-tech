@@ -59,6 +59,7 @@ function initMainPage(dataArray) {
     myCloudVis = new WordCloudVis('cloudDiv', dataArray[9], 50);
     myWordBar = new WordBar("wordbubbleDiv", dataArray[9]);
     myStories = new Story("stories", dataArray[10]);
+
     lineGraphVis = new LineGraph("lineGraphDiv", dataArray[2]);
 
     myDoubleBar = new DoubleBarchart('double-barchart', dataArray[1], surveyDemographics, surveyGuesses);
