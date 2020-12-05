@@ -34,22 +34,22 @@ class BubbleChart {
             e: "M58.65,22.876h-0.006l0,0h-4.144c2.98-1.611,5.029-4.726,5.029-8.352C59.53,9.265,55.261,5,50,5s-9.53,4.265-9.53,9.524  c0,3.626,2.049,6.74,5.029,8.352H41.35c-3.885,0-7.026,3.142-7.026,7.032v23.573c0,2.97,2.405,5.364,5.375,5.364v30.79  c0,2.959,2.405,5.364,5.363,5.364h10.51c2.97,0,5.375-2.405,5.375-5.364V58.713c2.653-0.327,4.73-2.491,4.73-5.231V29.908  C65.677,26.018,62.523,22.876,58.65,22.876z"
         }
         vis.colorScale = {
-            "M": 'orange',
+            "M": '#fff9c4',
             "F": 'lightblue',
             "Other-Gender": '#B19CD9',
-            "18-25": 'orange',
+            "18-25": '#fff9c4',
             "26-35": 'lightblue',
             "36-50": '#B19CD9',
-            "51-75": 'green',
-            "White": 'orange',
+            "51-75": '#8bc34a',
+            "White": '#fff9c4',
             "Asian": 'lightblue',
             "Hispanic-Black": '#B19CD9',
-            "Other-Race": 'green',
-            "dev": 'orange',
+            "Other-Race": '#8bc34a',
+            "dev": '#fff9c4',
             "mgmt": 'lightblue',
             "other_job": '#B19CD9',
-            "support": 'green',
-            "designer": "yellow"
+            "support": '#8bc34a',
+            "designer": "#ffb86c"
         };
         vis.stepNames = ["start", "gender", "age", "race", "occupation"];
         vis.step = 0;
@@ -349,7 +349,7 @@ class BubbleChart {
             if (d["gender"][1]) {
                 return "#ff5555";
             } else {
-                return "#8be9fd"
+                return "lightblue"
             }
         } else if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
             if (!d[vis.stepNames[vis.step]]) {
@@ -558,6 +558,7 @@ class BubbleChart {
             .merge(vis.texts)
             .transition()
             .duration(1000)
+            .style('fill', '#ececec')
             .attr("x", d => d.xPos)
             .attr("y", d => d.yPos)
             .text(d => d.label)
@@ -672,13 +673,13 @@ class BubbleChart {
                 $(`#step${vis.step+1}`).html(`<h5><br><strong>41%</strong> of all respondents said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
             }
             else if(vis.step == 1){
-                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <strong>Females</strong> and <strong>Other</strong> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 2){
                 $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of <strong>younger people</strong> reported they were struggling with a mental health issue than older people.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 3){
-                $(`#step${vis.step+1}`).html(`<h5>People who identified as <strong>Hispanic/Black</strong> had the highest proportion of mental health issues. <strong>Asians</strong> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> had the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else{
                 $(`#step${vis.step+1}`).html(`<h5><strong>Designers</strong> had the highest proportion of mental health issues. <strong>Developers</strong> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
