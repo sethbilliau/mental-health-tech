@@ -220,7 +220,7 @@ class LineGraph {
 
                 tooltip.html(
                         `
-                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
+                <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 20px">
                     <h6> Year: ${d.date}</h6>
                     <h6> Weight: ${d.percent}%</h6>
                     <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
