@@ -247,7 +247,7 @@ class SankeyVis {
 
 
         let response_list = {
-            "disorder": ["Yes", "No", "Don't Know"],
+            "disorder": ["Yes", "No"],
             "scale_tech_industry_supports": [1, 2, 3, 4, 5],
             "employer_formally_discussed": ['Yes', 'No'],
             "employer_offers_resources": ['Yes', 'No', "I don't know"],
