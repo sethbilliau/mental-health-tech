@@ -10,7 +10,7 @@ function questionaire() {
     var q2 = [2, "What is your age?"];
     var q3 = [3, "What is your race?"];
     var q4 = [4, "What is your work position?"];
-    var q5 = [5, "What % of tech professionals in each group have a mental health disorder?"]
+    var q5 = [5, "What % of tech professionals in each group have a mental health issue?"]
     var op1 = ["Male", "Female", "Other Gender"],
         an1 = [];
     var op2 = ['18-25', '26-35', '36-50', '51-75'],
