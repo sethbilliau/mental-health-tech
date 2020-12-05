@@ -676,13 +676,13 @@ class BubbleChart {
                 $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 2){
-                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of <strong>younger people</strong> reported they were struggling with a mental health issue than older people.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>People age <yellow>18-25</yellow> and <cyan>26-35</cyan> reported the highest proportion of mental health issues.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 3){
-                $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> had the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> reported the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also chose not to disclose race.</h6><h6><br>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else{
-                $(`#step${vis.step+1}`).html(`<h5><strong>Designers</strong> had the highest proportion of mental health issues. <strong>Developers</strong> had the lowest proportion.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5><orange>Designers</orange> had the highest proportion of mental health issues.<yellow>Developers</yellow> had the lowest proportion.</h5><h6>NOTE: Disclosing occupation was only requested in 2016.</h6><h6><br>Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
            
             $('body').removeClass('stop-scrolling');

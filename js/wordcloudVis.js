@@ -83,6 +83,7 @@ class WordCloudVis {
                 // .style("fill", )
                 .style("font-family", "Impact")
                 .attr("text-anchor", "middle")
+               .attr('fill', '#ececec')
                .attr("id", function(d) { return d.text; })
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
@@ -102,12 +103,12 @@ class WordCloudVis {
     }
 
     highlight(i) {
-        d3.select("#" + i.text).style('fill', "cornflowerblue")
+        d3.select("#" + i.text).style('fill', "#8be9fd")
 
     }
 
     unhighlight(i) {
-        d3.select("#" + i.text).style('fill', "black")
+        d3.select("#" + i.text).style('fill', "#ececec")
     }
 
 }
