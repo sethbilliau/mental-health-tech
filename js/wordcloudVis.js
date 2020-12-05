@@ -33,20 +33,23 @@ class WordCloudVis {
     wrangleData(){
         let vis = this;
 
+        // Get Selected Category from appropriate Div
         vis.selectedCategory = $('#wordSelector').val();
-        // check out the data
+
+        // Filter by selected
         vis.filteredData = vis.surveyData.filter(function(d) {
             return d.type == vis.selectedCategory;
         });
 
+        // Get a words list
         vis.wordslist = vis.filteredData.map(function(d, i) {
             return {index: i, text: d.word, size: +d.freq};
         })
 
+        // Filter according to desired number of words
         vis.displayData = vis.wordslist.filter(function(d) {
             return d.index < vis.n;
         });
-        // console.log('final data structure: ', vis.displayData );
 
         vis.updateVis();
 
@@ -55,12 +58,14 @@ class WordCloudVis {
     updateVis() {
         let vis = this;
 
+        // Initialize font scalar for word cloud
         vis.scaler = d3.scaleLinear()
             .domain([
                 d3.min(vis.displayData, d=>d.size),
                 d3.max(vis.displayData, d=>d.size)])
             .range([12, 40]);
 
+        // Initialize layout
         vis.layout = d3.layout.cloud()
             .size([vis.width, vis.height])
             .padding(3)
@@ -69,7 +74,7 @@ class WordCloudVis {
             .fontSize(function(d) { return vis.scaler(d.size); })
             .on("end", draw);
 
-
+        // Draw function for layout
         function draw(words) {
            vis.groups = vis.svg
                 .append("g")
@@ -80,7 +85,7 @@ class WordCloudVis {
            vis.words.enter().append("text")
                .merge(vis.words)
                 .style("font-size", function(d) { return d.size + "px"; })
-                // .style("fill", )
+                .style("fill", "white")
                 .style("font-family", "Impact")
                 .attr("text-anchor", "middle")
                .attr("id", function(d) { return d.text; })
@@ -93,21 +98,21 @@ class WordCloudVis {
 
         }
 
-
+        // Instantiate word cloud and start
         vis.layout.words(vis.displayData);
-
-
         vis.layout.start();
 
     }
 
+
+    // Functions for highlighting and unhighlighting link with barchart
     highlight(i) {
         d3.select("#" + i.text).style('fill', "cornflowerblue")
 
     }
 
     unhighlight(i) {
-        d3.select("#" + i.text).style('fill', "black")
+        d3.select("#" + i.text).style('fill', "white")
     }
 
 }
