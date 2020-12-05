@@ -79,7 +79,20 @@ function questionaire() {
         $("#slider-fill2").css({ visibility: "visible"});
         $("#slider-fill3").css({ visibility: "visible"});
         $("#slider-fill4").css({ visibility: "visible"});
-        $(".container").css({ visibility: "visible"});;
+        $(".container").css({ visibility: "visible"});
+
+        $("#slider-header1").css({ visibility: "visible"});
+        $('#slider-header1').html(selectedGender);
+
+        $("#slider-header2").css({ visibility: "visible"});
+        $('#slider-header2').html(selectedAge);
+
+        $("#slider-header3").css({ visibility: "visible"});
+        $('#slider-header3').html(selectedRace);
+
+        $("#slider-header4").css({ visibility: "visible"});
+        $('#slider-header4').html(selectedJob);
+
 
         // bubbleChart.initVis();
     });
