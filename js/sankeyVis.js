@@ -482,7 +482,6 @@ class SankeyVis {
 
                 // make unique gradient ids  
 
-
                 let startColor = d.source.color;
                 let stopColor = d.target.color;
 
