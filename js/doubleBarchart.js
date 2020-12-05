@@ -75,7 +75,7 @@ class DoubleBarchart {
             .attr('width', 10)
             .attr('y', vis.margin.top + vis.height / 5)
             .attr('height', 10)
-            .style('fill', 'blue');
+            .style('fill', '#bd93f9');
         vis.svg.append('text')
             .attr('id', 'guess-leg-label')
             .attr('x', vis.width - vis.margin.right - vis.margin.left + 15)
@@ -83,7 +83,7 @@ class DoubleBarchart {
             .attr('y', vis.margin.top + vis.height / 5 + 10)
             .attr('height', 10)
             .style('font-size', '11px')
-            .style('fill', 'black')
+            .style('fill', '#fafafa')
             .text('Your guess');
 
 
@@ -93,14 +93,14 @@ class DoubleBarchart {
             .attr('width', 10)
             .attr('y', vis.margin.top + vis.height / 3.5)
             .attr('height', 10)
-            .style('fill', 'red');
+            .style('fill', '#ffb86c');
         vis.svg.append('text')
             .attr('id', 'actual-leg-label')
             .attr('x', vis.width - vis.margin.right - vis.margin.left + 15)
             .attr('width', 10)
             .attr('y', vis.margin.top + vis.height / 3.5 + 10)
             .attr('height', 10)
-            .style('fill', 'black')
+            .style('fill', '#fafafa')
             .style('font-size', '11px')
             .text('OSMI survey results');
 
@@ -251,7 +251,7 @@ class DoubleBarchart {
         guess_bar_data.enter()
             .append("rect")
             .attr("class", "bar field1")
-            .style("fill", "blue")
+            .style("fill", "#bd93f9")
             .merge(guess_bar_data)
             .transition().duration(300)
             .attr("x", d => vis.xScale1('guess'))
@@ -267,12 +267,12 @@ class DoubleBarchart {
             .data(d => [d]);
         guess_label_data.enter().append('text')
             .attr('class', 'guess-label')
-            .style('font-size', '11px')
+            .style('font-size', '13px')
             .merge(guess_label_data)
             .transition().duration(300)
             .attr('x', d => vis.xScale1('guess') + vis.xScale1.bandwidth() / 3)
             .attr('y', d => vis.yScale(d.guess) - 10)
-            .attr('fill', 'blue')
+            .attr('fill', '#bd93f9')
             .text(d => {
                 let formatPerc = d3.format('.0%');
                 return formatPerc(d.guess)
@@ -285,7 +285,7 @@ class DoubleBarchart {
         actual_bar_data.enter()
             .append("rect")
             .attr("class", "bar field2")
-            .style("fill", "red")
+            .style("fill", "#ffb86c")
             .merge(actual_bar_data)
             // .transition().duration(300)
             .attr("x", d => vis.xScale1('actual'))
@@ -301,12 +301,12 @@ class DoubleBarchart {
             .data(d => [d]);
         actual_label_data.enter().append('text')
             .attr('class', 'guess-label')
-            .style('font-size', '11px')
+            .style('font-size', '13px')
             .merge(actual_label_data)
             // .transition().duration(300)
             .attr('x', d => vis.xScale1('actual') + vis.xScale1.bandwidth() / 3)
             .attr('y', d => vis.yScale(d.actual) - 10)
-            .attr('fill', 'red')
+            .attr('fill', '#ffb86c')
             .text(d => {
                 let formatPerc = d3.format('.0%');
                 return formatPerc(d.actual)
