@@ -2,13 +2,13 @@ class LineGraph {
     constructor(parentElement, displayData) {
         this.parentElement = parentElement;
         this.displayData = displayData;
-        console.log(displayData)
+
         this.initVis();
     }
 
     initVis() {
         let vis = this;
-        let parseYear = d3.timeParse("%Y");
+        vis.parseYear = d3.timeParse("%Y");
 
         vis.margin = {
             top: 50,
@@ -28,7 +28,7 @@ class LineGraph {
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         vis.x = d3.scaleTime()
-            .domain(d3.extent(vis.displayData, d => parseYear(d.date)))
+            .domain(d3.extent(vis.displayData, d => vis.parseYear(d.date)))
             .range([0, vis.width]);
 
         vis.y = d3.scaleLinear()
@@ -45,30 +45,44 @@ class LineGraph {
 
         vis.svg.append("clipPath")
             .attr("id", "clip")
-          .append("rect")
+            .append("rect")
             .attr("width", vis.width)
             .attr("height", vis.height);
 
 
-        let technologyData = vis.displayData.filter(d => d.industry === "Technology");
-        let financialData = vis.displayData.filter(d => d.industry === "Financial");
-        let energyData = vis.displayData.filter(d => d.industry === "Energy")
 
-        const tooltip = d3.select("body").append("div")
+        vis.tooltip = d3.select("body").append("div")
             .attr("class", "tooltip-line")
             .style("opacity", 0)
             .style("position", "absolute");
 
 
-        let line = d3.line()
-            .x(d => vis.x(parseYear(d.date)))
+        vis.line = d3.line()
+            .x(d => vis.x(vis.parseYear(d.date)))
             .y(d => vis.y(parseFloat(d.percent)))
             .curve(d3.curveMonotoneX);
 
 
 
+
+        this.wrangleData();
+    }
+
+    wrangleData() {
+        let vis = this;
+
+        vis.technologyData = vis.displayData.filter(d => d.industry === "Technology");
+        vis.financialData = vis.displayData.filter(d => d.industry === "Financial");
+        vis.energyData = vis.displayData.filter(d => d.industry === "Energy")
+
+        this.updateVis();
+    }
+
+    updateVis() {
+        let vis = this;
+
         let lines = vis.svg.selectAll("line")
-            .data([technologyData, financialData, energyData])
+            .data([vis.technologyData, vis.financialData, vis.energyData])
             .enter()
             .append("g");
 
@@ -83,7 +97,7 @@ class LineGraph {
                 }
             })
             .style("stroke-width", "2")
-            .attr("d", d => line(d));
+            .attr("d", d => vis.line(d));
 
         lines.append("text")
             .attr("class", "serie_label")
@@ -91,7 +105,7 @@ class LineGraph {
                 return d[d.length - 1];
             })
             .attr("transform", function (d) {
-                return `translate(${vis.x(parseYear(d.date)) + 10}, ${vis.y(parseFloat(d.percent)) + 5})`;
+                return `translate(${vis.x(vis.parseYear(d.date)) + 10}, ${vis.y(parseFloat(d.percent)) + 5})`;
             })
             .attr("x", 5)
             .style("fill", function (d, i) {
@@ -106,29 +120,31 @@ class LineGraph {
         const ghost_lines = lines.append("path")
             .attr("class", "ghost-line")
             .attr("d", function (d) {
-                return line(d);
+                return vis.line(d);
             });
 
         vis.svg.selectAll(".ghost-line")
-            .on('mouseover', function () {
-                const selection = d3.select(this).raise();
+            .on('mouseover', function (event, d) {
+                if (d[0].industry !== "Technology") {
+                    const selection = d3.select(this).raise();
 
-                selection
-                    .transition()
-                    .delay("100").duration("10")
-                    .style("stroke", "#ffb86c")
-                    .style("opacity", "1")
-                    .style("stroke-width", "3");
+                    selection
+                        .transition()
+                        .delay("100").duration("10")
+                        .style("stroke", "#ffb86c")
+                        .style("opacity", "1")
+                        .style("stroke-width", "3");
 
-                // add the legend action
-                const legend = d3.select(this.parentNode)
-                    .select(".serie_label");
+                    // add the legend action
+                    const legend = d3.select(this.parentNode)
+                        .select(".serie_label");
 
-                legend
-                    .transition()
-                    .delay("100")
-                    .duration("10")
-                    .style("fill", "#fafafa");
+                    legend
+                        .transition()
+                        .delay("100")
+                        .duration("10")
+                        .style("fill", "#fafafa");
+                }
             })
 
             .on('mouseout', function () {
@@ -150,7 +166,7 @@ class LineGraph {
                     .transition()
                     .delay("100")
                     .duration("10")
-                    .style("fill", function(d) {
+                    .style("fill", function (d) {
                         if (d.industry === "Technology") {
                             return "black";
                         } else {
@@ -171,7 +187,7 @@ class LineGraph {
         };
 
         let techLines = vis.svg.selectAll("line")
-            .data([technologyData])
+            .data([vis.technologyData])
             .enter()
             .append("g");
 
@@ -182,7 +198,7 @@ class LineGraph {
             .enter()
             .append("circle")
             .attr("cx", function (d) {
-                return vis.x(parseYear(d.date));
+                return vis.x(vis.parseYear(d.date));
             })
             .attr("cy", function (d) {
                 return vis.y(parseFloat(d.percent));
@@ -191,7 +207,7 @@ class LineGraph {
                 if (d.industry === "Technology" && Object.keys(majorEvents).indexOf(d.date) !== -1) {
                     return 5;
                 } else {
-                    return 1;
+                    return 0;
                 }
             })
             .attr("class", "point")
@@ -205,7 +221,7 @@ class LineGraph {
             .enter()
             .append("circle")
             .attr("cx", function (d) {
-                return vis.x(parseYear(d.date));
+                return vis.x(vis.parseYear(d.date));
             })
             .attr("cy", function (d) {
                 return vis.y(parseFloat(d.percent));
@@ -213,18 +229,18 @@ class LineGraph {
             .attr('r', 10)
             .style("opacity", 0)
             .on('mouseover', function (event, d) {
-                tooltip.transition()
+                vis.tooltip.transition()
                     .delay(30)
                     .duration(200)
                     .style("opacity", 1);
 
-                tooltip.html(
+                vis.tooltip.html(
                         `
-                <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 20px">
-                    <h6> Year: ${d.date}</h6>
-                    <h6> Weight: ${d.percent}%</h6>
-                    <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
-                </div>`
+            <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 20px">
+                <h6> Year: ${d.date}</h6>
+                <h6> Weight: ${d.percent}%</h6>
+                <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
+            </div>`
                     )
                     .style("left", (event.pageX + 25) + "px")
                     .style("top", (event.pageY) + "px");
@@ -237,10 +253,10 @@ class LineGraph {
                     .duration("200")
                     .attr("r", 6)
                     .style("opacity", 1)
-                    .style("fill", '#555555');
+                    .style("fill", 'white');
             })
             .on("mouseout", function (d) {
-                tooltip.transition()
+                vis.tooltip.transition()
                     .duration(100)
                     .style("opacity", 0);
 
@@ -290,29 +306,18 @@ class LineGraph {
             d3.select('rect.curtain').attr('x', -1 * vis.width - 5);
         })
 
-        document.addEventListener('aos:in:aos-line', ({ detail }) => {
+        document.addEventListener('aos:in:aos-line', ({
+            detail
+        }) => {
             let t = vis.svg.transition()
-            .delay(750)
-            .duration(6000)
-            .ease(d3.easeLinear);
-            
+                .delay(750)
+                .duration(6000)
+                .ease(d3.easeLinear);
+
             t.select('rect.curtain')
-            .attr('width', 0);
+                .attr('width', 0);
         });
-       
 
-        console.log(vis.displayData)
-
-        this.wrangleData();
-    }
-
-    wrangleData() {
-        let vis = this;
-        this.updateVis();
-    }
-
-    updateVis() {
-        let vis = this;
     }
 
 }

@@ -26,8 +26,6 @@ class BubbleBar {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        // vis.filter = "gender";
-        // vis.subfilter = "M";
 
         let translate = {
             "anxiety": "Anxiety Disorders",
@@ -111,7 +109,7 @@ class BubbleBar {
 
     wrangleData() {
         let vis = this;
-        // console.log(vis.surveyData)
+
         vis.filteredData = {
             "anxiety": 0,
             "mood": 0,
@@ -197,7 +195,6 @@ class BubbleBar {
 
         vis.displayData.sort((a, b) => a.count - b.count);
 
-        console.log(vis.displayData)
         this.updateVis();
     }
 
@@ -242,9 +239,7 @@ class BubbleBar {
 
     onBubbleHovered(key) {
         let vis = this;
-        // console.log(key);
         vis.subfilter = key;
-        console.log(key)
         $(`#step${vis.step[key]+1}`).html('<div id="bubble-bar"></div>');
         vis.initVis();
     }
