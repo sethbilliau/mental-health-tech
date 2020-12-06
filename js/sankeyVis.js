@@ -424,7 +424,7 @@ class SankeyVis {
         if (vis.currPhase < 3) {
             $("#sankey-text").html(vis.phases[vis.currPhase].text);
             vis.phases[vis.currPhase].highlightedLinks.forEach(el => {
-                d3.select(el).transition().duration(2000)
+                d3.select(el).transition().duration(1000)
                     .attr("d", vis.path)
                     .style("stroke-opacity", .8).style("stroke", "#ff5555");
             })
