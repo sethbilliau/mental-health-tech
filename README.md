@@ -43,7 +43,7 @@ Finally, the `js` folder contains the most of our work. `animate`, `scroll`, `sa
 
   - **Sankey**
     - Steps through some key relationships between co-workers and workplace culture
-    - Use drop downs to choose survey questions to comparer to one another
+    - Use drop downs to choose survey questions to compare them to each other
     - Hover nodes to see highlighted paths
 
   - **Stories**
