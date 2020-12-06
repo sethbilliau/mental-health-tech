@@ -11,7 +11,6 @@ let bubbleChart;
 let myStories;
 let bubbleBar;
 let mySankey;
-let doubleLine;
 
 let selectedGender;
 let selectedAge;
@@ -73,7 +72,6 @@ function initMainPage(dataArray) {
     bubbleChart = new BubbleChart("bubble-chart", dataArray[1], phases, MyEventHandler);
     bubbleBar = new BubbleBar("bubble-bar", dataArray[1]);
     mySankey = new SankeyVis('sankeyDiv', dataArray[8]);
-    doubleLine = new DoubleLine('doubleLine', dataArray[1]);
 }
 
 function categoryChange() {
