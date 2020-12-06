@@ -42,7 +42,9 @@ Finally, the `js` folder contains the most of our work. `animate`, `scroll`, `sa
     - Hover to see what mental health disorders they are struggling with.
 
   - **Sankey**
-    - TODO
+    - Steps through some key relationships between co-workers and workplace culture
+    - Use drop downs to choose survey questions to comparer to one another
+    - Hover nodes to see highlighted paths
 
   - **Stories**
     - This visualization shows participants' most frequently used words in response to prompts about employer behavior regarding mental health. 
@@ -54,3 +56,7 @@ Finally, the `js` folder contains the most of our work. `animate`, `scroll`, `sa
 
 - URL: [Process Book](https://docs.google.com/document/d/1aOAqhj8ZtW3qWSxTRvcyOC-Ik3bKi29Fpku4HXvhh24/edit?usp=sharing)
 
+### Helpful Sources Used
+- Sankey: https://bl.ocks.org/vasturiano/b0b14f2e58fdeb0da61e62d51c649908
+- Force layout: https://www.d3indepth.com/force-layout/
+- Line graph: http://bl.ocks.org/markmarkoh/8700606
