@@ -564,6 +564,12 @@ div.section {
     font-weight:500 !important;
 }
 
+#health-list {
+    list-style: circle;
+    color: #ececec;
+    font-family: 'sudo-regular' !important;
+    padding-left: 40px;
+}
 /* Vertical Navigation Bar*/
 
 #cd-vertical-nav a {
