@@ -710,6 +710,12 @@ ul {
 
 .team-img {
     float: center;
+    width:  300px;
+    height: 150px;
+    object-fit: cover;
+}
+.people-img {
+    float: center;
     width:  200px;
     height: 225px;
     object-fit: cover;
