@@ -16,10 +16,6 @@ class DoubleBarchart {
         }
 
         this.displayData = [];
-
-        console.log('hello')
-
-        // this.initVis();
     }
 
     /*
@@ -115,8 +111,6 @@ class DoubleBarchart {
             .style('fill', 'darkgray')
             .text('% struggling with Mental Health disorder');
 
-        console.log(vis.displayData)
-
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
@@ -130,13 +124,12 @@ class DoubleBarchart {
         vis.displayData = []
         vis.surveyDemographics = [selectedGender, selectedAge, selectedRace, selectedJob];
         vis.surveyGuesses = [vis.guessData.gender, vis.guessData.age, vis.guessData.race, vis.guessData.job]
-        console.log(vis.data)
+
         vis.surveyDemographics.forEach((d, i) => {
             let demoFilter;
 
             if (i == 0) {
                 if (d == 'Female') {
-                    console.log('Female')
                     demoFilter = vis.data.filter(j => j.gender == 'F')
                 } else if (d == 'Male') {
                     demoFilter = vis.data.filter(j => j.gender == 'M')
@@ -168,9 +161,7 @@ class DoubleBarchart {
                     demoFilter = vis.data.filter(j => j.race == 'Hispanic' || j.race == 'Black or African American')
                 }
                 else if (d == 'Other Race'){
-                    console.log('other race')
                     demoFilter = vis.data.filter(j => j.race != 'Hispanic' && j.race != 'Black or African American' && j.race != 'Asian' && j.race != 'White'&& j.race != 'NA')
-                    console.log(demoFilter)
                 }
                 else{
                     demoFilter = vis.data.filter(j => j.race == d)
@@ -183,9 +174,7 @@ class DoubleBarchart {
                     demoFilter = vis.data.filter(j => j.mgmt == 1)
                 }
                 else if (d == 'Other Role'){
-                    console.log('other job');
                     demoFilter = vis.data.filter(j => j.other_job == 1)
-                    console.log(demoFilter)
                 }
                 else if (d == 'Designer'){
                     demoFilter = vis.data.filter(j => j.designer == 1)
@@ -197,7 +186,6 @@ class DoubleBarchart {
             }
 
             let disorder_filter = demoFilter.filter(j => j.disorder == "Yes")
-            // let disorder_filter = demoFilter.filter(j => j.disorder_diagnosed == "Yes" || j.past_disorder == "Yes" || j.disorder == "Yes")
             let disorder_count = disorder_filter.length;
             let disorder_percentage = disorder_count / demoFilter.length
 
@@ -209,21 +197,6 @@ class DoubleBarchart {
 
         });
 
-
-        // //testing something - delete later
-        // let filter = vis.data.filter(j => j.disorder == "Yes")
-        // let count = filter.length;
-        // let percentage = count / vis.data.length
-        // console.log('percentage' + percentage)
-
-        // vis.guessData = {
-        //     "gender": 0,
-        //     "age": 0,
-        //     "race": 0,
-        //     "job": 0
-        // }
-
-        console.log(vis.displayData);
         vis.updateVis();
     }
 
@@ -319,6 +292,7 @@ class DoubleBarchart {
         // Add the X Axis
         vis.xAxis_group
             .call(vis.xAxis);
+
         // Add the Y Axis
         vis.yAxis_group
             .call(vis.yAxis);
@@ -328,7 +302,6 @@ class DoubleBarchart {
         let vis = this;
         let splitVal = val.split(":");
         vis.guessData[splitVal[0]] = parseFloat(splitVal[1]);
-        console.log(vis.guessData)
         vis.wrangleData()
     }
 }

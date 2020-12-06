@@ -101,7 +101,6 @@ class DoubleLine {
             el.count = Math.round((el.count / totalCount[el.year]) * 100);
         })
 
-        console.log(vis.displayData)
         this.updateVis();
     }
 

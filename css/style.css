@@ -74,9 +74,13 @@ yellow{
 .axis text {
     fill: #fafafa;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 120%;
+    font-size: 14px;
 }
 
+.slider text {
+    fill: #fafafa;
+    font-size: 18px;
+  }
 /* LINE CHART */
 .line {
     fill: none !important;
@@ -747,6 +751,7 @@ ul {
 .smalltext{
     color: #ececec !important;
     font-family: 'sudo-regular' !important;
+    font-size: 20px !important;
 }
 
 #q1{

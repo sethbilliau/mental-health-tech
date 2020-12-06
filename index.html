@@ -20,7 +20,6 @@
 </head>
 
 <body>
-	<!-- Vertical Navigation WIP -->
 	<div id="cd-vertical-nav">
 		<ul>
 			<li>
@@ -89,12 +88,6 @@
 					<span class="cd-label">About Us</span>
 				</a>
 			</li>
-			<!-- <li>
-				<a href="#section10" data-number="10">
-					<span class="cd-dot"></span>
-					<span class="cd-label">Acknowledgements</span>
-				</a>
-			</li> -->
 		</ul>
 	</div>
 
@@ -108,8 +101,6 @@
 	<div class="section nav-section" data-aos="fade-in" id="section2">
 		<div class="line-divider" data-aos="fade-in"></div>
 		<div style="height:80px">
-			<!--			<h5>Over the past decade, jobs in the tech industry have become increasingly desirable</h5>-->
-			<!--			<h5>This largely because the tech industry is one of the fastest growing sectors in the US Economy...</h5>-->
 		</div>
 		<div class="row align-items-center">
 			<div data-aos="fade-in" data-aos-id="aos-line" class="col-md-7" id="lineGraphDiv"
@@ -120,6 +111,9 @@
 						<purple-bold>fastest growing</purple-bold>
 					</strong> sectors in the US
 					Economy.</h5>
+				<h6 style=' text-align: end !important;'>
+					<lime>Hover</lime> over the points to see some major events.
+				</h6>
 			</div>
 		</div>
 		<div class="row align-items-center" style="text-align: left;">
@@ -140,15 +134,6 @@
 		<div class="line-divider"></div>
 	</div>
 
-	<!--<<<<<<< HEAD-->
-	<!--	<div class="section nav-section" id="section3">-->
-	<!--		<div style="height:50px"></div>-->
-	<!--		<div data-aos="fade-in">-->
-	<!--			<h5 style="text-align: center;">How much do you think tech professionals in your demographic<br> are struggling with mental health issues?</h5>-->
-	<!--			<div style="height:20px"></div>-->
-	<!--			<div class="col-md-9">-->
-	<!--				<div id = "survey-pea" style ="height:500px"></div>-->
-	<!--			</div>-->
 	<div class="section nav-section" id="section3" style="margin-top: -3px;">
 		<div class='row' style='height: 100vh; margin-top:50px;'>
 			<div class='col'>
@@ -175,7 +160,6 @@
 		<div style="height:50px"></div>
 		<div>
 			<h5>Diagnostic Quiz:</h5>
-			<!--			<h5 id = 'quiz-title'><strong>How much do you think tech professionals in <i>your</i> demographic groups are struggling with mental health issues?</strong>-->
 			<h5 id='quiz-title'></h5>
 
 		</div>
@@ -187,13 +171,15 @@
 						type='radio' name='q1' value='0'>Male<br><input type='radio' name='q1' value='2'>Other Gender
 				</form>
 			</div>
-			<div class="col-md-3" id="q2" style="padding-left: 40px; padding-right: 40px; visibility: hidden;" data-aos="fade-in">
+			<div class="col-md-3" id="q2" style="padding-left: 40px; padding-right: 40px; visibility: hidden;"
+				data-aos="fade-in">
 				<p class='smalltext' data-aos='fade-in'><b>What is your age?</b></p>
 				<form id='question2' data-aos='fade-in'><input type='radio' name='q2' value=0>18-25<br><input
 						type='radio' name='q2' value=1>26-35<br><input type='radio' name='q2' value=2>36-50<br><input
 						type='radio' name='q2' value=3>51-75</form>
 			</div>
-			<div class="col-md-3" id="q3" style="padding-left: 40px; padding-right: 40px; visibility: hidden;" data-aos="fade-in">
+			<div class="col-md-3" id="q3" style="padding-left: 40px; padding-right: 40px; visibility: hidden;"
+				data-aos="fade-in">
 				<p class='smalltext' data-aos='fade-in'><b>What is your race?</b></p>
 				<form id='question3' data-aos='fade-in'><input type='radio' name='group-stack' value=0>Asian<br><input
 						type='radio' name='group-stack' value=1>Hispanic/Black<br><input type='radio' name='group-stack'
@@ -211,7 +197,9 @@
 		<div style='height:30px;'></div>
 		<div style="text-align: center;" class="row align-items-center">
 			<div id="q5" style="visibility: hidden;">
-				<p><b>Guess what % of tech professionals in each group have a mental health issue by using the sliders below.</b></p>
+				<p><b>Guess what <cyan>percent</cyan> of tech professionals in each group have a mental health issue by
+						using the sliders
+						below.</b></p>
 			</div>
 		</div>
 		<div class="row justify-content-between">
@@ -247,7 +235,6 @@
 	<div class="section nav-section" id="section5">
 		<div style="height:50px"></div>
 		<div data-aos="fade-in">
-			<!--			<div id = 'barchart-caption'></div>-->
 			<h5 style="text-align: left; visibility: hidden;" id='barchart-caption'>
 				You submitted your expectations. Here's how they compare against OSMI's survey results:
 			</h5>
@@ -287,39 +274,42 @@
 				<div class="col-md-7" id="bubble-chart">
 				</div>
 				<div class="col-md-5">
-					<!--				<section class="step" id="step1">-->
-					<!--					<h5 id="text1"></h5>-->
-					<!--				</section>-->
 					<section class="step" id="step1">
 						<h5><br>
 							<cyan>41% of all respondents</cyan> said they are struggling with mental health
 							issues.
 						</h5>
-						<h6>Hover to see what mental health disorders they are struggling with.</h6>
+						<h6>
+							<lime>Hover</lime> to see what mental health disorders they are struggling with.
+						</h6>
 						<div id="person-svg"></div>
 					</section>
 					<section class="step" id="step2">
 						<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and
 							<purple>Other</purple> are struggling with mental health issues, compared to Males.</h5>
-						<h6><br>Each <span
-							style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-						disorder. Hover to see what mental health disorders each group is struggling with.</h6>
+						<h6><br>Each <span style="color: #ff5555"><strong>red</strong></span> icon represents 10 people
+							struggling with a mental health issue or
+							disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling
+							with.</h6>
 					</section>
 					<section class="step" id="step3">
 						<h5>People age <yellow>18-25</yellow> and <cyan>26-35</cyan> reported the highest proportion of
 							mental health issues.</h5>
-							<h6><br>Each <span
-								style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-							disorder. Hover to see what mental health disorders each group is struggling with.</h6>
+						<h6><br>Each <span style="color: #ff5555"><strong>red</strong></span> icon represents 10 people
+							struggling with a mental health issue or
+							disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling
+							with.</h6>
 					</section>
 					<section class="step" id="step4">
 						<h5>People who identified as <purple>Hispanic/Black</purple> reported the highest proportion of
 							mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5>
-						<h6><br>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also chose
+						<h6><br>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also
+							chose
 							not to disclose race.</h6>
-							<h6><br>Each <span
-								style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-							disorder. Hover to see what mental health disorders each group is struggling with.</h6>
+						<h6><br>Each <span style="color: #ff5555"><strong>red</strong></span> icon represents 10 people
+							struggling with a mental health issue or
+							disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling
+							with.</h6>
 					</section>
 					<section class="step" id="step5">
 						<h5>
@@ -327,52 +317,41 @@
 							<yellow>Developers</yellow> had the lowest proportion.
 						</h5>
 						<h6><br>NOTE: Disclosing occupation was only requested in 2016.</h6>
-						<h6><br>Each <span
-							style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-						disorder. Hover to see what mental health disorders each group is struggling with.</h6>
+						<h6><br>Each <span style="color: #ff5555"><strong>red</strong></span> icon represents 10 people
+							struggling with a mental health issue or
+							disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling
+							with.</h6>
 					</section>
 				</div>
 			</div>
 		</div>
-		<!--		<div class="line-divider" data-aos="fade-in"></div>-->
 	</div>
 	<div style='height: 100px;'></div>
 
-
-	<!--	<div class="nav-section" id="section6" style="padding: 0px 0px 100px 100px !important;">-->
-	<!--		<div class="row align-items-center" style="margin: 0px !important;" data-aos="fade-in">-->
-	<!--			<div class="col-md-4" style="padding: 0px !important;">-->
-	<!--				<h5 style="text-align: left;">Here's how mental health disorders are distributed across the United-->
-	<!--					States</h5>-->
-	<!--			</div>-->
-	<!--			<div class="col-md-8" style="padding: 0px !important;">-->
-	<!--				<div id="map" style="height: 60vh; width:100%;"></div>-->
-	<!--				<select id='categorySelector' class="custom-select align-self-center" style="width: 50%"-->
-	<!--					onchange="categoryChange()">-->
-	<!--					<option value="percResponses" selected>Response Rate</option>-->
-	<!--					<option value="percDisorder">Disorder Rate</option>-->
-	<!--				</select>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--	</div>-->
 	<div class="section nav-section" id="section7" style="margin-top: -3px;">
 		<div class="line-divider" data-aos="fade-in"></div>
 		<div style="height:30px"></div>
-		<h4 id = "who-title" style = 'font-family: sudo-regular !important;'></h4>
+		<h4 id="who-title" style='font-family: sudo-regular !important;'></h4>
 		<div class='row'>
 			<div class='col'>
-				<div class = 'row'>
-					<div class = 'col'>
-						<h5 style='font-size: 18px !important;'><br>According to a study done by the <purple>World Health Organization</purple>, a <orange>negative
-					</orange>workplace environment can lead to physical & mental health problems, loss of productivity, and absenteeism.</h5>
+				<div class='row'>
+					<div class='col'>
+						<h5 style='font-size: 18px !important;'><br>According to a study done by the <purple>World
+								Health Organization</purple>, a <orange>negative
+							</orange>workplace environment can lead to physical & mental health problems, loss of
+							productivity, and absenteeism.</h5>
 					</div>
 				</div>
-				<div class = 'row'>
-					<div class = 'col-8'>
-						<h5 style='font-size: 18px !important;'><br>An estimated <lime>$1 trillion</lime> a year of productivity is lost due to depression and anxiety disorders.</h5>
-						<h5 style='font-size: 18px !important;'><br>This can be attributed a variety of poor workplace practices, including <cyan>bad management practices, low levels of support for employees, inflexible working hours</cyan>, and <cyan>inadequate health policies.</cyan></h5>
+				<div class='row'>
+					<div class='col-8'>
+						<h5 style='font-size: 18px !important;'><br>An estimated <lime>$1 trillion</lime> a year of
+							productivity is lost due to depression and anxiety disorders.</h5>
+						<h5 style='font-size: 18px !important;'><br>This can be attributed a variety of poor workplace
+							practices, including <cyan>bad management practices, low levels of support for employees,
+								inflexible working hours</cyan>, and <cyan>inadequate health policies.</cyan>
+						</h5>
 					</div>
-					<div class = 'col-4'>
+					<div class='col-4'>
 						<img class="workplace-img" alt="Mental Health Value" src="img/workplace.png" width="100%">
 					</div>
 				</div>
@@ -384,37 +363,30 @@
 	<div class="section nav-section" data-aos="fade-in" id="section8">
 		<div class="line-divider" data-aos="fade-in"></div>
 		<div style="height:30px"></div>
-		<h5>Let's see whether OSMI survey responses about <lime>employer/coworker behavior</lime> reflect a relationship between <orange>negative workplace culture </orange>and<orange> mental health issues...</orange></h5>
-		<h6>These sankey visualizations show the relationship between survey responses about mental health and employer/coworker behavior. The first three panels highlight particularly interesting relationships, and the last panel allows you to select which responses to explore yourself.</h6>
+		<h5>Let's see whether OSMI survey responses about <lime>employer/coworker behavior</lime> reflect a relationship
+			between <orange>negative workplace culture </orange>and<orange> mental health issues...</orange>
+		</h5>
+		<h6>These sankey visualizations show the relationship between survey responses about mental health and
+			employer/coworker behavior. The first three panels highlight particularly interesting relationships, and the
+			last panel allows you to select which responses to explore yourself.</h6>
 		<div style='height: 30px;'></div>
 		<div class="row align-items-center">
 			<div class="col-md-9" id="sankeyDiv" style="height:500px;padding-left: 0px !important">
 				<div class="row">
 					<div class="col-md-6">
-						<select id='sankeySelector1' class="custom-select align-self-center" onchange="sankeyChange()">
-							<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option>
-					<option value="employer_formally_discussed">Has your employer ever formally discussed MH?</option>
-					<option value="employer_offers_resources">Does your employer offer resources to learn more about MH and options for seeking help?</option>
-					<option value="badly_handled_MH">Have you ever witnessed a badly handled response to a MH issue at work?</option>
-					<option value="comfortable_discussing_coworkers">Would you feel comfortable discussing an MH issue with your coworkers?</option> -->
-						</select>
+						<select id='sankeySelector1' class="custom-select align-self-center"
+							onchange="sankeyChange()"></select>
 					</div>
 					<div class="col-md-6">
-						<select id='sankeySelector2' class="custom-select align-self-center" onchange="sankeyChange()">
-							<!-- <option value="scale_tech_industry_supports" selected>How well does the tech industry support MH?</option> -->
-							<!-- <option value="employer_formally_discussed">Has your employer ever formally discussed MH?</option>
-						<option value="employer_offers_resources">Does your employer offer resources to learn more about MH and options for seeking help?</option>
-						<option value="badly_handled_MH">Have you ever witnessed a badly handled response to a MH issue at work?</option>
-						<option value="comfortable_discussing_coworkers">Would you feel comfortable discussing an MH issue with your coworkers?</option> -->
-						</select>
+						<select id='sankeySelector2' class="custom-select align-self-center"
+							onchange="sankeyChange()"></select>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<h5 style="margin-top: 100px" id="sankey-text"></h5>
-				<!-- <div style="height:100px"></div> -->
-				<button style="margin-top:120px" onclick="prevPhase()" id="prevButton">Previous</button><button onclick="nextPhase()"
-					id="nextButton">Next</button>
+				<button style="margin-top:120px" onclick="prevPhase()" id="prevButton">Previous</button><button
+					onclick="nextPhase()" id="nextButton">Next</button>
 			</div>
 		</div>
 	</div>
@@ -436,7 +408,7 @@
 					over words on the barchart to <b style="color: lightblue;">highlight </b> them
 					in the word cloud. Use the response generator below the word cloud to read participants' full
 					responses.</h6>
-					<div style='height: 50px;'></div>
+				<div style='height: 50px;'></div>
 				<select id='wordSelector' default="describe_badly_handled_MH" class="custom-select align-self-center"
 					style="width: 50%; margin-left: 25%;" onchange="wordChange()">
 					<option value="describe_badly_handled_MH" selected>Describe a Badly Handled Mental Health Situation
@@ -495,51 +467,64 @@
 		<div style="height:50px"></div>
 		<div data-aos="fade-in">
 			<h5 style="text-align: left;">The Future of Mental Health in Tech</h5>
-			<h6 style = 'font-size: 18px !important;'>The future of mental health in the tech industry is reliant on proactivity today. OSMI's survey responses reveal <orange-bold>three main takeaways</orange-bold> for how to move forward:</h6>
+			<h6 style='font-size: 18px !important;'>The future of mental health in the tech industry is reliant on
+				proactivity today. OSMI's survey responses reveal <orange-bold>three main takeaways</orange-bold> for
+				how to move forward:</h6>
 			<div style="height:40px"></div>
-			<div class='row align-content-center' style = 'text-align:center;'>
+			<div class='row align-content-center' style='text-align:center;'>
 				<div class="col-4 img-div">
 					<img class="team-img" alt="diversity" src="img/diversity.png" width="100%">
-					<h6 style = 'font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Support underrepresented demographics.</b></h6>
-					<h6 style = 'text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows  that <b><cyan>women</cyan></b>, <b><lime>non-binary genders</lime></b>, and <b><orange>Hispanic/Black</orange></b> tech professionals struggle the most with mental health issues.</h6>
+					<h6 style='font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Support
+							underrepresented demographics.</b></h6>
+					<h6 style='text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows that
+						<b>
+							<cyan>women</cyan>
+						</b>, <b>
+							<lime>non-binary genders</lime>
+						</b>, and <b>
+							<orange>Hispanic/Black</orange>
+						</b> tech professionals struggle the most with mental health issues.</h6>
 				</div>
 				<div class="col-4 img-div ">
 					<img class="team-img" alt="mgmt" src="img/mgmt_final.png" width="100%">
-					<h6 style = 'font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Educate management.</b></h6>
-					<h6 style = 'text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows that many tech professionals who are struggling with mental health issues work in environments where <b><orange>employers</orange></b> do not provide enough support for <b><cyan>employee </cyan></b>mental health.</h6>
+					<h6 style='font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Educate
+							management.</b></h6>
+					<h6 style='text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows that
+						many tech professionals who are struggling with mental health issues work in environments where
+						<b>
+							<orange>employers</orange>
+						</b> do not provide enough support for <b>
+							<cyan>employee </cyan>
+						</b>mental health.</h6>
 				</div>
 				<div class="col-4 img-div align-content-center">
 					<img class="team-img" alt="Austin Hwang" src="img/employees_final.png" width="100%">
-					<h6 style = 'font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Hold employees accountable.</b></h6>
-					<h6 style = 'text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows that tech professionals' <b><lime>coworkers</lime></b> often <b><orange>dismissed, stigmatized, and mocked</orange></b> mental health issues. More should be formally done to <b><purple>incentivize a supportive environment.</purple></b></h6>
+					<h6 style='font-size: 18px !important; text-align: left; margin-left: 17px;'><br></b><b>Hold
+							employees accountable.</b></h6>
+					<h6 style='text-align: left; margin-left: 17px; font-size: 16px !important;'>Survey data shows that
+						tech professionals' <b>
+							<lime>coworkers</lime>
+						</b> often <b>
+							<orange>dismissed, stigmatized, and mocked</orange>
+						</b> mental health issues. More should be formally done to <b>
+							<purple>incentivize a supportive environment.</purple>
+						</b></h6>
 				</div>
-<!--				<div class="col-md-4">-->
-<!--					<div data-aos="fade-in" data-aos-id="double-aos" id="doubleLine"></div>-->
-<!--				</div>-->
-<!--				<div class='col-md-8'>-->
-<!--					<h5 style='font-size: 20px !important;'><strong>The trajectory for the future of mental health in-->
-<!--							the tech industry is still unclear.</strong></h5>-->
-<!--					<p>The data reveals these key takeaways:</p>-->
-<!--					<h6>1. <strong>Support Underrepresented Minorities</strong><br>The data reveals that a significant-->
-<!--						percentage of tech professionals across all demographics are struggling with mental health-->
-<!--						disorders.<strong>But minority demographics are struggling the most.</strong></h6>-->
-<!--					<h6>2. <strong>Educate management</strong><br>The data reveals that many tech professionals who feel-->
-<!--						that the tech industry is poorly handling mental health work in environments where employers-->
-<!--						never discuss or provide resources for employees' mental health.</h6>-->
-<!--					<h6>3. <strong>Hold employees accountable</strong><br>Many personal anecdotes revealed that both-->
-<!--						tech professionals' supervisors and coworkers often dismissed, stigmatized, and mocked mental-->
-<!--						health issues. More should be formally done to incentivize a supportive work environment.</h6>-->
-<!--				</div>-->
 			</div>
 			<div style='height:80px;'></div>
 			<div style="height:150px;">
 				<h5 style='text-align: left;'>A stronger, more supportive work culture is everyone's
 					responsibility.</h5>
-				<h5 style = 'text-align: right;'><br>How are you doing your part?</h5>
+				<h5 style='text-align: right;'><br>How are you doing your part?</h5>
 			</div>
 			<div style="height:80px;">
-				<h6 style='text-align: left;'><br><br>For more information about OSMI's Survey on Mental Health, please visit <a href = "https://osmihelp.org/" style = 'color: lightblue;'>https://osmihelp.org/</a>.</h6>
-				<h6 style = 'text-align: left;'>For more resources about mental health and mental health awareness, please visit <a href = "https://www.mhanational.org/" style = 'color: lightblue;'>https://www.mhanational.org/</a>. <a href = "https://osmihelp.org/resources" style = 'color: lightblue;'>OSMI's Resource Page</a> also provides a wide range of resources.</h6>
+				<h6 style='text-align: left;'><br><br>For more information about OSMI's Survey on Mental Health, please
+					visit <a href="https://osmihelp.org/" style='color: lightblue;'>https://osmihelp.org/</a>.</h6>
+				<h6 style='text-align: left;'>For more resources about mental health and mental health awareness, please
+					visit <a href="https://www.mhanational.org/"
+						style='color: lightblue;'>https://www.mhanational.org/</a>. <a
+						href="https://osmihelp.org/resources" style='color: lightblue;'>OSMI's Resource Page</a> also
+					provides a wide range of resources.</h6>
 
 			</div>
 			<div style='height:80px'></div>
@@ -580,42 +565,6 @@
 	</div>
 
 
-	<!-- <div class="section nav-section" id="section6" style="margin-top: -3px; background: #000000;">
-		<div class="line" style="margin-top: 0px;"></div>
-		<div class="row">
-			<div class="col-md-3">
-				<p class="small">Harvard CS171 : <b>Visualization</b><br><br>An introductual course at Harvard focusing
-					on key design principles and techniques for visualizing data.</p>
-			</div>
-			<div class="col-md-6">
-				<p class="small"><b>Data Sources / Bibliogrpahy / Others:</b>
-					<br><br>Source 1 <a href="https://www.google.com">Link 1</a>
-				</p>
-
-				<p class="small" id="citation">Literature References: <a onclick="showcitation()"
-						href="javascript:void(0);">Sources (Click to Expand)</a></p>
-
-				<p class="small">Process Book of This Project: <a
-						href="https://docs.google.com/document/d/1aOAqhj8ZtW3qWSxTRvcyOC-Ik3bKi29Fpku4HXvhh24/edit#">Google
-						Doc</a>
-					<br>Video Walkthrough: <a href="link">YouTube</a>
-				</p>
-			</div>
-			<div class="col-md-2">
-				<p class="small" style="text-align: right; margin-right: -2vw;">by <b>Austin Hwang, Sarah Hong</b> and
-					<b>Seth Billiau</b> from Harvard College.</p>
-
-			</div>
-		</div>
-		<div style="height:100px"></div>
-	</div> -->
-
-
-	<!-- Load JS libraries -->
-	<!-- <script src="libraries/p5.js" type="text/javascript"></script> -->
-	<!-- <script src="libraries/p5.dom.js" type="text/javascript"></script> -->
-	<!-- <script src="libraries/p5.sound.js" type="text/javascript"></script> -->
-
 	<!-- Bootstrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -627,29 +576,15 @@
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 	</script>
 
-
+	<!-- Load JS libraries -->
 	<script src="libraries/jquery.min.js"></script>
-	<script src="libraries/popper.min.js"></script>
 	<script src="libraries/bootstrap.min.js"></script>
-	<script src="libraries/queue.min.js"></script>
-	<script src="libraries/topojson.min.js"></script>
 	<script src="libraries/d3.min.js"></script>
-	<script src="libraries/three.js"></script>
-	<script src="libraries/d3.v4.js"></script>
-	<script src="libraries/d3-scale-chromatic.v1.min.js"></script>
-	<script src="libraries/d3-geo-projection.v2.min.js"></script>
 	<script src="libraries/navigation.js"></script>
-	<script src="libraries/d3-tip.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
-
-
 
 	<!-- OptionalJS -->
 	<script src="https://d3js.org/d3.v6.min.js"></script>
-	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-	<script src="https://d3js.org/topojson.v2.min.js"></script>
-	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
 	<script src="https://unpkg.com/d3-simple-slider"></script>
 
 	<!-- Include visulization js here -->
@@ -660,8 +595,6 @@
 	<script src="js/wordcloudVis.js"></script>
 	<script src="js/wordbarVis.js"></script>
 	<script src="js/wordstoriesVis.js"></script>
-	<script src="js/helpers.js"></script>
-	<script src="js/mapVis.js"></script>
 	<script src="js/doubleBarchart.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/scroll.js"></script>

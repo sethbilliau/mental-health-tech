@@ -4,7 +4,7 @@ class BubbleChart {
         this.surveyData = surveyData;
         this.phaseData = phaseData;
         this.myEventHandler = myEventHandler;
-        console.log(surveyData)
+
         this.initVis();
     }
 
@@ -30,7 +30,6 @@ class BubbleChart {
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         vis.paths = {
-            d: "M72.3,65.9c1,5.1,1.3,10.8-2.7,14.7c-3.2,3.2-7.9,4.5-12.3,5.1c-2.9,0.4-5.8,0.4-8.7,0.4c-3.5,0-7.1-0.4-10.4-1.3     c-4.3-1.2-8.6-3.6-10.3-7.9c-1-2.5-0.9-5.1-0.7-7.7c0.3-2.8,0.9-5.6,1.8-8.2c1.8-5.3,4.7-10.4,8.9-14.1c0.9-0.8,2-1.3,2-2.7     c0-1.5-1.1-2.4-1.9-3.5c-1.5-2.2-2.3-4.9-2.4-7.6c-0.2-7.9,6.4-14.7,14.3-14.7c9.9,0,16.9,10.2,13.4,19.5     c-0.5,1.2-1.1,2.3-1.8,3.3c-0.8,1.1-1.8,2.1-1.5,3.6c0.3,1.2,1.6,1.8,2.4,2.6c1.1,1,2,2.1,2.9,3.2C69,54.9,71.2,60.3,72.3,65.9z",
             e: "M58.65,22.876h-0.006l0,0h-4.144c2.98-1.611,5.029-4.726,5.029-8.352C59.53,9.265,55.261,5,50,5s-9.53,4.265-9.53,9.524  c0,3.626,2.049,6.74,5.029,8.352H41.35c-3.885,0-7.026,3.142-7.026,7.032v23.573c0,2.97,2.405,5.364,5.375,5.364v30.79  c0,2.959,2.405,5.364,5.363,5.364h10.51c2.97,0,5.375-2.405,5.375-5.364V58.713c2.653-0.327,4.73-2.491,4.73-5.231V29.908  C65.677,26.018,62.523,22.876,58.65,22.876z"
         }
         vis.colorScale = {
@@ -57,17 +56,6 @@ class BubbleChart {
         let scroll = scroller().container(d3.select('#floatingarea'));
         scroll(d3.selectAll('.step'));
         scroll.on('active', function (index) {
-            // console.log(index, vis.nodes);
-            console.log(index)
-            let jsonNodes = JSON.stringify(vis.nodes);
-            // console.log(jsonNodes)
-            // fs.writeFile(`./data/nodes${index}.json`, jsonNodes, err => {
-            //     if (err) {
-            //         console.log('Error writing file', err);
-            //     } else {
-            //         console.log('Succesffuly wrote file');
-            //     }
-            // })
             d3.selectAll('.step')
                 .style('opacity', function (d, i) {
                     return i === index ? 1 : 0;
@@ -512,8 +500,6 @@ class BubbleChart {
             }
         }
 
-        console.log(counts)
-
         vis.nodes = d3.range(296).map(function (d, i) {
             return {
 
@@ -540,8 +526,6 @@ class BubbleChart {
                 }
             }
         })
-
-        console.log(vis.nodes)
 
         this.updateVis();
     }
@@ -595,10 +579,6 @@ class BubbleChart {
         circles.exit().remove();
 
 
-        // circles.on('mouseover', highlight)
-        //     .on('mouseout', dehighlight);
-
-
         vis.hoverCircles = vis.svg.selectAll(".hover-circle")
             .data(vis.hoverData[vis.step])
 
@@ -618,12 +598,7 @@ class BubbleChart {
             .attr('pointer-events', 'all');
 
 
-
-
         vis.hoverCircles.exit().remove();
-
-        // vis.hoverCircles.on('mouseover', highlight)
-        //     .on('mouseout', dehighlight);
 
         let groups = {
             "gender": ["M", "F", "Other-Gender"],
@@ -642,7 +617,7 @@ class BubbleChart {
                         .style('opacity', .3)
                 }
             }
-           
+
             $('html, body').animate({
                 scrollTop: $(`#step${vis.step+1}`).offset().top - 90
             }, 1000);
@@ -666,129 +641,125 @@ class BubbleChart {
                         .style('opacity', 1);
                 }
             }
-            if(vis.step == 0){
-                console.log('LOOK AT ME HERE')
-                $(`#step${vis.step+1}`).html(`<h5><br><cyan>41% of all respondents</cyan> said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
-            }
-            else if(vis.step == 1){
+            if (vis.step == 0) {
+                $(`#step${vis.step+1}`).html(`<h5><br><cyan>41% of all respondents</cyan> said they are struggling with mental health issues.</h5><h6><lime>Hover</lime> to see what mental health disorders they are struggling with.</h6>`);
+            } else if (vis.step == 1) {
                 $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6><br>Each <span
                 style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
-            }
-            else if(vis.step == 2){
+            disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling with.</h6>`);
+            } else if (vis.step == 2) {
                 $(`#step${vis.step+1}`).html(`<h5>People age <yellow>18-25</yellow> and <cyan>26-35</cyan> reported the highest proportion of mental health issues.</h5><h6><br>Each <span
                 style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
-            }
-            else if(vis.step == 3){
+            disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling with.</h6>`);
+            } else if (vis.step == 3) {
                 $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> reported the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6><br>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also chose not to disclose race.</h6><h6><br>Each <span
                 style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
-            }
-            else{
+            disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling with.</h6>`);
+            } else {
                 $(`#step${vis.step+1}`).html(`<h5><orange>Designers</orange> had the highest proportion of mental health issues.<yellow>Developers</yellow> had the lowest proportion.</h5><h6><br>NOTE: Disclosing occupation was only requested in 2016.</h6><h6><br>Each <span
                 style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
-            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
+            disorder. <lime>Hover</lime> to see what mental health disorders each group is struggling with.</h6>`);
             }
-           
+
             $('body').removeClass('stop-scrolling');
 
         }
+    }
 
-        // var simulation = d3.forceSimulation(vis.nodes)
-        //     .force('charge', d3.forceManyBody().strength(2))
-        //     .force('x', d3.forceX().x(function (d) {
-        //         if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
-        //             if (!d[vis.stepNames[vis.step]]) {
-        //                 return 0;
-        //             } else {
-        //                 return vis.xCenter[d[vis.stepNames[vis.step]][0]];
-        //             }
-        //         } else {
-        //             return vis.stepNames[vis.step] !== "start" ? vis.xCenter[d[vis.stepNames[vis.step]][0]] : vis.width / 2;
-        //         }
-        //     }))
-        //     .force('y', d3.forceY().y(function (d) {
-        //         if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
-        //             if (!d[vis.stepNames[vis.step]]) {
-        //                 return 0;
-        //             } else {
-        //                 return vis.yCenter[d[vis.stepNames[vis.step]][0]];
-        //             }
-        //         } else {
-        //             return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : 1 * vis.height / 3;
-        //         }
-        //     }))
-        //     .force('collision', d3.forceCollide().radius(8).iterations(7))
-        //     .on('tick', ticked);
+    runSimulation() {
+        let vis = this;
+        var simulation = d3.forceSimulation(vis.nodes)
+            .force('charge', d3.forceManyBody().strength(2))
+            .force('x', d3.forceX().x(function (d) {
+                if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
+                    if (!d[vis.stepNames[vis.step]]) {
+                        return 0;
+                    } else {
+                        return vis.xCenter[d[vis.stepNames[vis.step]][0]];
+                    }
+                } else {
+                    return vis.stepNames[vis.step] !== "start" ? vis.xCenter[d[vis.stepNames[vis.step]][0]] : vis.width / 2;
+                }
+            }))
+            .force('y', d3.forceY().y(function (d) {
+                if (vis.stepNames[vis.step] === "race" || vis.stepNames[vis.step] === "occupation") {
+                    if (!d[vis.stepNames[vis.step]]) {
+                        return 0;
+                    } else {
+                        return vis.yCenter[d[vis.stepNames[vis.step]][0]];
+                    }
+                } else {
+                    return vis.stepNames[vis.step] !== "start" ? vis.yCenter[d[vis.stepNames[vis.step]][0]] : 1 * vis.height / 3;
+                }
+            }))
+            .force('collision', d3.forceCollide().radius(8).iterations(7))
+            .on('tick', ticked);
 
-        // function ticked() {
-        //     let circles = vis.svg.selectAll('.circle-bubble')
-        //         .data(vis.nodes);
+        function ticked() {
+            let circles = vis.svg.selectAll('.circle-bubble')
+                .data(vis.nodes);
 
-        //     circles.enter()
-        //         .append('path')
-        //         // .attr('r', 6)
-        //         .merge(circles)
-        //         .attr('class', function (d) {
-        //             let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
-        //             if (d["race"]) {
-        //                 className += ` circle-${d["race"][0]}`;
-        //             } 
-        //             if (d["occupation"]) {
-        //                 className += ` circle-${d["occupation"][0]}`
-        //             }
-        //             return className;
-        //         })
-        //         .attr("d", vis.paths.e)
-        //         .attr('fill', d => vis.updateColors(d))
-        //         .attr("transform", function (d) {
-        //             return `translate(${d.x},${d.y}) scale(0.15)`
-        //         })
-        //     // .attr('cx', function (d) {
-        //     //     return d.x;
-        //     // })
-        //     // .attr('cy', function (d) {
-        //     //     return d.y;
-        //     // });
+            circles.enter()
+                .append('path')
+                // .attr('r', 6)
+                .merge(circles)
+                .attr('class', function (d) {
+                    let className = `circle-bubble circle-${d["age"][0]} circle-${d["gender"][0]}`;
+                    if (d["race"]) {
+                        className += ` circle-${d["race"][0]}`;
+                    }
+                    if (d["occupation"]) {
+                        className += ` circle-${d["occupation"][0]}`
+                    }
+                    return className;
+                })
+                .attr("d", vis.paths.e)
+                .attr('fill', d => vis.updateColors(d))
+                .attr("transform", function (d) {
+                    return `translate(${d.x},${d.y}) scale(0.15)`
+                })
+            // .attr('cx', function (d) {
+            //     return d.x;
+            // })
+            // .attr('cy', function (d) {
+            //     return d.y;
+            // });
 
-        //     circles.on('mouseover', highlight)
-        //         .on('mouseout', dehighlight);
+            circles.on('mouseover', highlight)
+                .on('mouseout', dehighlight);
 
-        //     let groups = {
-        //         "gender": ["M", "F", "Other-Gender"],
-        //         "age": ["18-25", "26-35", "36-50", "51-75"],
-        //         "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
-        //         "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
-        //     }
+            let groups = {
+                "gender": ["M", "F", "Other-Gender"],
+                "age": ["18-25", "26-35", "36-50", "51-75"],
+                "race": ["White", "Asian", "Hispanic-Black", "Other-Race"],
+                "occupation": ["dev", "mgmt", "other_job", "support", "designer"]
+            }
 
-        //     function highlight(e, d) {
-        //         let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
-        //         console.log(categories)
-        //         for (const category of categories) {
-        //             d3.selectAll(`.circle-${category}`)
-        //                 .style('fill', 'grey')
-        //                 .style('opacity', .3)
-        //         }
-        //     }
+            function highlight(e, d) {
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
 
-        //     function dehighlight(e, d) {
-        //         let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
+                for (const category of categories) {
+                    d3.selectAll(`.circle-${category}`)
+                        .style('fill', 'grey')
+                        .style('opacity', .3)
+                }
+            }
 
-        //         for (const category of categories) {
-        //             d3.selectAll(`.circle-${category}`).style('fill', function (d) {
-        //                     if (d[vis.stepNames[vis.step]][1]) {
-        //                         return 'red';
-        //                     } else {
-        //                         return vis.colorScale[d[vis.stepNames[vis.step]][0]]
-        //                     }
-        //                 })
-        //                 .style('opacity', 1);
-        //         }
-        //     }
-        //     circles.exit().remove();
-        // }
-        // console.log("nodes: ", JSON.stringify(vis.nodes))
+            function dehighlight(e, d) {
+                let categories = groups[vis.stepNames[vis.step]].filter(el => el != d[vis.stepNames[vis.step]][0]);
 
+                for (const category of categories) {
+                    d3.selectAll(`.circle-${category}`).style('fill', function (d) {
+                            if (d[vis.stepNames[vis.step]][1]) {
+                                return 'red';
+                            } else {
+                                return vis.colorScale[d[vis.stepNames[vis.step]][0]]
+                            }
+                        })
+                        .style('opacity', 1);
+                }
+            }
+            circles.exit().remove();
+        }
     }
 }
