@@ -12,9 +12,19 @@ cyan {
     color: lightblue;
 }
 
+cyan-bold{
+    color:lightblue;
+    font-weight: bold;
+}
+
 lime{
     color: #8bc34a;
 }
+lime-bold{
+    color:#8bc34a;
+    font-weight: bold;
+}
+
 
 orange{
     color: #ffb86c;
