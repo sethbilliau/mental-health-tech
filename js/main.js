@@ -143,8 +143,12 @@ new TypeIt("#quiz-title", {
     waitUntilVisible: true
 })
     .go();
-
-
+new TypeIt('#who-title', {
+    strings: "What might explain why <cyan>41% of all survey respondents</cyan> said they were struggling with mental health issues?",
+    speed: 35,
+    waitUntilVisible: true
+})
+    .go();
 
 $(MyEventHandler).bind("bubbleHovered", function(event, key) {
     bubbleBar.onBubbleHovered(key);

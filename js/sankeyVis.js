@@ -231,13 +231,13 @@ class SankeyVis {
                 category1: "disorder",
                 category2: "comfortable_discussing_coworkers",
                 highlightedLinks: ["#link-0", "#link-3"],
-                text: "text 2"
+                text: "<h5 style = 'font-size: 18px !important;'>When asked <cyan-bold>whether they feel comfortable discussing mental health issues with coworkers:</cyan-bold><br><br><orange-bold>36%</orange-bold> of people <orange-bold>without </orange-bold>mental health issues answered 'Yes'.<br><br>Only <lime-bold>27%</lime-bold> of people <lime-bold>with</lime-bold> mental health issues answered 'Yes'.<br></h5>"
             },
             {
                 category1: "employer_formally_discussed",
                 category2: "comfortable_discussing_coworkers",
                 highlightedLinks: ["#link-0", "#link-3"],
-                text: "text 3"
+                text: "<h5 style = 'font-size: 18px !important;'>When asked whether <cyan-bold>they feel comfortable discussing mental health with coworkers:</cyan-bold><br><br><orange-bold>43%</orange-bold> of people whose employers <orange-bold>did formally discuss mental health</orange-bold> answered 'Yes'.<br><br><lime-bold>Only 28%</lime-bold> of people whose employers <lime-bold>did NOT formally discuss mental health</lime-bold> answered 'Yes'.</h5>"
             }
         ]
 
