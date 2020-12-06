@@ -645,9 +645,9 @@ class BubbleChart {
                 }
             }
            
-            // $('html, body').animate({
-            //     scrollTop: $(`#step${vis.step+1}`).offset().top - 90
-            // }, 1000);
+            $('html, body').animate({
+                scrollTop: $(`#step${vis.step+1}`).offset().top - 90
+            }, 1000);
 
             $('body').addClass('stop-scrolling');
             $(vis.myEventHandler).trigger("bubbleHovered", d.label);
