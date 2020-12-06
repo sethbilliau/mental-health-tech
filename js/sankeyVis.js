@@ -238,6 +238,9 @@ class SankeyVis {
                 category2: "comfortable_discussing_coworkers",
                 highlightedLinks: ["#link-0", "#link-3"],
                 text: "<h5 style = 'font-size: 18px !important;'>When asked whether <cyan-bold>they feel comfortable discussing mental health with coworkers:</cyan-bold><br><br><orange-bold>43%</orange-bold> of people whose employers <orange-bold>did formally discuss mental health</orange-bold> answered 'Yes'.<br><br><lime-bold>Only 28%</lime-bold> of people whose employers <lime-bold>did NOT formally discuss mental health</lime-bold> answered 'Yes'.</h5>"
+            },
+            {
+                text: "<h5 style = 'font-size: 18px !important;'>Use the dropdown menus above the sankey diagram to choose which survey responses to view.</h5>"
             }
         ]
 
@@ -770,11 +773,11 @@ class SankeyVis {
 
         if (vis.currPhase == 3) {
             d3.selectAll(".link").style("stroke-opacity", .3);
+            $("#sankey-text").html(vis.phases[vis.currPhase].text);
         }
         
         if (vis.currPhase < 3) {
             $("#sankey-text").html(vis.phases[vis.currPhase].text);
-
             vis.phases[vis.currPhase].highlightedLinks.forEach(el => {
                 d3.select(el).transition().duration(2000)
                 .attr("d", vis.path)
