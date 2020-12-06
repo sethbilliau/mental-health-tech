@@ -327,8 +327,6 @@ class BubbleChart {
                 },
             ]
         }
-
-        this.wrangleData();
     }
 
     updateColors(d) {
