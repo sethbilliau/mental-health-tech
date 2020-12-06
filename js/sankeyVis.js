@@ -222,20 +222,26 @@ class SankeyVis {
         //)
 
         vis.phases = [{
-                category1: "scale_tech_industry_supports",
-                category2: "badly_handled_MH",
-                highlightedLinks: ["#link-1", "#link-2", "#link-3"],
+                category1: "disorder",
+                category2: "employer_offers_resources",
+                highlightedLinks: ["#link-0", "#link-3"],
                 text: "text 1"
+            },
+            {
+                category1: "disorder",
+                category2: "comfortable_discussing_coworkers",
+                highlightedLinks: ["#link-0", "#link-3"],
+                text: "text 2"
             },
             {
                 category1: "employer_formally_discussed",
                 category2: "comfortable_discussing_coworkers",
-                highlightedLinks: ["#link-4", "#link-5", "#link-6"],
-                text: "text 2"
+                highlightedLinks: ["#link-0", "#link-3"],
+                text: "text 3"
             }
         ]
 
-        vis.currPhase = -1;
+        vis.currPhase = 0;
         vis.wrangleData();
 
     }
@@ -257,8 +263,24 @@ class SankeyVis {
 
         let selectedCategory1;
         let selectedCategory2;
+                
         if (phase != 0) {
             vis.currPhase += phase;
+        }
+
+        if (vis.currPhase == 0) {
+            $("#prevButton").prop("disabled", true);
+        } else {
+            $("#prevButton").prop("disabled", false);
+        }
+
+        if (vis.currPhase == 3) {
+            $("#nextButton").prop("disabled", true);
+        } else {
+            $("#nextButton").prop("disabled", false);
+        }
+
+        if (vis.currPhase < 3) {
             selectedCategory1 = vis.phases[vis.currPhase].category1;
             selectedCategory2 = vis.phases[vis.currPhase].category2;
             d3.select('#sankeySelector1').property('value', selectedCategory1);
@@ -324,6 +346,7 @@ class SankeyVis {
 
     updateSankey() {
         let vis = this;
+
         vis.sankey
             .nodes(vis.displayData.nodes)
             .links(vis.displayData.links)
@@ -374,8 +397,7 @@ class SankeyVis {
             };
         // color = d3.scaleOrdinal(d3.schemeCategory10)
         let colorLeft = d3.scaleOrdinal(['#ECECEC', '#84C3EB', '#58ABE1', '#0F83CD', '#06639F'])
-        let colorRight = d3.scaleOrdinal(['#ECECEC', '#FBCFA2', '#F9AE6B', '#F78D3D', '#E6550D'])
-
+        let colorRight = d3.scaleOrdinal(['#ECECEC', '#D1B3F2', '#BD91EB', '#AC6EED', '#9752E0'])
 
         // let optionLabel1;
         // let optionLabel2;
@@ -442,7 +464,6 @@ class SankeyVis {
             })
             .attr("width", vis.sankey.nodeWidth())
             .style("fill", function (d) {
-                console.log(d)
                 if (d.targetLinks.length === 0) {
                     return d.color = colorLeft(d.name);
                 } else {
@@ -478,62 +499,48 @@ class SankeyVis {
                 return Math.max(1, d.dy);
             })
             .style('stroke', (d, i) => {
-                console.log('d from gradient stroke func', d);
-
+                // console.log('d from gradient stroke func', d);
+                return d.source.color;
                 // make unique gradient ids  
 
-                let startColor = d.source.color;
-                let stopColor = d.target.color;
+                // let startColor = d.source.color;
+                // let stopColor = d.target.color;
+                // let selectedCategory1 = $('#sankeySelector1').val();
+                // let selectedCategory2 = $('#sankeySelector2').val();
+                // console.log(d.dy, d.ty)
 
-                let gradientID = `gradient${String(d.dy)}`;
+                // let gradientID = `gradient${selectedCategory1 + d.source.node + selectedCategory2 + d.target.node + String(d.dy) + String(d.ty)}`;
 
                 // if (startColor !== stopColor) {
-                    console.log('startColor', startColor);
-                    console.log('stopColor', stopColor);
-                    console.log(d.source.name, d.target.name)
-                    let gradient = vis.defs.append('linearGradient')
-                        .attr('id', gradientID)
-                        // .attr("x1", "10%")
-                        // .attr("x2", "90%")
-                        // .attr("y1", "0%")
-                        // .attr("y2", "90%");
-                     
-                        gradient.append("stop")
-                        .attr('class', 'start')
-                        .attr("offset", "10%")
-                        .attr("stop-color", startColor)
-                        .attr("stop-opacity", 1);
-                     
-                     gradient.append("stop")
-                        .attr('class', 'end')
-                        .attr("offset", "90%")
-                        .attr("stop-color", stopColor)
-                        .attr("stop-opacity", 1);
+                //     console.log('startColor', startColor);
+                //     console.log('stopColor', stopColor);
+                //     console.log(d.source.name, d.target.name)
+                //     let gradient = vis.defs.append('linearGradient')
+                //         .attr('id', gradientID)
 
-                    // let newGradient = linearGradient.selectAll('stop')
-                    //     .data([{
-                    //             offset: '10%',
-                    //             color: startColor
-                    //         },
-                    //         {
-                    //             offset: '90%',
-                    //             color: stopColor
-                    //         }
-                    //     ])
-                    //     .enter().append('stop')
-                    //     // .merge(newGradient)
-                    //     .attr('offset', d => {
-                    //         console.log('d.offset', d.offset);
-                    //         return d.offset;
-                    //     })
-                    //     .attr('stop-color', d => {
-                    //         console.log('d.color', d.color);
-                    //         return d.color;
-                    //     })
+                //     gradient.selectAll('stop')
+                //         .data([{
+                //                 offset: '10%',
+                //                 color: startColor
+                //             },
+                //             {
+                //                 offset: '90%',
+                //                 color: stopColor
+                //             }
+                //         ])
+                //         .enter().append('stop')
+                //         // .merge(newGradient)
+                //         .attr('offset', d => {
+                //             console.log('d.offset', d.offset);
+                //             return d.offset;
+                //         })
+                //         .attr('stop-color', d => {
+                //             console.log('d.color', d.color);
+                //             return d.color;
+                //         })
 
-                    // newGradient.exit().remove();
-
-                    return `url(#gradient${String(d.dy)})`;
+                //     // newGradient.exit().remove();
+                //     return `url(#gradient${selectedCategory1 + d.source.node + selectedCategory2 + d.target.node + String(d.dy) + String(d.ty)})`;
                 // } else {
                 //     return d.source.color;
                 // }
@@ -559,8 +566,6 @@ class SankeyVis {
                     )
                     .style("left", (event.pageX + 15) + "px")
                     .style("top", (event.pageY) + "px");
-
-                const selection = d3.select(this).raise();
 
             })
             .on("mouseout", function (d) {
@@ -646,7 +651,6 @@ class SankeyVis {
             d3.select("#link-" + id).style("stroke-opacity", opacity);
         }
 
-        vis.svg.selectAll(".link")
             
 
 
@@ -712,11 +716,23 @@ class SankeyVis {
         //     vis.sankey.relayout();
         //     link.attr("d", vis.path);
         // }
-        if (vis.currPhase >= 0) {
+        console.log(vis.currPhase)
+
+        if (vis.currPhase == 3) {
             d3.selectAll(".link").style("stroke-opacity", .3);
+        }
+        
+        if (vis.currPhase < 3) {
+            $("#sankey-text").html(vis.phases[vis.currPhase].text);
+
             vis.phases[vis.currPhase].highlightedLinks.forEach(el => {
-                d3.select(el).style("stroke-opacity", .8);
+                d3.select(el).transition().duration(2000)
+                .attr("d", vis.path)
+                    .style("stroke-opacity", .8).style("stroke", "#ff5555");
             })
+
+            d3.selectAll(".link").style("stroke-opacity", .3);
+            d3.selectAll(".link").style("stroke", d => d.source.color);
         }
 
     }
