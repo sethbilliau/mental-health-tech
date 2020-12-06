@@ -636,8 +636,6 @@ class BubbleChart {
         function highlight(e, d) {
             if (vis.step !== 0) {
                 let categories = groups[vis.stepNames[vis.step]].filter(el => el !== d.label);
-                console.log("entered")
-                console.log(categories)
                 for (const category of categories) {
                     d3.selectAll(`.circle-${category}`)
                         .style('fill', 'grey')
@@ -660,7 +658,7 @@ class BubbleChart {
                 for (const category of categories) {
                     d3.selectAll(`.circle-${category}`).style('fill', function (d) {
                             if (d[vis.stepNames[vis.step]][1]) {
-                                return 'red';
+                                return '#ff5555';
                             } else {
                                 return vis.colorScale[d[vis.stepNames[vis.step]][0]]
                             }
@@ -673,16 +671,24 @@ class BubbleChart {
                 $(`#step${vis.step+1}`).html(`<h5><br><cyan>41% of all respondents</cyan> said they are struggling with mental health issues.</h5><h6>Hover to see what mental health disorders they are struggling with.</h6>`);
             }
             else if(vis.step == 1){
-                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>A <strong>higher proportion</strong> of people who identified as <cyan>Females</cyan> and <purple>Other</purple> are struggling with mental health issues, compared to Males.</h5><h6><br>Each <span
+                style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
+            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 2){
-                $(`#step${vis.step+1}`).html(`<h5>People age <yellow>18-25</yellow> and <cyan>26-35</cyan> reported the highest proportion of mental health issues.</h5><h6>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>People age <yellow>18-25</yellow> and <cyan>26-35</cyan> reported the highest proportion of mental health issues.</h5><h6><br>Each <span
+                style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
+            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else if(vis.step == 3){
-                $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> reported the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also chose not to disclose race.</h6><h6><br>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5>People who identified as <purple>Hispanic/Black</purple> reported the highest proportion of mental health issues. <cyan>Asians</cyan> had the lowest proportion.</h5><h6><br>NOTE: Disclosing race was not requested in 2016. Some participants in 2017-2019 also chose not to disclose race.</h6><h6><br>Each <span
+                style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
+            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
             else{
-                $(`#step${vis.step+1}`).html(`<h5><orange>Designers</orange> had the highest proportion of mental health issues.<yellow>Developers</yellow> had the lowest proportion.</h5><h6>NOTE: Disclosing occupation was only requested in 2016.</h6><h6><br>Hover to see what mental health disorders each group is struggling with.</h6>`);
+                $(`#step${vis.step+1}`).html(`<h5><orange>Designers</orange> had the highest proportion of mental health issues.<yellow>Developers</yellow> had the lowest proportion.</h5><h6><br>NOTE: Disclosing occupation was only requested in 2016.</h6><h6><br>Each <span
+                style="color: #ff5555"><strong>red</strong></span> icon represents 10 people struggling with a mental health issue or
+            disorder. Hover to see what mental health disorders each group is struggling with.</h6>`);
             }
            
             $('body').removeClass('stop-scrolling');
