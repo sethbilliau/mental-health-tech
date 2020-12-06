@@ -737,6 +737,13 @@ ul {
     object-fit: cover;
 }
 
+.workplace-img {
+    float: center;
+    width:  250px;
+    height: 225px;
+    object-fit: cover;
+}
+
 .smalltext{
     color: #ececec !important;
     font-family: 'sudo-regular' !important;

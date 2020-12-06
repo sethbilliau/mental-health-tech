@@ -357,23 +357,25 @@
 	<!--	</div>-->
 	<div class="section nav-section" id="section7" style="margin-top: -3px;">
 		<div class="line-divider" data-aos="fade-in"></div>
-		<div style="height:50px"></div>
+		<div style="height:30px"></div>
+		<h4 id = "who-title" style = 'font-family: sudo-regular !important;'></h4>
 		<div class='row'>
 			<div class='col'>
-				<h5 style='font-size: 18px !important;'><br>According to a study done by the <cyan>World Health Organization</cyan>, a <orange>negative
+				<div class = 'row'>
+					<div class = 'col'>
+						<h5 style='font-size: 18px !important;'><br>According to a study done by the <purple>World Health Organization</purple>, a <orange>negative
 					</orange>workplace environment can lead to physical & mental health problems, loss of productivity, and absenteeism.</h5>
-				<h5 style='font-size: 18px !important;'><br>An estimated <lime>$1 trillion</lime> a year of productivity is lost due to depression and anxiety disorders.</h5>
-				<h5 style='font-size: 18px !important;'><br>This can be attributed a variety of poor workplace practices including:</h5>
-				<ul id="health-list">
-					<li>Bad management practices</li>
-					<li>Low levels of support for employees</li>
-					<li>Inflexible working hours</li>
-					<li>Inadequate health policies</li>
-				</ul>
-					<h5> <br>These survey responses about employer and co-worker behavior reflect similar issues in the tech industry and point to workplace
-						<purple>culture</purple>
-						as a significant factor to mental health.</h5>
-
+					</div>
+				</div>
+				<div class = 'row'>
+					<div class = 'col-8'>
+						<h5 style='font-size: 18px !important;'><br>An estimated <lime>$1 trillion</lime> a year of productivity is lost due to depression and anxiety disorders.</h5>
+						<h5 style='font-size: 18px !important;'><br>This can be attributed a variety of poor workplace practices, including <cyan>bad management practices, low levels of support for employees, inflexible working hours</cyan>, and <cyan>inadequate health policies.</cyan></h5>
+					</div>
+					<div class = 'col-4'>
+						<img class="workplace-img" alt="Mental Health Value" src="img/workplace.png" width="100%">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -381,11 +383,9 @@
 
 	<div class="section nav-section" data-aos="fade-in" id="section8">
 		<div class="line-divider" data-aos="fade-in"></div>
-<!--		<div style='height: 30px;'></div>-->
-<!--		<h5>What might explain why <cyan>41% of all survey respondents</cyan> said they were struggling with mental-->
-		<div style="height:50px"></div>
-		<h5>What might explain why <cyan>41%> of all survey respondents</cyan> said they were struggling with mental
-			health issues?</h5>
+		<div style="height:30px"></div>
+		<h5>Let's see whether OSMI survey responses about <lime>employer/coworker behavior</lime> reflect a relationship between <orange>negative workplace culture </orange>and<orange> mental health issues...</orange></h5>
+		<h6>These sankey visualizations show the relationship between survey responses about mental health and employer/coworker behavior. The first three panels highlight particularly interesting relationships, and the last panel allows you to select which responses to explore yourself.</h6>
 		<div style='height: 30px;'></div>
 		<div class="row align-items-center">
 			<div class="col-md-9" id="sankeyDiv" style="height:500px;padding-left: 0px !important">
@@ -411,9 +411,7 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<h5 id="sankey-text"> <br>These survey responses about employer and coworker behavior point to
-					<strong>culture</strong>
-					as a significant factor.</h5>
+				<h5 id="sankey-text"></h5>
 				<button onclick="prevPhase()" id="prevButton">Previous</button><button onclick="nextPhase()"
 					id="nextButton">Next</button>
 			</div>
