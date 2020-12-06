@@ -11,7 +11,7 @@ class BubbleBar {
 
         vis.margin = {
             top: 50,
-            right: 20,
+            right: 30,
             bottom: 20,
             left: 160
         };
@@ -219,6 +219,25 @@ class BubbleBar {
             .attr("fill", vis.colorScale[vis.subfilter]);
 
         bars.exit().remove();
+
+        let label_data = vis.svg.selectAll('.rect-disorders-labels')
+            .data(vis.displayData);
+
+        label_data.enter().append('text')
+            .attr('class', 'rect-disorders-labels')
+            .style('font-size', '15px')
+            .merge(label_data)
+            .transition().duration(1000)
+            .attr('x', d => vis.x(d.count) + 5)
+            .attr('y', d => vis.y(d.name) + 20)
+            .attr('fill', '#fafafa')
+            .style('font-weight', 'bold')
+            .text(d => {
+                return d.count;
+            });
+
+        label_data.exit().remove();
+
 
         vis.svg.select(".x-axis")
             .transition()
