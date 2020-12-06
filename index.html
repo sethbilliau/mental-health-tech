@@ -411,8 +411,9 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<h5 id="sankey-text"></h5>
-				<button onclick="prevPhase()" id="prevButton">Previous</button><button onclick="nextPhase()"
+				<h5 style="margin-top: 100px" id="sankey-text"></h5>
+				<!-- <div style="height:100px"></div> -->
+				<button style="margin-top:120px" onclick="prevPhase()" id="prevButton">Previous</button><button onclick="nextPhase()"
 					id="nextButton">Next</button>
 			</div>
 		</div>
@@ -435,6 +436,7 @@
 					over words on the barchart to <b style="color: lightblue;">highlight </b> them
 					in the word cloud. Use the response generator below the word cloud to read participants' full
 					responses.</h6>
+					<div style='height: 50px;'></div>
 				<select id='wordSelector' default="describe_badly_handled_MH" class="custom-select align-self-center"
 					style="width: 50%; margin-left: 25%;" onchange="wordChange()">
 					<option value="describe_badly_handled_MH" selected>Describe a Badly Handled Mental Health Situation
