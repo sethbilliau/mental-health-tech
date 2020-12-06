@@ -225,7 +225,7 @@ class SankeyVis {
                 category1: "disorder",
                 category2: "employer_offers_resources",
                 highlightedLinks: ["#link-0", "#link-3"],
-                text: "text 1"
+                text: "<h5 style = 'font-size: 18px !important;'>When asked <cyan-bold>whether their employer offered resources for mental health:</cyan-bold><br><br><orange-bold>42%</orange-bold> of people <orange-bold>without </orange-bold>mental health issues answered 'Yes'.<br><br>Only <lime-bold>36%</lime-bold> of people <lime-bold>with</lime-bold> mental health issues answered 'Yes'.<br></h5> "
             },
             {
                 category1: "disorder",
