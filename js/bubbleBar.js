@@ -13,7 +13,7 @@ class BubbleBar {
             top: 50,
             right: 30,
             bottom: 20,
-            left: 160
+            left: 170
         };
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right,

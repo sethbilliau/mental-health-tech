@@ -334,8 +334,8 @@ class SankeyVis {
 
                 vis.tooltip.html(
                         `
-                <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 10px">
-                    <h6> Respondents: ${d.value}</h6>                     
+                <div style="border: thin solid grey; border-radius: 5px; background: #ececec; padding: 10px">
+                    <h6 style="color: black !important"> Respondents: ${d.value}</h6>                     
                 </div>`
                     )
                     .style("left", (event.pageX + 15) + "px")

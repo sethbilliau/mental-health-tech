@@ -236,10 +236,10 @@ class LineGraph {
 
                 vis.tooltip.html(
                         `
-            <div style="border: thin solid grey; border-radius: 5px; background: #555555; padding: 20px">
-                <h6> Year: ${d.date}</h6>
-                <h6> Weight: ${d.percent}%</h6>
-                <h6>${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
+            <div style="border: thin solid grey; border-radius: 5px; background: #ececec; padding: 10px;">
+                <h6 style="color: black !important"> Year: ${d.date}</h6>
+                <h6 style="color: black !important">Weight: ${d.percent}%</h6>
+                <h6 style="color: black !important">${majorEvents[d.date]  && d.industry === "Technology" ? 'Major Event: ' + majorEvents[d.date] : ''}</h6>                         
             </div>`
                     )
                     .style("left", (event.pageX + 25) + "px")

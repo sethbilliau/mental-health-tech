@@ -711,6 +711,19 @@ ul {
     z-index: 0;
 }
 
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.tooltip-new {
+    fill: white;
+    stroke: #000;
+}
+
+.focus circle {
+    fill: white;
+}
 
 .tooltip {
     position: absolute;
@@ -719,7 +732,6 @@ ul {
     height: 28px;
     padding: 2px;
     font: 12px sans-serif;
-    background: #696969;
     border-radius: 8px;
     /*pointer-events: none;	This line needs to be removed */
 }
