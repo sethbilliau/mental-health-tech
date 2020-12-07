@@ -22,7 +22,7 @@ Finally, the `js` folder contains the most of our work. `animate`, `scroll`, `sa
 `helpers.js` and `mapVis.js` includes the code to create a map chart that was omitted in the final version of our site. 
 
 ### Screencast
-- URL: [YouTube](TODO)
+- URL: [YouTube](https://youtu.be/dE49A39OxQk)
 
 ### Website
 
@@ -62,3 +62,4 @@ Finally, the `js` folder contains the most of our work. `animate`, `scroll`, `sa
 - Line graph: http://bl.ocks.org/markmarkoh/8700606
 - Double barchart: https://medium.com/@vaibhavkumar_19430/how-to-create-a-grouped-bar-chart-in-d3-js-232c54f85894
 - WHO study on workplace mental health: https://www.who.int/teams/mental-health-and-substance-use/mental-health-in-the-workplace
+- Word Cloud Inspiration: https://www.d3-graph-gallery.com/wordcloud 
