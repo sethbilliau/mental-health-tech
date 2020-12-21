@@ -1,4 +1,4 @@
-# More Than Just Code. Mental Health in Tech Industry
+# More Than Just Code. Mental Health in the Tech Industry
 
 ### Seth Billiau, Sarah Hong, Austin Hwang
 
